@@ -71,8 +71,8 @@ https://github.com/hola/video.js
 
 == Screenshots ==
 
-![screenshot-1.png](/assets/screenshot-1.png)
-![screenshot-2.png](/assets/screenshot-2.png)
+1. Video player logo in post editor
+2. Video player set up console
 
 == Changelog ==
 
