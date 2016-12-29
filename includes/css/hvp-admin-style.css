@@ -1,0 +1,159 @@
+.hvp-save-btn {
+	float: right;
+}
+.hvp_page_link {
+	float: right;
+	padding-top: 20px;
+}
+.hvp_clear_both {
+	clear: both;
+}
+.hvp_top_down {
+	height: 10px;
+}
+.hvp_view {
+	float:left;
+	width:100px;
+	font-weight: bold;
+}
+.hvp_right{
+	float: right;
+}
+
+.hvp_overlay {
+	display:none;
+	position:fixed;
+	top:0%;
+	left:0%;
+	width:100%;
+	height:100%;
+	background-color:black;
+	z-index:1001;
+	-moz-opacity:0.7;
+	opacity:.70;
+	filter:alpha(opacity=70)
+}
+.hvp-reset-wrapper {
+	margin: 5px 0 15px;
+}
+.hvp-checkbox-label {
+	margin-left: 5px;
+}
+/********** CSS for Shortcode Popup Starts ***********/
+.hvp-popup .form-table td, .hvp-popup .form-table th {
+	padding-bottom: 5px !important;
+	padding-top: 5px !important;
+}
+.hvp-popup-content {
+    margin: 0 auto;
+    min-height: 370px;
+    display: none;
+	position: absolute;/* fixed*/
+	border: 1px solid #555555;
+	top: 1%;
+	text-align: left;
+	left: 0%;
+	right: 0%;
+	max-width: 870px;
+	background: none repeat scroll 0 0 #FFFFFF;
+	z-index:10002;
+	overflow: auto;
+	font-size: 13px;
+	box-shadow: 0 4px 30px #000000;
+	color: #000000;
+	/*height: 460px;*/
+}
+.hvp-popup-content .description {
+	margin-left: 0px !important
+}
+.hvp-popup-overlay {
+	display: none;
+	background-color: #000000;
+    height: 100%;
+    left: 0;
+    opacity: 0.75;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+.hvp-header-title {
+    float: left;
+    padding: 6px 10px 0;
+}
+.hvp-popup-close {
+ 	float: right;
+    padding: 6px 10px 0;
+    text-align: right;
+}
+.hvp-header {
+    background-color: #222222;
+    color: #CFCFCF;
+    min-height: 29px;
+    position: relative;
+    width: auto;
+}
+.hvp-popup {
+  padding: 10px 15px;
+}
+.hvp-popup table.form-table {
+	margin-top : 0 !important;
+	width: 100%;	
+}
+#hvp_shortcode_error {
+	color: red;
+}
+#hvp_insert_container {
+	margin: 15px;
+}
+#hvp_shortcode_error, 
+#hvp_insert_container,
+.hvp-shortcodes-options {
+ 	display: block;
+}
+/***************** CSS for Shortcode Popup Ends******************/
+.hvp-display-none {
+	display: none;
+}
+.hvp-post-select-wrap, .hvp-taxonomy-select-wrap {
+	float: left;
+}
+.hvp-loader {
+	display: none;
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.hvp-form select {
+	width: 150px;
+}
+/***************** Customize Chosen CSS Start *******************/
+.chzn-select {
+	width: 200px;
+}
+.tablenav .actions {
+	overflow: visible;
+}
+.tablenav .button {
+	margin-left: 3px !important;
+}
+.alignleft.actions .chzn-container-single {
+    display: inline-block;
+    vertical-align: middle;
+}
+.chzn-search input {
+	width: 100% !important;
+}
+.hvp-desc-container {
+    margin: 5px 0px;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 400;
+    color: #666;
+}
+.hvp-title {
+    margin-bottom: 4px;
+}
+.hvp-close-button img{
+	height: 22px;
+}

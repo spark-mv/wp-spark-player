@@ -1,0 +1,82 @@
+/** Customiser class for hide or unhide**/
+.hvp-video .hide-time .vjs-control-bar .vjs-time-control {
+	display: none !important;
+}
+.hvp-video .hide-play .vjs-control-bar .vjs-play-control {
+	display: none !important;
+}
+.hvp-video .time-right .vjs-time-control {
+	order: 6 !important;
+}
+
+/** Customiser class = control-metalic change controlbar bgcolor style **/
+.hvp-video .control-metalic .vjs-control-bar{
+	background: linear-gradient(to bottom, rgb(252, 252, 252) 0.1%, rgba(32, 30, 30, 0.7) 100%);
+}
+.hvp-video .control-metalic .vjs-control-bar button{
+	/*background: #2f2f2f4d;*/
+}
+.hvp-video .control-metalic button:hover, .hvp-video .control-metalic button:focus{
+	background:rgba(113, 113, 113, 0.2);
+}
+.hvp-video .control-metalic .vjs-volume-menu-button.vjs-volume-menu-button-horizontal {
+	/*background: #2f2f2f4d;*/
+}
+.hvp-video .control-metalic .vjs-volume-bar.vjs-slider-horizontal .vjs-volume-level {
+	background: #ececec;
+}
+.hvp-video .control-metalic .vjs-progress-control > .vjs-progress-holder > .vjs-play-progress.vjs-slider-bar{
+	background: #d5d5d5;
+}
+.hvp-video .control-metalic .vjs-slider{
+	background-color: rgba(227, 227, 227, 0.5);
+}
+.hvp-video .control-metalic .vjs-play-progress.vjs-slider-bar::before {
+	color:#d5d5d5 !important;
+	background: #d5d5d5 !important;
+}
+
+/** Customiser class = control-functional change controlbar **/
+.hvp-video .control-functional .vjs-control-bar {
+	background: #414141;
+}
+.hvp-video .control-functional .vjs-progress-control > .vjs-progress-holder > .vjs-play-progress.vjs-slider-bar{
+	background: #fff;
+}
+.hvp-video .control-functional .vjs-control-bar > .vjs-spacer {
+	order: 1;	
+}
+.hvp-video .control-functional .vjs-volume-menu-button.vjs-volume-menu-button-horizontal {
+	order: 6;
+	width: 12em;
+}
+.hvp-video .control-functional .vjs-play-progress.vjs-slider-bar::before {
+	color:#fff !important;
+	background: #6b6969 !important;
+}
+.hvp-video .control-functional .vjs-volume-bar.vjs-slider-horizontal .vjs-volume-level {
+	background: #fff;
+}
+.hvp-video .control-functional .vjs-menu-button-inline .vjs-menu{
+	opacity: 1;
+}
+.hvp-video .control-functional .vjs-fullscreen-control {
+	order: 7;
+}
+
+/** Widget Control Buttons**/
+.hvp-widget-video .vjs-play-control, .hvp-widget-video .vjs-fullscreen-control{
+	width: 2em !important;
+}
+
+
+/**** GENERAL style ***/
+.video-js.vjs-fullscreen{
+	max-width: 100% !important;
+}
+.hvp-video video {
+	/*object-fit: fill;*/
+}
+.hvp-video .vjs-poster{
+	background-size: 100% 100% !important;
+}
