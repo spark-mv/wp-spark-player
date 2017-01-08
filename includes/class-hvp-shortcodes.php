@@ -53,16 +53,6 @@ class Hvp_Shortcode {
 		// Get file MIME type
 		$mime_type = hvp_get_mimetype($url);
 
-		// include video javascript based on video type
-		if( !$hls && !$osmf) {
-			wp_enqueue_script('hvp_video_script');
-		}
-		if( $hls) {
-			wp_enqueue_script('hvp_hls_video_script');
-		}
-		if( $osmf )
-			wp_enqueue_script('hvp_osmf_video_script');
-
 		// IMA ADS SDK
 		wp_enqueue_script('hvp_ima_ads_sdk_script');
 		//wp_enqueue_script('hvp_video_player_script');
@@ -83,31 +73,7 @@ class Hvp_Shortcode {
 		if ( strpos( $width, '%') == false && strpos( $width, 'px') == false) {
     		$width = $width.'px';
     	}
-    	/*** Remove wordpress default template from 1.0.0
-		//check if mediaelement template is specified
-		if( $template == 'mediaelement' ){
-    		$attr = array();
-	        $attr['src'] = $url;
-	        if(is_numeric($width)){
-	            $attr['width'] = $width;
-	        }
-	        if(is_numeric($height)){
-	            $attr['height'] = $height;
-	        }
-	        if ( $autoplay ){
-	            $attr['autoplay'] = 'on';
-	        }
-	        if ( $loop ){
-	            $attr['loop'] = 'on';
-	        }
-	        if (!empty($poster)){
-	            $attr['poster'] = $poster;
-	        }
-	        if (!empty($preload)){
-	            $attr['preload'] = $preload;
-	        }
-	        return wp_video_shortcode($attr);
-    	}*/
+
     	if( $template != 'basic-skin' ) {
     		wp_enqueue_style( 'hvp_hola_style' );
     		$skin = 'hola-skin';
@@ -159,8 +125,8 @@ class Hvp_Shortcode {
 		ob_start();
 		?>
 		<div id="<?php print $video_id;?>" class="hvp-video hvp-content-video">
-		  <video id="<?php print $res_class?>" <?php print $adtagurl ?> data-id="<?php print $res_class?>" class="video-js <?php print $skin.' '.$res_class ?> <?php print $class?>" preload="<?php print $preload; ?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>" <?php print $autoplay.$muted.$loop.$controls ?>  data-setup='{<?php print $techorder ?>"plugins":{"hola_skin":{"css":false}}}'>
-    		<source src="<?php print $url?>" type='<?php print $mime_type?>' />
+		  <video id="<?php print $res_class?>" <?php print $adtagurl ?> data-id="<?php print $res_class?>" class="video-js <?php print $skin.' '.$res_class ?> <?php print $class?>" preload="<?php print $preload; ?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>" <?php print $autoplay.$muted.$loop.$controls ?>  data-setup='{<?php print $techorder ?>"plugins":{}}'>
+    		<source src="<?php print $url?>" type="<?php print $mime_type?>" />
     		<p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN ) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e( 'supports HTML5 video', HVP_TEXTDOMAIN ) ?></a></p>
   			</video>
   		</div>

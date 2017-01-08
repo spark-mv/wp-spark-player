@@ -79,7 +79,8 @@ class Hvp_Widget extends WP_Widget {
 		$video_id 		= $this->model->hvp_escape_attr( $instance['video_id'] );
 		$class 			= $this->model->hvp_escape_attr( $instance['class'] );
 		$template 		= $this->model->hvp_escape_attr( $instance['template'] );
-
+		
+		wp_nonce_field( HVP_PREFIX . '_noun' );
 		?>
 		
 		<!-- Title: Text Box -->
@@ -312,23 +313,27 @@ class Hvp_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance) {
 		// processes widget options to be saved
 		$instance = $old_instance;
+		$formNonce = $_POST['_wpnonce'];
 
-		$instance['title'] = $this->model->hvp_escape_slashes_deep($new_instance['title']);
-		$instance['url'] = $this->model->hvp_escape_slashes_deep($new_instance['url']);
-		$instance['is_video_ads'] = $this->model->hvp_escape_slashes_deep($new_instance['is_video_ads']);
-		$instance['video_adurl'] = $this->model->hvp_escape_slashes_deep($new_instance['video_adurl']);
-		$instance['width'] = $this->model->hvp_escape_slashes_deep($new_instance['width']);
-		$instance['height'] = $this->model->hvp_escape_slashes_deep($new_instance['height']);
-		$instance['video_type'] = $this->model->hvp_escape_slashes_deep($new_instance['video_type']);
-		$instance['controls'] = $this->model->hvp_escape_slashes_deep($new_instance['controls']);
-		$instance['autoplay'] = $this->model->hvp_escape_slashes_deep($new_instance['autoplay']);
-		$instance['poster'] = $this->model->hvp_escape_slashes_deep($new_instance['poster']);
-		$instance['loop'] = $this->model->hvp_escape_slashes_deep($new_instance['loop']);
-		$instance['muted'] = $this->model->hvp_escape_slashes_deep($new_instance['muted']);
-		$instance['ytcontrol'] = $this->model->hvp_escape_slashes_deep($new_instance['ytcontrol']);
-		$instance['video_id'] = $this->model->hvp_escape_slashes_deep($new_instance['video_id']);
-		$instance['class'] = $this->model->hvp_escape_slashes_deep($new_instance['class']);
-		$instance['template'] = $this->model->hvp_escape_slashes_deep($new_instance['template']);
+		if( wp_verify_nonce( $formNonce, HVP_PREFIX.'_noun' ) ) {
+
+			$instance['title'] = $this->model->hvp_escape_slashes_deep($new_instance['title']);
+			$instance['url'] = $this->model->hvp_escape_slashes_deep($new_instance['url']);
+			$instance['is_video_ads'] = $this->model->hvp_escape_slashes_deep($new_instance['is_video_ads']);
+			$instance['video_adurl'] = $this->model->hvp_escape_slashes_deep($new_instance['video_adurl']);
+			$instance['width'] = $this->model->hvp_escape_slashes_deep($new_instance['width']);
+			$instance['height'] = $this->model->hvp_escape_slashes_deep($new_instance['height']);
+			$instance['video_type'] = $this->model->hvp_escape_slashes_deep($new_instance['video_type']);
+			$instance['controls'] = $this->model->hvp_escape_slashes_deep($new_instance['controls']);
+			$instance['autoplay'] = $this->model->hvp_escape_slashes_deep($new_instance['autoplay']);
+			$instance['poster'] = $this->model->hvp_escape_slashes_deep($new_instance['poster']);
+			$instance['loop'] = $this->model->hvp_escape_slashes_deep($new_instance['loop']);
+			$instance['muted'] = $this->model->hvp_escape_slashes_deep($new_instance['muted']);
+			$instance['ytcontrol'] = $this->model->hvp_escape_slashes_deep($new_instance['ytcontrol']);
+			$instance['video_id'] = $this->model->hvp_escape_slashes_deep($new_instance['video_id']);
+			$instance['class'] = $this->model->hvp_escape_slashes_deep($new_instance['class']);
+			$instance['template'] = $this->model->hvp_escape_slashes_deep($new_instance['template']);
+		}
 
 		return $new_instance;
 	}
@@ -427,6 +432,22 @@ class Hvp_Widget extends WP_Widget {
 		elseif( $video_type == 'osmf' )
 			wp_enqueue_script('hvp_osmf_video_script');
 
+		// IMA ADS SDK
+		wp_enqueue_script('hvp_ima_ads_sdk_script');
+		//wp_enqueue_script('hvp_video_player_script');
+
+		// Videojs ads script
+		wp_enqueue_script('hvp_video_ads_script');
+
+		// IMA ADS script
+		wp_enqueue_script('hvp_ima_ads_script');
+
+		// VAST-VAPID ADS script
+		wp_enqueue_script('hvp-vast-vpaid-ads-script');
+
+		// ADS init script
+		wp_enqueue_script('hvp_public_ads_script');
+		
 		// Check if youtube url added
 		if( $mime_type == 'video/youtube' ) {
 			// Include youtube support js
@@ -459,8 +480,8 @@ class Hvp_Widget extends WP_Widget {
 		?>
 		<div id="<?php print $video_id;?>" class="hvp-video hvp-widget-video">
 		  <video id="<?php print $res_class?>" <?php print $adtagurl ?> data-id="<?php print $res_class?>" class="video-js <?php print $skin.' '. $res_class; ?> <?php print $class?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>" <?php print $autoplay.$muted.$loop.$controls ?>
-      		data-setup='{<?php print $techorder ?>"plugins":{"hola_skin":{"css":false}}}'>
-    		<source src="<?php print $url?>" type='<?php print $mime_type?>' />
+      		data-setup='{<?php print $techorder ?>"plugins":{}}'>
+    		<source src="<?php print $url?>" type="<?php print $mime_type?>" />
     		<p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN ) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e( 'supports HTML5 video', HVP_TEXTDOMAIN ) ?></a></p>
   			</video>
   		</div>

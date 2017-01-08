@@ -65,7 +65,9 @@ class Hvp_Admin {
 	 * @since 1.0.0
 	 */
 	function hvp_shortcode_popup() {
-		include_once( HVP_ADMIN_DIR . '/forms/hvp-admin-popup.php' );
+		if( current_user_can( 'manage_options' ) || current_user_can( 'edit_posts' ) ) { 
+			include_once( HVP_ADMIN_DIR . '/forms/hvp-admin-popup.php' );
+		}
 	}
 	 /**
 	 * Add html field in general setting page
@@ -88,7 +90,10 @@ class Hvp_Admin {
 	<?php
 	}
 	public function hvp_add_menu_page(){
-		$hook = add_menu_page( __( 'Free video player', HVP_TEXTDOMAIN ), __( 'Free video player', HVP_TEXTDOMAIN ), 'manage_options', 'hvp_player_setting_page', array( $this, 'hvp_player_setting_page') );
+		
+		if( current_user_can( 'manage_options' ) || current_user_can( 'edit_posts' ) ) { 
+			$hook = add_menu_page( __( 'Free video player', HVP_TEXTDOMAIN ), __( 'Free video player', HVP_TEXTDOMAIN ), 'manage_options', 'hvp_player_setting_page', array( $this, 'hvp_player_setting_page') );
+		}
 	}
 	
 	/**

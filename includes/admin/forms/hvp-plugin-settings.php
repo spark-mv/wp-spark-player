@@ -13,25 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 global $hvp_model , $hvp_options;;
 
-$model = $hvp_model;
-
-	//all settings will reset as per default
-	if(isset($_POST['hvp_reset_settings']) && !empty($_POST['hvp_reset_settings']) && $_POST['hvp_reset_settings'] == __( 'Reset All Settings', HVP_TEXTDOMAIN )) { //check click of reset button
-		
-		hvp_default_settings(); // set default settings
-		
-		echo '<div class="updated" id="message">
-			<p><strong>'. __("All Settings Reset Successfully.",HVP_TEXTDOMAIN) .'</strong></p>
-		</div>';
-		
-	}
-	//check settings updated or not
-	if(isset($_GET['settings-updated']) && $_GET['settings-updated'] == 'true') {
-		
-		echo '<div class="updated" id="message">
-			<p><strong>'. __("Changes Saved Successfully.",HVP_TEXTDOMAIN) .'</strong></p>
-		</div>';
-	}	
+$model = $hvp_model;	
 ?>
 	<!-- . begining of wrap -->
 	<div class="wrap">
@@ -40,14 +22,6 @@ $model = $hvp_model;
 			echo "<h2>" . __('Free video player setting', HVP_TEXTDOMAIN) . "</h2>";
 		?>	
 			
-		<!-- beginning of the plugin options form -->
-		<form  method="post" action="options.php">		
-		
-			<?php
-				settings_fields( 'hvp_plugin_options' );
-				$hvp_options = get_option( 'hvp_options' );
-				$hvp_options['hvp_activate_analytics'] = isset($hvp_options['hvp_activate_analytics']) ? $hvp_options['hvp_activate_analytics'] : '';
-			?>
 		<!-- beginning of the settings meta box -->	
 			<div id="hvp-settings" class="post-box-container">
 			
@@ -108,8 +82,6 @@ $model = $hvp_model;
 			
 			</div><!-- #wps-settings-general -->
 			
-		<!-- end of the settings meta box -->		
-
-		</form><!-- end of the plugin options form -->
+		<!-- end of the settings meta box -->	
 	
 	</div><!-- .end of wrap -->

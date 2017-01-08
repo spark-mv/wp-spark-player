@@ -26,18 +26,20 @@ class Hvp_Scripts {
 	 * @package Hola Video Player
 	 * @since 1.0.0
 	 */
-	public function hvp_admin_scripts(){
-		
-		// admin script
-		wp_register_script( 'hvp_admin_script', HVP_INC_URL . '/js/hvp_admin_script.js', array('jquery'), HVP_VERSION );
-		
-		// Register admin style for shortcode button and poup
-		wp_register_style( 'hvp_admin_style',  HVP_INC_URL . '/css/hvp-admin-style.css',HVP_VERSION );
-		wp_enqueue_style( 'hvp_admin_style' );
-		
-		if (is_admin () )
-        	wp_enqueue_media();
-		wp_enqueue_script('hvp_admin_script');
+	public function hvp_admin_scripts() {
+
+		if( current_user_can( 'manage_options' ) || current_user_can( 'edit_posts' ) ) { 
+			// admin script
+			wp_register_script( 'hvp_admin_script', HVP_INC_URL . '/js/hvp_admin_script.js', array('jquery'), HVP_VERSION );
+			
+			// Register admin style for shortcode button and poup
+			wp_register_style( 'hvp_admin_style',  HVP_INC_URL . '/css/hvp-admin-style.css',HVP_VERSION );
+			wp_enqueue_style( 'hvp_admin_style' );
+			
+			if (is_admin () )
+	        	wp_enqueue_media();
+			wp_enqueue_script('hvp_admin_script');
+		}
 	}
 
 	/**
@@ -72,6 +74,7 @@ class Hvp_Scripts {
 
 		// IMA ADS SDK loader
 		wp_register_script( 'hvp_ima_ads_sdk_script', '//imasdk.googleapis.com/js/sdkloader/ima3.js', array(), HVP_VERSION);
+		// wp_register_script( 'hvp_ima_ads_sdk_script', HVP_INC_URL . '/js/ads/ima/ima3.js', array(), HVP_VERSION);
 
 		// Videojs ADS support
 		wp_register_script( 'hvp_video_ads_script', HVP_INC_URL . '/js/videojs.ads.js', array(), HVP_VERSION);
@@ -91,7 +94,6 @@ class Hvp_Scripts {
 
 		wp_enqueue_script('hvp_video_ie_script');
 
-
 		// Flash file path
 		$flash_file = 'videojs.options.flash.swf = "' . HVP_INC_URL .'/flash/ver-5.8.8/video-js.swf";';
 		$NoDefaultTheme = 'window.VIDEOJS_NO_BASE_THEME = true;window.VIDEOJS_NO_DYNAMIC_STYLE = true;';
@@ -102,14 +104,54 @@ class Hvp_Scripts {
  		wp_add_inline_script( 'hvp_video_script', $flash_file );
  		wp_add_inline_script( 'hvp_hls_video_script', $flash_file );
  		wp_add_inline_script( 'hvp_osmf_video_script', $osmf_file );
+		
+		// Add code for enque js into head check shortcodes and attrb
+		if ( has_shortcode( $post->post_content, 'hvp_video') ) {
+			$pattern = get_shortcode_regex();
+			$hls = false;
+			$osmf = false;
+			$simple = false;
 
-		/*if ( has_shortcode($post->post_content, 'hvp_video') ) {
-			wp_enqueue_script('hvp_video_script');
-			wp_enqueue_script('hvp_hls_video_script');
-			wp_enqueue_script('hvp_osmf_video_script');
-		}*/
+			$matches = array( array( 'hls' => 'true'), array( 'osmf' => 'true') );
+
+			if( preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches ) ) {
+				 
+				 foreach( $matches[0] as $key => $value) {
+				 	
+				 	if( strrpos( $value, 'hls="true"') ) {
+				 		$hls = true;
+				 	}
+				 	elseif ( strrpos( $value, 'osmf="true"') ) {
+				 		$osmf = true;
+				 	}
+				 	elseif ( strrpos( $value, 'osmf="true"') === false && strrpos( $value, 'hls="true"') === false ){
+				 		$simple = true;
+				 	}
+				 }
+
+				if( $hls ) {
+					wp_enqueue_script('hvp_hls_video_script');
+				}
+				if ( $osmf )
+					wp_enqueue_script('hvp_osmf_video_script');
+				if ( $simple ) {
+					// include simple video js
+					wp_enqueue_script('hvp_video_script');
+				}
+			}
+			// include youtube support video js
+			wp_enqueue_script('hvp_youtube_video_script');
+			// include vimio support video js
+			wp_enqueue_script('hvp_vimeo_video_script');
+		}
 	}
 
+	/**
+	 * Enqueue styles on front Side
+	 * 
+	 * @package Hola Video Player
+	 * @since 1.0.0
+	 */
 	public function hvp_public_styles() {
 		
 		// Register front style for default skin
