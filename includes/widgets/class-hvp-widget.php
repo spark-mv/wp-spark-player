@@ -417,7 +417,7 @@ class Hvp_Widget extends WP_Widget {
     		<?php print $custom_css;?>
     		</style>
 		<?php
-    	$muted = ( $muted == 'yes' ) ? ' muted' : '';
+    	        $muted = ( $muted == 'yes' ) ? ' muted' : '';
 		$autoplay = ( $autoplay == 'yes' ) ? ' autoplay' : '';
 		$loop = ( $loop == 'yes' ) ? ' loop' : '';
 		$controls = ( $controls == 'yes' ) ? ' controls' : '';
@@ -478,6 +478,7 @@ class Hvp_Widget extends WP_Widget {
 			$adtagurl = 'data-adurl="'. $video_adurl .'" ';
 
 		?>
+                <?php if ($url) { <?php>
 		<div id="<?php print $video_id;?>" class="hvp-video hvp-widget-video">
 		  <video id="<?php print $res_class?>" <?php print $adtagurl ?> data-id="<?php print $res_class?>" class="video-js <?php print $skin.' '. $res_class; ?> <?php print $class?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>" <?php print $autoplay.$muted.$loop.$controls ?>
       		data-setup='{<?php print $techorder ?>"plugins":{}}'>
@@ -485,6 +486,7 @@ class Hvp_Widget extends WP_Widget {
     		<p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN ) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e( 'supports HTML5 video', HVP_TEXTDOMAIN ) ?></a></p>
   			</video>
   		</div>
+                <?php } ?>
 		<?php
 		
 		echo $after_widget;
