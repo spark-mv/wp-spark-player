@@ -176,7 +176,7 @@ $template_arr = array( '' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basi
 							<?php } ?>
 						</select>
 						<div class="hvp-desc-container">
-							<span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e( 'Select for show/hide controls for youtube or viemo video.', HVP_TEXTDOMAIN );?></span>
+							<span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e( 'Select for show/hide controls for YouTube or Vimeo video.', HVP_TEXTDOMAIN );?></span>
 						</div>
 					</td>
 				</tr>
@@ -190,7 +190,7 @@ $template_arr = array( '' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basi
 					<td>
 						<input type="text" id="hvp_id" name="hvp_id" >
 						<div class="hvp-desc-container">
-							<span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e( 'Enter youtube or viemo video id', HVP_TEXTDOMAIN );?></span>
+							<span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e( 'Enter YouTube or Vimeo video id', HVP_TEXTDOMAIN );?></span>
 						</div>
 					</td>
 				</tr>

@@ -224,7 +224,7 @@ class Hvp_Widget extends WP_Widget {
 				<?php } ?>
 			</select>
 			<div class="hvp-desc-container">
-				<span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e( 'Select for show/hide controls for youtube or viemo video.', HVP_TEXTDOMAIN );?></span>
+				<span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e( 'Select for show/hide controls for YouTube or Vimeo video.', HVP_TEXTDOMAIN );?></span>
 			</div>
 		</p>
 
@@ -236,7 +236,7 @@ class Hvp_Widget extends WP_Widget {
 			
 			<input class="widefat" id="<?php echo $this->get_field_id('video_id'); ?>" name="<?php echo $this->get_field_name('video_id'); ?>" type="text" value="<?php echo esc_attr($video_id); ?>" />
 			<div class="hvp-desc-container">
-				<span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e( 'Enter youtube or viemo video id', HVP_TEXTDOMAIN );?></span>
+				<span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e( 'Enter YouTube or Vimeo video id', HVP_TEXTDOMAIN );?></span>
 			</div>
 		</p>
 
