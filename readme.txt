@@ -59,14 +59,14 @@ in the GitHub page - https://github.com/hola/video.js
 
 Yes
 
-= Is Hola player closed or open source? =
+= Is Hola player open source software? =
 
 Hola player is based on VideoJS, an open source HTML5 video player. Find more
 details on the Hola Player GitHub page - https://github.com/hola/video.js
 
-= Is Hola player closed or open source? =
+= Where can I get the source for Hola Player? =
 
-Yes. Find more details on the Hola Player GitHub page -
+Find more details on the Hola Player GitHub page -
 https://github.com/hola/video.js
 
 == Screenshots ==
