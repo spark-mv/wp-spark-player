@@ -1,8 +1,8 @@
-jQuery(document).ready( function( $) {
-	
+jQuery(document).ready(function($) {
+
     // Display ads url input
     $(document).on('change', '.is_video_ads', function(){
-        if( $(this).is(':checked')){
+        if($(this).is(':checked')){
             $('.hvp-ads-container').show();
         }
         else{
@@ -10,13 +10,13 @@ jQuery(document).ready( function( $) {
         }
     });
 
-	if ($('.hvp-video-upload').length > 0) {
-        if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
+    if ($('.hvp-video-upload').length > 0) {
+        if (typeof wp !== 'undefined' && wp.media && wp.media.editor) {
             $(document).on('click', '.hvp-video-upload', function(e) {
                 e.preventDefault();
                 var button = $(this);
                 var id = button.prev();
-                uploader( button, id, 'video');
+                uploader(button, id, 'video');
                 return false;
             });
 
@@ -24,58 +24,45 @@ jQuery(document).ready( function( $) {
                 e.preventDefault();
                 var button = $(this);
                 var id = button.prev();
-                uploader( button, id, 'image');
+                uploader(button, id, 'image');
                 return false;
             });
         }
     }
 
-    function uploader( button,id, upload_type ) {
+    function uploader(button,id, upload_type) {
         var file_frame;
-        if ( file_frame ) {
+        if (file_frame) {
             file_frame.open();
             return;
-        }       
-        file_frame = wp.media.frames.file_frame = wp.media( {
+        }
+        file_frame = wp.media.frames.file_frame = wp.media({
             frame: 'post',
             state: 'insert',
-            title: button.data( 'uploader-title' ),
+            title: button.data('uploader-title'),
             button: {
-                text: button.data( 'uploader-button-text' )
+                text: button.data('uploader-button-text')
             },
             library : { type: upload_type },
-            multiple :false 
+            multiple :false
         });
-                    
-        file_frame.on( 'insert', function() {
+
+        file_frame.on('insert', function() {
             var selection = file_frame.state().get('selection');
-            selection.each( function( attachment, index ) {
+            selection.each(function(attachment, index) {
                         attachment = attachment.toJSON();
-                        id.val( attachment.url );
+                        id.val(attachment.url);
             });
-        }); 
-        
+        });
+
         file_frame.open();
     }
-    /*$('.hvp-help-tip').hover(
-        function(){
-            $(this).next().show();
-        },
-        function(){
-            $(this).next().hide();   
+    $(document).on('click', '#hvp_activate_analytics', function () {
+        if (this.checked) {
+            $('#hvp_activate_analytics_link').show();
         }
-    )*/
-    $( document ).on('click', '#hvp_activate_analytics', function () {
-		if (this.checked) {
- 
-			$('#hvp_activate_analytics_link').show();
-		 
-		}
-		 
-		else {
-		 
-			$('#hvp_activate_analytics_link').hide();
-		 
-		}
+        else {
+            $('#hvp_activate_analytics_link').hide();
+        }
     });
 });
