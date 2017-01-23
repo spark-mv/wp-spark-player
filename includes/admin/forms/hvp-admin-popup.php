@@ -25,7 +25,7 @@ $template_arr = array('' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basic
 <div class="hvp-popup-content">
     
     <div class="hvp-header">
-        <div class="hvp-header-title"><?php _e('Add Free Video Player Shortcode', HVP_TEXTDOMAIN);?></div>
+        <div class="hvp-header-title"><?php _e('Add Hola Video Player Shortcode', HVP_TEXTDOMAIN);?></div>
         <div class="hvp-popup-close"><a href="javascript:void(0);" class="hvp-close-button"><img src="<?php echo HVP_INC_URL;?>/images/tb-close.png" alt="<?php _e('Close', HVP_TEXTDOMAIN);?>" /></a></div>
     </div>
     

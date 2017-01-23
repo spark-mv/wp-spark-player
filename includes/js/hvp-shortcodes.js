@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
         tinymce.create('tinymce.plugins.hvp_video', {
             init : function(ed, url) {
                 ed.addButton('hvp_video', {
-                    title : 'Free Video Player',
+                    title : 'Hola Video Player',
                     image : url+'/hola_player.svg',
                     onclick : function() {
                         $('.hvp-popup-overlay').fadeIn();
