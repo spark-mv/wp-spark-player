@@ -478,7 +478,7 @@ class Hvp_Widget extends WP_Widget {
             $adtagurl = 'data-adurl="'. $video_adurl .'" ';
 
         ?>
-                <?php if ($url) { <?php>
+                <?php if ($url) { ?>
         <div id="<?php print $video_id;?>" class="hvp-video hvp-widget-video">
           <video id="<?php print $res_class?>" <?php print $adtagurl ?> data-id="<?php print $res_class?>" class="video-js <?php print $skin.' '. $res_class; ?> <?php print $class?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>" <?php print $autoplay.$muted.$loop.$controls ?>
               data-setup='{<?php print $techorder ?>"plugins":{}}'>
