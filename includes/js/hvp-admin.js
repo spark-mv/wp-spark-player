@@ -65,4 +65,15 @@ jQuery(document).ready(function($) {
             $('#hvp_activate_analytics_link').hide();
         }
     });
+    $(document).on('click', '#hvp_analytics_optin', function(){
+        console.log("ping analytics optin service");
+    });
+    $(document).on("click", ".hvp-close-button, .hvp-activate-overlay", function() {
+        $('.hvp-popup-overlay').fadeOut();
+        $('.hvp-popup-content').fadeOut();
+    });
+    $(document).on('ready', function() {
+        $('#hvp-firstrun-overlay').fadeIn();
+        $('#hvp-firstrun-content').fadeIn();
+    });
 });

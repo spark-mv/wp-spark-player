@@ -45,9 +45,13 @@ class Hvp_Admin {
             add_filter('mce_buttons', array($this, 'hvp_shortcode_display_button'));
         }
         register_setting('hvp_plugin_options', 'hvp_options', array($this, 'hvp_validate_options'));
+		if (is_admin() && get_option('hvp_firstrun')=='hvp-plugin-activated') {
+			include_once(HVP_ADMIN_DIR . '/forms/hvp-firstrun-popup.php');
+			delete_option('hvp_firstrun');
+		}
     }
-    function hvp_validate_options($input) {
 
+    function hvp_validate_options($input) {
         // sanitize text input (strip html tags, and escape characters)
         $input['title']    =  $this->model->hvp_escape_slashes_deep($input['hvp_activate_analytics']);
         //$input = $this->model->wpd_ws_escape_slashes_deep($input);
