@@ -30,7 +30,7 @@ class Hvp_Scripts {
 
         if(current_user_can('manage_options') || current_user_can('edit_posts')) {
             // admin script
-            wp_register_script('hvp_admin_script', HVP_INC_URL . '/js/hvp_admin_script.js', array('jquery'), HVP_VERSION);
+            wp_register_script('hvp_admin_script', HVP_INC_URL . '/js/hvp-admin.js', array('jquery'), HVP_VERSION);
             
             // Register admin style for shortcode button and poup
             wp_register_style('hvp_admin_style',  HVP_INC_URL . '/css/hvp-admin-style.css',HVP_VERSION);
