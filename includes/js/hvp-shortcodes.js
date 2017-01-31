@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
             init : function(ed, url) {
                 ed.addButton('hvp_video', {
                     title : 'Hola Video Player',
-                    image : url+'/hola_player.svg',
+                    image : url+'/../images/hola_player.svg',
                     onclick : function() {
                         $('.hvp-popup-overlay').fadeIn();
 
