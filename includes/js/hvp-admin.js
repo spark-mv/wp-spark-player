@@ -57,18 +57,19 @@ jQuery(document).ready(function($) {
 
         file_frame.open();
     }
-    $(document).on('click', '#hvp_activate_analytics', function () {
-        if (this.checked) {
-            $('#hvp_activate_analytics_link').show();
+    var user_email;
+    window.hvp_set_user_email = function(email) {
+        user_email = email;
+    };
+    $(document).on('click', '.hvp-close-button', function() {
+        var checkbox = $('#hvp-analytics-optin')[0];
+        if (checkbox && checkbox.checked && user_email) {
+            $.ajax({
+                method: 'GET',
+                url: '//holacdn.com/create_cdn_lead',
+                data: { email: user_email, campaign: 'wordpress' },
+            });
         }
-        else {
-            $('#hvp_activate_analytics_link').hide();
-        }
-    });
-    $(document).on('click', '#hvp_analytics_optin', function(){
-        console.log("ping analytics optin service");
-    });
-    $(document).on("click", ".hvp-close-button, .hvp-activate-overlay", function() {
         $('.hvp-popup-overlay').fadeOut();
         $('.hvp-popup-content').fadeOut();
     });
