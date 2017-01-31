@@ -46,28 +46,7 @@ $model = $hvp_model;
                                                 <th scope="row">
                                                     <label><strong><?php echo __('Activate analytics:', HVP_TEXTDOMAIN) ?></strong></label>
                                                 </th>
-                                                <td>
-                                        
-                                                <?php
-                                                /*$activate_analytics = $hvp_options['hvp_activate_analytics'];
-                                                if($activate_analytics == '1'){
-                                                    $display = "display:block";
-                                                }else {
-                                                    $display = "display:none";
-                                                }*/
-                                            ?>
-                                                <!--<input name="hvp_options[hvp_activate_analytics]" type="checkbox" id="hvp_activate_analytics" value="1" <?php //checked('1', $activate_analytics); ?> />-->
-                                                <label for="hvp_activate_analytics"> <a href="mailto:or@hola.org?subject=Activate free video player analytics" id="hvp_activate_analytics_link"><?php _e('To activate free video player analytics, click here', HVP_TEXTDOMAIN); ?></a></label>
-                                            
-                                                </td>
                                             </tr>
-                                                
-                                            <!--<tr>
-                                                <td colspan="2">
-                                                    <input type="submit" class="button-primary hvp-settings-save" name="hvp_settings_save" class="" value="<?php //echo __('Save Changes', HVP_TEXTDOMAIN) ?>" />
-                                                </td>
-                                            </tr>-->
-                                    
                             
                                         </tbody>
                                     </table>

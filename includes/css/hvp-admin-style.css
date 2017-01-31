@@ -1,30 +1,58 @@
 .hvp-save-btn {
 	float: right;
 }
-.hvp_page_link {
+.hvp-page-link {
 	float: right;
 	padding-top: 20px;
 }
-.hvp_clear_both {
+.hvp-clear-both {
 	clear: both;
 }
-.hvp_top_down {
+.hvp-top-down {
 	height: 10px;
 }
-.hvp_view {
+.hvp-view {
 	float:left;
 	width:100px;
 	font-weight: bold;
 }
-.hvp_right{
+.hvp-right{
 	float: right;
 }
-
 .hvp-reset-wrapper {
 	margin: 5px 0 15px;
 }
 .hvp-checkbox-label {
 	margin-left: 5px;
+}
+#hvp-firstrun-content {
+    border-radius: 4px;
+    max-width: 620px;
+}
+#hvp-activate-explanation {
+    padding-right: 40px;
+    padding-left: 40px;
+    text-align: center;
+}
+#hvp-activate-explanation h1 {
+    font-size: 21px;
+    color: #009cd6;
+    text-align: center;
+}
+#hvp-activate-explanation p {
+    font-size: 16px;
+}
+#hvp-activate-explanation label {
+    font-size: 14px;
+}
+#hvp-activate-explanation img {
+    width: 100%;
+    height: 82px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.hvp-details {
+    font-size: 12px !important;
 }
 /********** CSS for Shortcode Popup Starts ***********/
 .hvp-popup .form-table td, .hvp-popup .form-table th {
@@ -41,7 +69,7 @@
 	text-align: left;
 	left: 0%;
 	right: 0%;
-	max-width: 870px;
+	max-width: 620px;
 	background: none repeat scroll 0 0 #FFFFFF;
 	z-index:10002;
 	overflow: auto;
@@ -49,6 +77,9 @@
 	box-shadow: 0 4px 30px #000000;
 	color: #000000;
 	/*height: 460px;*/
+}
+#hvp-firstrun-content {
+    max-width: 620px;
 }
 .hvp-popup-content .description {
 	margin-left: 0px !important
@@ -70,7 +101,7 @@
 }
 .hvp-popup-close {
  	float: right;
-    padding: 6px 10px 0;
+    padding: 4px 10px 0;
     text-align: right;
 }
 .hvp-header {
@@ -87,14 +118,27 @@
 	margin-top : 0 !important;
 	width: 100%;	
 }
-#hvp_shortcode_error {
+#hvp-analytics-optin {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 1rem;
+}
+.hvp-analytics-unchecked {
+    background-color: lightgray;
+    color: white;
+}
+.hvp-analytics-checked {
+    background-color: green;
+    color: white;
+}
+#hvp-shortcode-error {
 	color: red;
 }
-#hvp_insert_container {
+#hvp-insert-container {
 	margin: 15px;
 }
-#hvp_shortcode_error, 
-#hvp_insert_container,
+#hvp-shortcode-error, 
+#hvp-insert-container,
 .hvp-shortcodes-options {
  	display: block;
 }
@@ -142,5 +186,51 @@
     margin-bottom: 4px;
 }
 .hvp-close-button img{
-	height: 22px;
+	height: 20px;
+}
+/*** CSS properties for awesome checkboxes ***/
+.hvp-chk {
+    width: 18px;
+    margin: 20px 115px;
+    position: relative;
+}
+.hvp-chk input[type=checkbox] {
+    display: none;
+}
+.hvp-chk label {
+    cursor: pointer;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 0;
+    left: 0;
+    background: lightgray;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+}
+.hvp-chk label:after {
+    opacity: 0.2;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 4px;
+    left: 3px;
+    border: 3px solid #333;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+}
+.hvp-chk label:hover::after {
+    opacity: 0.5;
+}
+.hvp-chk input[type=checkbox]:checked + label:after {
+    opacity: 1;
+    border: 3px solid white;
+    border-top: none;
+    border-right: none;
+}
+.hvp-chk input[type=checkbox]:checked + label {
+    background: #00ad68;
 }

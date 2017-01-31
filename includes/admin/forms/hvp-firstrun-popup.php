@@ -20,14 +20,21 @@ if (!defined('ABSPATH')) exit;
 <div id="hvp-firstrun-content" class="hvp-popup-content">
     <div class="hvp-header">
         <div class="hvp-header-title"><?php _e('Activate Hola Analytics', HVP_TEXTDOMAIN);?></div>
-        <div class="hvp-popup-close"><a href="javascript:void(0);" class="hvp-close-button"><img src="<?php echo HVP_INC_URL;?>/images/tb-close.png" alt="<?php _e('Close', HVP_TEXTDOMAIN);?>" /></a></div>
+        <div class="hvp-popup-close"><a href="javascript:void(0);" class="hvp-close-button"><img src="<?php echo HVP_INC_URL;?>/images/close.svg" alt="<?php _e('Close', HVP_TEXTDOMAIN);?>" /></a></div>
     </div>
 
     <div class="hvp-popup">
-        <div id="hvp_activate_explanation">
-            <p>Thanks for using the Hola Free Video Player!</p>
-            <p>Click below to activate free analytics for your video provided through Hola Networks. (This message will only appear once.)</p>
-            <input type="checkbox" id="hvp_analytics_optin">Get my HolaVPN Stuff.</input>
+        <div id="hvp-activate-explanation">
+            <img src="<?php echo HVP_INC_URL;?>/images/hola_player.svg" />
+            <h1>Thanks for using the Hola Free Video Player!</h1>
+            <p>Click below to activate free analytics for your video provided through Hola Networks.</p>
+            <div class='hvp-chk'>
+                <input type='checkbox' id='hvp-analytics-optin' name='hvp-analytics-optin'></button>
+                <label for='hvp-analytics-optin'></label>
+            </div>
+            <p>Get my Hola VPN Analytics</p>
+            <p class="hvp-details">You will be contacted by a member of the Hola team. This free service 
+                is not required to use the Hola Free Video Player. This message will only appear once.</p>
         </div>
     </div>
 </div>
