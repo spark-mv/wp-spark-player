@@ -142,9 +142,8 @@ class Hvp_Shortcode {
      * @since 1.0.0
      */
     function add_hooks(){
-        
         // Shortcode for showing video
-        add_shortcode('hvp_video', array($this, 'hvp_simple_video'));
+        add_shortcode('hvp-video', array($this, 'hvp_simple_video'));
     }
 
 }

@@ -84,7 +84,7 @@ $template_arr = array('' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basic
                     </th>
                     <td>
                         <select class="chosen-select" id="hvp-video-control" name="hvp-video-control">
-                            <?php foreach($option-arr as $key => $value) {?>
+                            <?php foreach($option_arr as $key => $value) {?>
                                 <option value="<?php print $key ?>"><?php print $value ?></option>
                             <?php } ?>
                         </select>
@@ -102,7 +102,7 @@ $template_arr = array('' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basic
                     </th>
                     <td>
                         <select class="chosen-select" id="hvp-autoplay" name="hvp-autoplay">
-                            <?php foreach($option-arr as $key => $value) {?>
+                            <?php foreach($option_arr as $key => $value) {?>
                                 <option value="<?php print $key ?>"><?php print $value ?></option>
                             <?php } ?>
                         </select>
@@ -135,7 +135,7 @@ $template_arr = array('' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basic
                     </th>
                     <td>
                         <select class="chosen-select" id="hvp-loop" name="hvp-loop">
-                            <?php foreach($option-arr as $key => $value) {?>
+                            <?php foreach($option_arr as $key => $value) {?>
                                 <option value="<?php print $key ?>"><?php print $value ?></option>
                             <?php } ?>
                         </select>
@@ -153,7 +153,7 @@ $template_arr = array('' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basic
                     </th>
                     <td>
                         <select class="chosen-select" id="hvp-mute" name="hvp-mute">
-                            <?php foreach($option-arr as $key => $value) {?>
+                            <?php foreach($option_arr as $key => $value) {?>
                                 <option value="<?php print $key ?>"><?php print $value ?></option>
                             <?php } ?>
                         </select>
@@ -171,7 +171,7 @@ $template_arr = array('' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basic
                     </th>
                     <td>
                         <select class="chosen-select" id="hvp-ytcontrol" name="hvp-ytcontrol">
-                            <?php foreach($option-arr as $key => $value) {?>
+                            <?php foreach($option_arr as $key => $value) {?>
                                 <option value="<?php print $key ?>"><?php print $value ?></option>
                             <?php } ?>
                         </select>
@@ -217,7 +217,7 @@ $template_arr = array('' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basic
                     </th>
                     <td>
                         <select class="chosen-select" id="hvp-template" name="hvp-template">
-                            <?php foreach($template-arr as $key => $value) {?>
+                            <?php foreach($template_arr as $key => $value) {?>
                                 <option value="<?php print $key ?>"><?php print $value ?></option>
                             <?php } ?>
                         </select>
@@ -235,7 +235,7 @@ $template_arr = array('' => 'Select','hola-skin'=> 'Hola', 'basic-skin'=> 'Basic
                     </th>
                     <td>
                         <select class="chosen-select" id="hvp-type" name="hvp-type">
-                            <?php foreach($type-arr as $key => $value) {?>
+                            <?php foreach($type_arr as $key => $value) {?>
                                 <option value="<?php print $key ?>"><?php print $value ?></option>
                             <?php } ?>
                         </select>
