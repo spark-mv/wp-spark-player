@@ -79,8 +79,13 @@ https://github.com/hola/video.js
 = 1.0 =
 First version
 
+= 1.1.1 =
+Second stable version
+
 == Upgrade Notice ==
 
 = 1.0 =
 This is the first version
 
+= 1.1.1 =
+Updated UI and graphics for activating the plugin
