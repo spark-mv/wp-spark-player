@@ -18,22 +18,22 @@ jQuery(document).ready(function($) {
                         $('html, body').animate({ scrollTop: popupcontent.offset().top - 80 }, 500);
 
                         // Post / Page Follow Button
-                        $('#hvp_video_url').val('');
-                        $('#hvp_video_ads').attr('checked', false);
-                        $('#hvp_video_ads').prop('checked', false);
-                        $('#hvp_ads_url').val('');
-                        $('#hvp_width').val('');
-                        $('#hvp_height').val('');
-                        $('#hvp_type').val('');
-                        $('#hvp_video_control').val('');
-                        $('#hvp_autoplay').val('');
-                        $('#hvp_poster').val('');
-                        $('#hvp_loop').val('');
-                        $('#hvp_mute').val('');
-                        $('#hvp_ytcontrol').val('');
-                        $('#hvp_id').val('');
-                        $('#hvp_class').val('');
-                        $('#hvp_template').val('');
+                        $('#hvp-video-url').val('');
+                        $('#hvp-video-ads').attr('checked', false);
+                        $('#hvp-video-ads').prop('checked', false);
+                        $('#hvp-ads-url').val('');
+                        $('#hvp-width').val('');
+                        $('#hvp-height').val('');
+                        $('#hvp-type').val('');
+                        $('#hvp-video-control').val('');
+                        $('#hvp-autoplay').val('');
+                        $('#hvp-poster').val('');
+                        $('#hvp-loop').val('');
+                        $('#hvp-mute').val('');
+                        $('#hvp-ytcontrol').val('');
+                        $('#hvp-id').val('');
+                        $('#hvp-class').val('');
+                        $('#hvp-template').val('');
                     }
                 });
             },
@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
     })();
 
     // Display ads url input
-    $(document).on('change', '#hvp_video_ads', function(){
+    $(document).on('change', '#hvp-video-ads', function(){
         if($(this).is(':checked')){
             $('.hvp-ads-container').show();
         }
@@ -60,31 +60,31 @@ jQuery(document).ready(function($) {
         $('.hvp-popup-content').fadeOut();
     });
 
-    $(document).on("click", "#hvp_insert_shortcode", function() {
-        var hvpshortcode = 'hvp_video';
+    $(document).on("click", "#hvp-insert-shortcode", function() {
+        var hvpshortcode = 'hvp-video';
         var hvpshortcodestr = '';
 
         if(hvpshortcode != '') {
             hvpSwitchDefaultEditorVisual();
-            var hvp_vid_url            = $('#hvp_video_url').val();
-            var hvp_ads_url         = $('#hvp_ads_url').val();
-            var hvp_width            = $('#hvp_width').val();
-            var hvp_height            = $('#hvp_height').val();
-            var hvp_type            = $('#hvp_type').val();
-            var hvp_video_control    = $('#hvp_video_control').val();
-            var hvp_autoplay        = $('#hvp_autoplay').val();
-            var hvp_poster            = $('#hvp_poster').val();
-            var hvp_loop            = $('#hvp_loop').val();
-            var hvp_mute            = $('#hvp_mute').val();
-            var hvp_ytcontrol        = $('#hvp_ytcontrol').val();
-            var hvp_id                = $('#hvp_id').val();
-            var hvp_class            = $('#hvp_class').val();
-            var hvp_template        = $('#hvp_template').val();
+            var hvp_vid_url            = $('#hvp-video-url').val();
+            var hvp_ads_url         = $('#hvp-ads-url').val();
+            var hvp_width            = $('#hvp-width').val();
+            var hvp_height            = $('#hvp-height').val();
+            var hvp_type            = $('#hvp-type').val();
+            var hvp_video_control    = $('#hvp-video-control').val();
+            var hvp_autoplay        = $('#hvp-autoplay').val();
+            var hvp_poster            = $('#hvp-poster').val();
+            var hvp_loop            = $('#hvp-loop').val();
+            var hvp_mute            = $('#hvp-mute').val();
+            var hvp_ytcontrol        = $('#hvp-ytcontrol').val();
+            var hvp_id                = $('#hvp-id').val();
+            var hvp_class            = $('#hvp-class').val();
+            var hvp_template        = $('#hvp-template').val();
 
             hvpshortcodestr    += '['+hvpshortcode;
             if(hvp_vid_url != '')
                 hvpshortcodestr    += ' url="'+hvp_vid_url+'"';
-            if(hvp_ads_url != '' && $('#hvp_video_ads').is(':checked')) {
+            if(hvp_ads_url != '' && $('#hvp-video-ads').is(':checked')) {
                 hvpshortcodestr    += ' adtagurl="'+hvp_ads_url+'"';
             }
             if(hvp_width != '')
