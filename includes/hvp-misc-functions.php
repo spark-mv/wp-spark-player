@@ -60,7 +60,7 @@ function hvp_mimelist() {
             'avi' => 'video/x-msvideo',
             'wmv' => 'video/x-ms-wmv',
             'avs' => 'video/avs-video',
-            'm3u' => 'audio/x-mpequrl',
+            'm3u' => 'audio/x-mpegurl',
             'f4m' => 'application/adobe-f4m'
 );
 }

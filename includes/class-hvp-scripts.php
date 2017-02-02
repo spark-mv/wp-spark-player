@@ -88,9 +88,8 @@ class Hvp_Scripts {
         // Include ADS support
         wp_register_script('hvp_public_ads_script', HVP_INC_URL . '/js/hvp-ads.js', array(), HVP_VERSION);
         $ads_flashPath = HVP_INC_URL.'/flash/VPAIDFlash.swf';
-        wp_localize_script('hvp_public_ads_script', 'HVP', array(
-                'flashPath' =>$ads_flashPath
-));
+        wp_localize_script('hvp_public_ads_script', 'HVP', 
+            array('flashPath' => $ads_flashPath));
 
         wp_enqueue_script('hvp_video_ie_script');
 
@@ -104,46 +103,6 @@ class Hvp_Scripts {
          wp_add_inline_script('hvp_video_script', $flash_file);
          wp_add_inline_script('hvp_hls_video_script', $flash_file);
          wp_add_inline_script('hvp_osmf_video_script', $osmf_file);
-        
-        // Add code for enque js into head check shortcodes and attrb
-        if (has_shortcode($post->post_content, 'hvp_video')) {
-            $pattern = get_shortcode_regex();
-            $hls = false;
-            $osmf = false;
-            $simple = false;
-
-            $matches = array(array('hls' => 'true'), array('osmf' => 'true'));
-
-            if(preg_match_all('/'. $pattern .'/s', $post->post_content, $matches)) {
-                
-                 foreach($matches[0] as $key => $value) {
-                     
-                     if(strrpos($value, 'hls="true"')) {
-                         $hls = true;
-                     }
-                     elseif (strrpos($value, 'osmf="true"')) {
-                         $osmf = true;
-                     }
-                     elseif (strrpos($value, 'osmf="true"') === false && strrpos($value, 'hls="true"') === false){
-                         $simple = true;
-                     }
-                 }
-
-                if($hls) {
-                    wp_enqueue_script('hvp_hls_video_script');
-                }
-                if ($osmf)
-                    wp_enqueue_script('hvp_osmf_video_script');
-                if ($simple) {
-                    // include simple video js
-                    wp_enqueue_script('hvp_video_script');
-                }
-            }
-            // include youtube support video js
-            wp_enqueue_script('hvp_youtube_video_script');
-            // include vimio support video js
-            wp_enqueue_script('hvp_vimeo_video_script');
-        }
     }
 
     /**
@@ -184,7 +143,6 @@ class Hvp_Scripts {
      * @since 1.0.0
      */
     function add_hooks(){
-        
         //add admin scripts
         add_action('admin_enqueue_scripts', array($this, 'hvp_admin_scripts'));
 
@@ -193,7 +151,6 @@ class Hvp_Scripts {
 
         //add public styles
         add_action('wp_enqueue_scripts', array($this, 'hvp_public_styles'));
-
     }
 }
 ?>
