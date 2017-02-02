@@ -101,7 +101,7 @@ THE SOFTWARE. */
       }
 
       if(this.options_.poster == "") {
-        $.getJSON(this.baseApiUrl + this.videoId + '.json?callback=?', {format: "json"}, (function(_this){
+        jQuery.getJSON(this.baseApiUrl + this.videoId + '.json?callback=?', {format: "json"}, (function(_this){
           return function(data) {
             // Set the low resolution first
             _this.setPoster(data[0].thumbnail_large);
@@ -234,7 +234,7 @@ THE SOFTWARE. */
 
       if (!this.options_.poster) {
         if (this.url.videoId) {
-          $.getJSON(this.baseApiUrl + this.videoId + '.json?callback=?', {format: "json"}, (function(_this){
+          jQuery.getJSON(this.baseApiUrl + this.videoId + '.json?callback=?', {format: "json"}, (function(_this){
             return function(data) {
               // Set the low resolution first
               _this.poster_ = data[0].thumbnail_small;
@@ -306,7 +306,7 @@ THE SOFTWARE. */
 
       try {
 
-        $.getJSON(this.baseApiUrl + this.videoId + '.json?callback=?', {format: "json"}, (function(_uri){
+        jQuery.getJSON(this.baseApiUrl + this.videoId + '.json?callback=?', {format: "json"}, (function(_uri){
           return function(data) {
             // Set the low resolution first
             _uri = data[0].thumbnail_large;
