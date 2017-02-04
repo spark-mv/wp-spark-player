@@ -27,15 +27,13 @@ if (!defined('ABSPATH')) exit;
         <div id="hvp-activate-explanation">
             <img src="<?php echo HVP_INC_URL;?>/images/hola_player.svg" />
             <h1>Thanks for using the Hola Free Video Player!</h1>
-            <p>Click below to activate free analytics for your video provided through Hola Networks.</p>
+            <p>Click below to activate free analytics for your videos, provided 
+            by HolaCDN. You will be contacted by a member of the HolaCDN team.</p>
             <div class='hvp-chk'>
                 <input type='checkbox' id='hvp-analytics-optin' name='hvp-analytics-optin'
-                    onChange='hvp.set_user_info("<?php echo wp_get_current_user()->user_email; ?>")'>
-                <label for='hvp-analytics-optin'></label>
+                    onChange='hvp.set_user_info("<?php echo wp_get_current_user()->user_email; ?>"); hvp.handle_close();'>
+                <label for='hvp-analytics-optin'>Get my HolaCDN Analytics</label>
             </div>
-            <p>Get my Hola VPN Analytics</p>
-            <p class="hvp-details">You will be contacted by a member of the Hola team. This free service 
-                is not required to use the Hola Free Video Player. This message will only appear once.</p>
         </div>
     </div>
 </div>

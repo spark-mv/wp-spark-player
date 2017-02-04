@@ -56,30 +56,35 @@ jQuery(document).ready(function($) {
 
         file_frame.open();
     }
+
     $(document).on('click', '.hvp-close-button', function() {
-        var checkbox = $('#hvp-analytics-optin')[0];
-        if (checkbox && checkbox.checked) {
-            window.hvp.create_lead();
-        }
-        $('.hvp-popup-overlay').fadeOut();
-        $('.hvp-popup-content').fadeOut();
+        hvp.handle_close();
+        return true;
     });
     $(document).on('ready', function() {
         $('#hvp-firstrun-overlay').fadeIn();
         $('#hvp-firstrun-content').fadeIn();
     });
 
-    window.hvp = {};
-    window.hvp.create_lead = function() {
-        if (window.hvp.user_email) {
-            $.ajax({
-                method: 'GET',
-                url: '//holacdn.com/create_cdn_lead',
-                data: { email: window.hvp.user_email, campaign: 'wordpress' },
-            });
-        }
-    };
-    window.hvp.set_user_info = function(email) {
-        window.hvp.user_email = email;
+    window.hvp = {
+        handle_close: function() {
+            var checkbox = $('#hvp-analytics-optin')[0];
+            if (checkbox && checkbox.checked)
+                this.create_lead();
+            $('.hvp-popup-overlay').fadeOut();
+            $('.hvp-popup-content').fadeOut();
+        },
+        create_lead: function() {
+            if (this.user_email) {
+                $.ajax({
+                    method: 'GET',
+                    url: '//holacdn.com/create_cdn_lead',
+                    data: { email: this.user_email, campaign: 'wordpress' },
+                });
+            }
+        },
+        set_user_info: function(email) {
+            this.user_email = email;
+        },
     };
 });
