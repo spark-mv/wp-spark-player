@@ -29,8 +29,8 @@ if (!defined('ABSPATH')) exit;
             <h1>Thanks for using the Hola Free Video Player!</h1>
             <p>Click below to activate free analytics for your video provided through Hola Networks.</p>
             <div class='hvp-chk'>
-		<input type='checkbox' id='hvp-analytics-optin' name='hvp-analytics-optin'
-			onChange='hvp_set_user_email("<?php echo wp_get_current_user()->user_email; ?>")'>
+                <input type='checkbox' id='hvp-analytics-optin' name='hvp-analytics-optin'
+                    onChange='hvp_set_user_email("<?php echo wp_get_current_user()->user_email; ?>")'>
                 <label for='hvp-analytics-optin'></label>
             </div>
             <p>Get my Hola VPN Analytics</p>

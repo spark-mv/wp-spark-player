@@ -25,6 +25,10 @@
 .hvp-checkbox-label {
 	margin-left: 5px;
 }
+#hvp-popup-shortcode {
+    width: 90%;
+    max-width: 1300px;
+}
 #hvp-firstrun-content {
     border-radius: 4px;
     max-width: 620px;
@@ -55,10 +59,6 @@
     font-size: 12px !important;
 }
 /********** CSS for Shortcode Popup Starts ***********/
-.hvp-popup .form-table td, .hvp-popup .form-table th {
-	padding-bottom: 5px !important;
-	padding-top: 5px !important;
-}
 .hvp-popup-content {
     margin: 0 auto;
     min-height: 370px;
@@ -114,10 +114,6 @@
 .hvp-popup {
   padding: 10px 15px;
 }
-.hvp-popup table.form-table {
-	margin-top : 0 !important;
-	width: 100%;	
-}
 #hvp-analytics-optin {
     height: 1.5rem;
     width: 1.5rem;
@@ -162,12 +158,6 @@
 .chzn-select {
 	width: 200px;
 }
-.tablenav .actions {
-	overflow: visible;
-}
-.tablenav .button {
-	margin-left: 3px !important;
-}
 .alignleft.actions .chzn-container-single {
     display: inline-block;
     vertical-align: middle;
@@ -190,47 +180,103 @@
 }
 /*** CSS properties for awesome checkboxes ***/
 .hvp-chk {
-    width: 18px;
-    margin: 20px 115px;
     position: relative;
+    padding: 12px;
 }
 .hvp-chk input[type=checkbox] {
     display: none;
 }
 .hvp-chk label {
-    cursor: pointer;
-    position: absolute;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+.hvp-chk label::before {
+    content: "";
+    display: inline-block;
+    background-image: url('../images/check-unchecked.svg');
     width: 18px;
     height: 18px;
-    top: 0;
-    left: 0;
-    background: lightgray;
-    border: 1px solid #ddd;
-    border-radius: 100%;
+    cursor: pointer;
+    margin-right: 10px;
+    vertical-align: middle;
 }
-.hvp-chk label:after {
-    opacity: 0.2;
-    content: '';
+.hvp-chk input[type=checkbox]:checked+label::before {
+    background-image: url('../images/check-checked.svg');
+}
+.hvp-chk input[type=checkbox]:not(:checked)+label:hover::before {
+    background-image: url('../images/check-hover.svg');
+}
+.hvp-popup-2col .hvp-popup-col {
+    width: 47%;
+    vertical-align: top;
+}
+.hvp-popup-col {
+    display: inline-block;
+    margin: 1em;
+}
+.hvp-input-row {
+    display: block;
+    margin-top: 20px;
+}
+.hvp-input-row * {
+    display: inline-block;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.hvp-input-row label {
+    font-size: 16px;
+    color: #333333;
+    padding: 0;
+    display: block;
+}
+.hvp-input-row input {
+    height: 36px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #d8d8d8;
+    padding: 2px;
+}
+.hvp-input-row button {
+    vertical-align: middle !important;
+}
+.hvp-input-row p {
+    font-size: 14px;
+    color: #999999;
+}
+.hvp-input-row div {
+    margin: 0;
+    padding: 0;
+}
+.hvp-help-tip {
+    display: none;
+}
+.hvp-help {
+    position: relative;
+}
+.hvp-help:hover .hvp-help-tip {
+    display: block;
+    z-index: 100;
     position: absolute;
-    width: 9px;
-    height: 5px;
-    background: transparent;
-    top: 4px;
-    left: 3px;
-    border: 3px solid #333;
-    border-top: none;
-    border-right: none;
-    transform: rotate(-45deg);
-}
-.hvp-chk label:hover::after {
-    opacity: 0.5;
-}
-.hvp-chk input[type=checkbox]:checked + label:after {
+    top: 0;
+    left: 20px;
+    width: 200px;
+    background: white;
+    border: 1px solid #009cd6;
+    border-radius: 4px;
     opacity: 1;
-    border: 3px solid white;
-    border-top: none;
-    border-right: none;
+    padding: 5px;
+    vertical-align: center;
+    font-size: 12px;
 }
-.hvp-chk input[type=checkbox]:checked + label {
-    background: #00ad68;
+.hvp-help::before {
+    content: "";
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+    background-image: url('../images/how.svg');
+    cursor: pointer;
+    vertical-align: middle;
+}
+#hvp-ads-url {
+    width: 300px;
 }

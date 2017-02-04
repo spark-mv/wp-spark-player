@@ -57,17 +57,17 @@ jQuery(document).ready(function($) {
 
         file_frame.open();
     }
-    var user_email;
+    window.hvp_user_email;
     window.hvp_set_user_email = function(email) {
-        user_email = email;
+        window.hvp_user_email = email;
     };
     $(document).on('click', '.hvp-close-button', function() {
         var checkbox = $('#hvp-analytics-optin')[0];
-        if (checkbox && checkbox.checked && user_email) {
+        if (checkbox && checkbox.checked && window.hvp_user_email) {
             $.ajax({
                 method: 'GET',
                 url: '//holacdn.com/create_cdn_lead',
-                data: { email: user_email, campaign: 'wordpress' },
+                data: { email: window.hvp_user_email, campaign: 'wordpress' },
             });
         }
         $('.hvp-popup-overlay').fadeOut();
