@@ -30,7 +30,7 @@ if (!defined('ABSPATH')) exit;
             <p>Click below to activate free analytics for your video provided through Hola Networks.</p>
             <div class='hvp-chk'>
                 <input type='checkbox' id='hvp-analytics-optin' name='hvp-analytics-optin'
-                    onChange='hvp_set_user_email("<?php echo wp_get_current_user()->user_email; ?>")'>
+                    onChange='hvp.set_user_info("<?php echo wp_get_current_user()->user_email; ?>")'>
                 <label for='hvp-analytics-optin'></label>
             </div>
             <p>Get my Hola VPN Analytics</p>

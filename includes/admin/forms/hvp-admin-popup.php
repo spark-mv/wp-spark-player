@@ -99,7 +99,7 @@ $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
             <div class="hvp-popup-col">
                 <div class="hvp-input-row">
                     <div class="hvp-chk">
-                        <input type="checkbox" id="hvp-video-control" name="hvp-video-control">
+                        <input type="checkbox" checked id="hvp-video-control" name="hvp-video-control">
                         <label for="hvp-video-control"><?php _e('Show controls'); ?></label>
                     </div>
                     <div class="hvp-chk">
@@ -137,7 +137,7 @@ $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
                     <h2>Activate Free Video Analytics</h2>
                     <div class="hvp-chk">
                         <input type="checkbox" id="hvp-analytics-optin" name="hvp-analytics-optin"
-                            onChange='hvp_set_user_email("<?php echo wp_get_current_user()->user_email; ?>")'>
+                            onChange='hvp.set_user_info("<?php echo wp_get_current_user()->user_email; ?>")'>
                         <label for="hvp-analytics-optin"><?php _e('Get my free HolaCDN analytics'); ?></label>
                     </div>
                     <p>You will be contacted by a member of the HolaCDN team.</p>

@@ -90,6 +90,7 @@ class Hvp_Admin {
         <a href="mailto:or@hola.org?subject=activate video analytics" id="hvp_activate_analytics_link" style="<?php echo $display ; ?>"><?php _e('to activate free video analytics, contact us', HVP_TEXTDOMAIN); ?></a>
     <?php
     }
+
     public function hvp_add_menu_page(){
         if(current_user_can('manage_options') || current_user_can('edit_posts')) {
             $hook = add_menu_page(__('Free video player', HVP_TEXTDOMAIN), __('Free video player', HVP_TEXTDOMAIN), 'manage_options', 'hvp_player_setting_page', array($this, 'hvp_player_setting_page'));

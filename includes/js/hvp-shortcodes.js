@@ -47,12 +47,8 @@ jQuery(document).ready(function($) {
         var hvpshortcodestr = '';
 
         var analytics = $('#hvp-analytics-optin')[0];
-        if (analytics && analytics.checked && window.hvp_user_email) {
-            $.ajax({
-                method: 'GET',
-                url: '//holacdn.com/create_cdn_lead',
-                data: { email: window.hvp_user_email, campaign: 'wordpress' },
-            });
+        if (analytics && analytics.checked) {
+            window.hvp.create_lead();
         }
 
         hvpSwitchDefaultEditorVisual();
