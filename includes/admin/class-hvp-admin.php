@@ -100,8 +100,6 @@ class Hvp_Admin {
     function add_hooks() {
         // add filters for add add button in post / page container
         add_action('admin_init', array($this, 'hvp_add_shortcode_button'));
-        // add admin menu for Hola video player setting page
-        add_action('admin_menu', array($this, 'hvp_add_menu_page'));
         // mark up for popup
         add_action('admin_footer-post.php', array($this,'hvp_shortcode_popup'));
         add_action('admin_footer-post-new.php', array($this,'hvp_shortcode_popup'));
