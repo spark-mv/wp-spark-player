@@ -91,24 +91,6 @@ class Hvp_Admin {
     <?php
     }
 
-    public function hvp_add_menu_page(){
-        if(current_user_can('manage_options') || current_user_can('edit_posts')) {
-            $hook = add_menu_page(__('Free video player', HVP_TEXTDOMAIN), __('Free video player', HVP_TEXTDOMAIN), 'manage_options', 'hvp_player_setting_page', array($this, 'hvp_player_setting_page'));
-        }
-    }
-
-    /**
-     * Includes Plugin Settings
-     *
-     * Including File for plugin settings
-     *
-     * @package Hola Video Player
-     * @since 1.0.0
-     */
-    public function hvp_player_setting_page() {
-        include_once(HVP_ADMIN_DIR . '/forms/hvp-plugin-settings.php');
-    }
-
     /**
      * Adding Hooks
      *
