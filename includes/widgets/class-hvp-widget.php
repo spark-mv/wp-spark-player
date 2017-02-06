@@ -434,7 +434,6 @@ class Hvp_Widget extends WP_Widget {
 
         // IMA ADS SDK
         wp_enqueue_script('hvp_ima_ads_sdk_script');
-        //wp_enqueue_script('hvp_video_player_script');
 
         // Videojs ads script
         wp_enqueue_script('hvp_video_ads_script');

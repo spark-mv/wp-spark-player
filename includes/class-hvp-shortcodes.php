@@ -63,7 +63,6 @@ class Hvp_Shortcode {
         if ($osmf) {
             wp_enqueue_script('hvp_osmf_video_script');
         }
-        //wp_enqueue_script('hvp_video_player_script');
 
         // IMA ADS SDK
         wp_enqueue_script('hvp_ima_ads_sdk_script');

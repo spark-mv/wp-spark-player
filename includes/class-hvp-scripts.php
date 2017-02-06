@@ -79,9 +79,6 @@ class Hvp_Scripts {
         // Videojs ADS support
         wp_register_script('hvp_video_ads_script', HVP_INC_URL . '/js/videojs.ads.js', array(), HVP_VERSION);
 
-        // Videojs player support
-        wp_register_script('hvp_video_player_script', HVP_INC_URL . '/js/player_vjs5_10.js', array(), HVP_VERSION);
-
         // VAST and Vpaid ADS support from libraries.io/github/hola/videojs-vast-vpaid
         wp_register_script('hvp-vast-vpaid-ads-script', HVP_INC_URL . '/js/ads/vast-vpaid/videojs-vast-vpaid.min.js', array(), HVP_VERSION);
 
