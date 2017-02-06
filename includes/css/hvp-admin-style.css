@@ -119,13 +119,8 @@
     width: 1.5rem;
     border-radius: 1rem;
 }
-.hvp-analytics-unchecked {
-    background-color: lightgray;
-    color: white;
-}
-.hvp-analytics-checked {
-    background-color: green;
-    color: white;
+#hvp-analytics-info {
+    display: none;
 }
 #hvp-shortcode-error {
 	color: red;

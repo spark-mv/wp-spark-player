@@ -135,13 +135,12 @@ $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
                         placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>">
                 </div>
                 <div class="hvp-input-row">
-                    <h2>Activate Free Video Analytics</h2>
                     <div class="hvp-chk">
                         <input type="checkbox" id="hvp-analytics-optin" name="hvp-analytics-optin"
                             onChange='hvp.set_user_info("<?php echo wp_get_current_user()->user_email; ?>")'>
-                        <label for="hvp-analytics-optin"><?php _e('Get my free HolaCDN analytics'); ?></label>
+                        <label for="hvp-analytics-optin"><?php _e('Activate free video analytics'); ?></label>
                     </div>
-                    <p>You will be contacted by a member of the HolaCDN team.</p>
+                    <p id="hvp-analytics-info">You will be contacted by a member of the HolaCDN team.</p>
                 </div>
             </div>
         </div>

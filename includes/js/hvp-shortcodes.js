@@ -45,6 +45,13 @@ jQuery(document).ready(function($) {
             $('#hvp-type').val('osmf');
     });
 
+    $(document).on('change', '#hvp-analytics-optin', function(){
+        if ($(this).is(":checked"))
+            $('#hvp-analytics-info').fadeIn();
+        else
+            $('#hvp-analytics-info').fadeOut();
+    });
+
     //close popup window
     $(document).on("click", ".hvp-close-button, .hvp-popup-overlay", function() {
         $('.hvp-popup-overlay').fadeOut();
