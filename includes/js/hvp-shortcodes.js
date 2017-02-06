@@ -36,6 +36,15 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Auto-select video type for certain videos
+    $(document).on('change', '#hvp-video-url', function(){
+        var val = $(this).val();
+        if (val.match(/.m3u8$/i))
+            $('#hvp-type').val('hls');
+        if (val.match(/.f4m$/i))
+            $('#hvp-type').val('osmf');
+    });
+
     //close popup window
     $(document).on("click", ".hvp-close-button, .hvp-popup-overlay", function() {
         $('.hvp-popup-overlay').fadeOut();

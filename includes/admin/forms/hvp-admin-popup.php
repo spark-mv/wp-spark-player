@@ -83,7 +83,8 @@ $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
                             <?php _e('Advanced Video Type Picker'); ?>
                             <div class="hvp-help">
                                 <div class="hvp-help-tip">
-                                    <?php _e('Keep it simple. Change this field only if you know you need HLS/OSMF support.', HVP_TEXTDOMAIN);?>
+                                    <?php _e('Keep it simple. Change this field only if you know you need HLS/OSMF support. '.
+                                        'HLS support is required for M3U8 video sources, and OSMF support for F4M video sources.', HVP_TEXTDOMAIN);?>
                                 </div>
                             </div>
                         </label>
