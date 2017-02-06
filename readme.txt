@@ -82,6 +82,9 @@ First version
 = 1.1.1 =
 Second stable version
 
+= 1.2 =
+Greatly improved UI for inserting video player code
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -89,3 +92,6 @@ This is the first version
 
 = 1.1.1 =
 Updated UI and graphics for activating the plugin
+
+= 1.2 =
+Greatly improved UI for inserting video player code
