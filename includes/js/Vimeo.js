@@ -396,7 +396,11 @@ THE SOFTWARE. */
 
   vimeoIframeAPIReady();
 
-  videojs.registerTech('Vimeo', Vimeo);
+  if (typeof videojs.registerTech !== 'undefined') {
+    videojs.registerTech('Vimeo', Vimeo);
+  } else {
+    videojs.registerComponent('Vimeo', Vimeo);
+  }
 
 
 
