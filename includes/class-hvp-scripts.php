@@ -55,7 +55,7 @@ class Hvp_Scripts {
         wp_register_script('hvp_video_ie_script', HVP_INC_URL . '/js/ie8/videojs-ie8.min.js', array(), HVP_VERSION);
 
         // Simple video js
-        wp_register_script('hvp_video_script', HVP_INC_URL . '/js/ver-5.8.8/video.min.js', array(), HVP_VERSION);
+        wp_register_script('hvp_video_script', HVP_INC_URL . '/js/video.min.js', array(), HVP_VERSION);
 
         // HLS video js
         wp_register_script('hvp_hls_video_script', HVP_INC_URL . '/js/video.hls.min.js', array(), HVP_VERSION);
