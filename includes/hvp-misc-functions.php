@@ -51,16 +51,26 @@ function hvp_get_mimetype($file) {
 
 function hvp_mimelist() {
     return array(
-            'flv' => 'video/x-flv',
-            'mp4' => 'video/mp4',
-            'm3u8' => 'application/x-mpegurl',
-            'ts' => 'video/MP2T',
-            '3gp' => 'video/3gpp',
-            'mov' => 'video/quicktime',
-            'avi' => 'video/x-msvideo',
-            'wmv' => 'video/x-ms-wmv',
-            'avs' => 'video/avs-video',
-            'm3u' => 'audio/x-mpegurl',
-            'f4m' => 'application/adobe-f4m'
-);
+        'flv' => 'video/x-flv',
+        'mp4' => 'video/mp4',
+        'm3u8' => 'application/x-mpegurl',
+        'ts' => 'video/MP2T',
+        '3gp' => 'video/3gpp',
+        'mov' => 'video/quicktime',
+        'avi' => 'video/x-msvideo',
+        'wmv' => 'video/x-ms-wmv',
+        'avs' => 'video/avs-video',
+        'm3u' => 'audio/x-mpegurl',
+        'f4m' => 'application/adobe-f4m'
+    );
+}
+
+function hvp_user_details() {
+    $user = wp_get_current_user();
+    $url = get_bloginfo('url');
+    return array(
+        'email' => $user->user_email,
+        'name' => $user->display_name,
+        'site' => $url,
+    );
 }

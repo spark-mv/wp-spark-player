@@ -75,16 +75,17 @@ jQuery(document).ready(function($) {
             $('.hvp-popup-content').fadeOut();
         },
         create_lead: function() {
-            if (this.user_email) {
+            if (this.user_info) {
                 $.ajax({
                     method: 'GET',
                     url: '//holacdn.com/create_cdn_lead',
-                    data: { email: this.user_email, campaign: 'wordpress' },
+                    data: {campaign: 'wordpress', email: this.user_info.email,
+                        name: this.user_info.name, site: this.user_info.site},
                 });
             }
         },
-        set_user_info: function(email) {
-            this.user_email = email;
+        set_user_info: function(info) {
+            this.user_info = info;
         },
     };
 });

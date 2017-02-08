@@ -31,7 +31,7 @@ if (!defined('ABSPATH')) exit;
             by HolaCDN. You will be contacted by a member of the HolaCDN team.</p>
             <div class='hvp-chk'>
                 <input type='checkbox' id='hvp-analytics-optin' name='hvp-analytics-optin'
-                    onChange='hvp.set_user_info("<?php echo wp_get_current_user()->user_email; ?>"); hvp.handle_close();'>
+                    onChange='hvp.set_user_info(<?php _e(json_encode(hvp_user_details())); ?>); hvp.handle_close();'>
                 <label for='hvp-analytics-optin'>Get my HolaCDN Analytics</label>
             </div>
         </div>

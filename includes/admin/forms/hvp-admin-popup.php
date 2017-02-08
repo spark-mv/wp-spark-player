@@ -137,7 +137,7 @@ $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
                 <div class="hvp-input-row">
                     <div class="hvp-chk">
                         <input type="checkbox" id="hvp-analytics-optin" name="hvp-analytics-optin"
-                            onChange='hvp.set_user_info("<?php echo wp_get_current_user()->user_email; ?>")'>
+                            onChange='hvp.set_user_info(<?php _e(json_encode(hvp_user_details())); ?>)'>
                         <label for="hvp-analytics-optin"><?php _e('Activate free video analytics'); ?></label>
                     </div>
                     <p id="hvp-analytics-info">You will be contacted by a member of the HolaCDN team.</p>
