@@ -36,8 +36,8 @@ class Hvp_Widget extends WP_Widget {
     
     public function __construct() {
         global $hvp_model;
-        $widget_ops = array('classname' => 'widget_text', 'description' => __('Display video with Free video player', HVP_TEXTDOMAIN));        
-        WP_Widget::__construct('hvp-widget', __('Free video player', HVP_TEXTDOMAIN), $widget_ops);
+        $widget_ops = array('classname' => 'widget_text', 'description' => __('Display video with Hola Free Video Player', HVP_TEXTDOMAIN));        
+        WP_Widget::__construct('hvp-widget', __('Hola Free Video Player', HVP_TEXTDOMAIN), $widget_ops);
         $this->model = $hvp_model;
     }
 
