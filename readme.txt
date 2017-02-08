@@ -85,6 +85,9 @@ Second stable version
 = 1.2 =
 Greatly improved UI for inserting video player code
 
+= 1.2.1 =
+Fixed handling of shortcode options and better UX
+
 == Upgrade Notice ==
 
 = 1.0 =
