@@ -29,10 +29,8 @@ class Hvp_Widget extends WP_Widget {
     
     public $model;
 
-    public $option_arr = array('no'=> 'No', 'yes' => 'Yes');
-
     public $type_arr = array('simple'=> 'Simple', 'hls' => 'HLS', 'osmf' => 'OSMF');
-    public $template_arr = array('hola'=> 'Hola', 'basic'=> 'Basic');
+    public $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic');
     
     public function __construct() {
         global $hvp_model;
@@ -44,41 +42,30 @@ class Hvp_Widget extends WP_Widget {
     public function form($instance) {
         
         // outputs the options form on admin
-        $default = array('title' => '',
-                          'url' => '',
-                          'is_video_ads' => '',
-                          'video_adurl' => '',
-                          'width' => '',
-                          'height' => '',
-                          'video_type' => '',
-                          'controls' => '',
-                          'autoplay' => '',
-                          'poster' => '',
-                          'loop' => '',
-                          'muted' => '',
-                          'ytcontrol' => '',
-                          'video_id' => '',
-                          'class' => '',
-                          'template' => '',
-);
+        $default = array(
+            'title' => '',
+            'url' => '',
+            'video_adurl' => '',
+            'width' => '',
+            'height' => '',
+            'video_type' => $this->type_arr[0],
+            'poster' => '',
+            'class' => '',
+            'template' => $this->template_arr[0],
+        );
+
         $instance = wp_parse_args((array) $instance, $default);
 
-        $title             = $this->model->hvp_escape_attr($instance['title']);
-        $url             = $this->model->hvp_escape_attr($instance['url']);
-        $is_video_ads    = $this->model->hvp_escape_attr($instance['is_video_ads']);
-        $video_adurl    = $this->model->hvp_escape_attr($instance['video_adurl']);
-        $width             = $this->model->hvp_escape_attr($instance['width']);
-        $height         = $this->model->hvp_escape_attr($instance['height']);
-        $video_type     = $this->model->hvp_escape_attr($instance['video_type']);
-        $controls         = $this->model->hvp_escape_attr($instance['controls']);
-        $autoplay         = $this->model->hvp_escape_attr($instance['autoplay']);
-        $poster         = $this->model->hvp_escape_attr($instance['poster']);
-        $loop             = $this->model->hvp_escape_attr($instance['loop']);
-        $muted             = $this->model->hvp_escape_attr($instance['muted']);
-        $ytcontrol         = $this->model->hvp_escape_attr($instance['ytcontrol']);
-        $video_id         = $this->model->hvp_escape_attr($instance['video_id']);
-        $class             = $this->model->hvp_escape_attr($instance['class']);
-        $template         = $this->model->hvp_escape_attr($instance['template']);
+        $title = $this->model->hvp_escape_attr($instance['title']);
+        $url = $this->model->hvp_escape_attr($instance['url']);
+        $video_adurl = $this->model->hvp_escape_attr($instance['video_adurl']);
+        $width = $this->model->hvp_escape_attr($instance['width']);
+        $height = $this->model->hvp_escape_attr($instance['height']);
+        $video_type = $this->model->hvp_escape_attr($instance['video_type']);
+        $poster = $this->model->hvp_escape_attr($instance['poster']);
+        $ytcontrol = $this->model->hvp_escape_attr($instance['ytcontrol']);
+        $class = $this->model->hvp_escape_attr($instance['class']);
+        $template = $this->model->hvp_escape_attr($instance['template']);
         
         wp_nonce_field(HVP_PREFIX . '_noun');
         ?>
@@ -89,79 +76,17 @@ class Hvp_Widget extends WP_Widget {
                 <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', HVP_TEXTDOMAIN); ?></label>
             </p>
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Enter title for video.', HVP_TEXTDOMAIN);?></span>
-            </div>
         </p>
 
         <!-- URL: Text Box -->
         <p>
             <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('url'); ?>"><?php _e('Video URL:', HVP_TEXTDOMAIN); ?></label>
+                <label for="<?php echo $this->get_field_id('url'); ?>"><?php _e('Video:', HVP_TEXTDOMAIN); ?></label>
             </p>
-            <input class="widefat" id="<?php echo $this->get_field_id('url'); ?>" name="<?php echo $this->get_field_name('url'); ?>" type="text" value="<?php echo esc_attr($url); ?>" />
+            <input class="widefat" placeholder="URL" id="<?php echo $this->get_field_id('url'); ?>" 
+                name="<?php echo $this->get_field_name('url'); ?>" type="text" value="<?php echo esc_attr($url); ?>" />
+            or
             <button type="button" class="hvp-video-upload button button-primary"><?php _e('Upload', HVP_TEXTDOMAIN); ?></button>
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Enter video url or upload video.', HVP_TEXTDOMAIN);?></span>
-            </div>
-        </p>
-
-        <!-- Width: Text Box -->
-        <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('width'); ?>"><?php _e('Width:', HVP_TEXTDOMAIN); ?></label>
-            </p>
-            
-            <input class="widefat" id="<?php echo $this->get_field_id('width'); ?>" name="<?php echo $this->get_field_name('width'); ?>" type="text" value="<?php echo esc_attr($width); ?>" />
-            
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Enter width for video player.', HVP_TEXTDOMAIN);?></span>
-            </div>
-        </p>
-
-        <!-- Height: Text Box -->
-        <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('height'); ?>"><?php _e('Height:', HVP_TEXTDOMAIN); ?></label>
-            </p>
-            <input class="widefat" id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" type="text" value="<?php echo esc_attr($height); ?>" />
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Enter height for video player.', HVP_TEXTDOMAIN);?></span>
-            </div>
-        </p>
-
-
-        <!-- Show Video Control : Select Box -->
-        <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('controls'); ?>"><?php _e('Show Video controls:', HVP_TEXTDOMAIN); ?></label>
-            </p>
-            <select class="widefat" id="<?php echo $this->get_field_id('controls'); ?>" name="<?php echo $this->get_field_name('controls'); ?>">
-                <option value=""><?php _e('Select', HVP_TEXTDOMAIN) ?></option>
-                <?php foreach($this->option_arr as $key => $value) {?>
-                    <option <?php selected($controls, $key); ?> value="<?php print $key ?>"><?php print $value ?></option>
-                <?php } ?>
-            </select>
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Select for show/hide video controls.', HVP_TEXTDOMAIN);?></span>
-            </div>
-        </p>
-
-        <!-- autoplay : Select Box -->
-        <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('autoplay'); ?>"><?php _e('Autoplay (desktop only):', HVP_TEXTDOMAIN); ?></label>
-            </p>
-            
-            <select class="widefat" id="<?php echo $this->get_field_id('autoplay'); ?>" name="<?php echo $this->get_field_name('autoplay'); ?>">
-                <option value=""><?php _e('Select', HVP_TEXTDOMAIN) ?></option>
-                <?php foreach($this->option_arr as $key => $value) {?>
-                    <option <?php selected($autoplay, $key); ?> value="<?php print $key ?>"><?php print $value ?></option>
-                <?php } ?>
-            </select>
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Select yes/no for play video automatically or not .', HVP_TEXTDOMAIN);?></span>
-            </div>
         </p>
 
         <!-- Poster url: Text Box -->
@@ -170,75 +95,54 @@ class Hvp_Widget extends WP_Widget {
                 <label for="<?php echo $this->get_field_id('poster'); ?>"><?php _e('Poster URL:', HVP_TEXTDOMAIN); ?></label>
             </p>
             
-            <input class="widefat" id="<?php echo $this->get_field_id('poster'); ?>" name="<?php echo $this->get_field_name('poster'); ?>" type="text" value="<?php echo esc_attr($poster); ?>" />
+            <input class="widefat" placeholder="URL" id="<?php echo $this->get_field_id('poster'); ?>" 
+                name="<?php echo $this->get_field_name('poster'); ?>" type="text" value="<?php echo esc_attr($poster); ?>" />
+            or
             <button type="button" class="hvp-poster-upload button button-primary"><?php _e('Upload', HVP_TEXTDOMAIN); ?></button>
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Enter poster image url or upload poster image for video player.', HVP_TEXTDOMAIN);?></span>
-            </div>
         </p>
 
-        <!-- Loop : Select Box -->
-        <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('loop'); ?>"><?php _e('Loop:', HVP_TEXTDOMAIN); ?></label>
+        <!-- Width: Text Box -->
+        <div class="hvp-widget-2col">
+            <p class="hvp-popup-col">
+                <label for="<?php echo $this->get_field_id('width'); ?>"><?php _e('Width:', HVP_TEXTDOMAIN); ?></label>
+                <input id="<?php echo $this->get_field_id('width'); ?>" name="<?php echo $this->get_field_name('width'); ?>" type="text" value="<?php echo esc_attr($width); ?>" />
             </p>
-            
-            <select class="widefat" id="<?php echo $this->get_field_id('loop'); ?>" name="<?php echo $this->get_field_name('loop'); ?>">
-                <option value=""><?php _e('Select', HVP_TEXTDOMAIN) ?></option>
-                <?php foreach($this->option_arr as $key => $value) {?>
-                    <option <?php selected($loop, $key); ?> value="<?php print $key ?>"><?php print $value ?></option>
-                <?php } ?>
-            </select>
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Select yes/no for play video in loop or not. ', HVP_TEXTDOMAIN);?></span>
-            </div>
-        </p>
+            <p class="hvp-popup-col">
+                <label for="<?php echo $this->get_field_id('height'); ?>"><?php _e('Height:', HVP_TEXTDOMAIN); ?></label>
+                <input id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" type="text" value="<?php echo esc_attr($height); ?>" />
+            </p>
+        </div>
 
-        <!-- Muted : Select Box -->
-        <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('muted'); ?>"><?php _e('Mute:', HVP_TEXTDOMAIN); ?></label>
-            </p>
-            
-            <select class="widefat" id="<?php echo $this->get_field_id('muted'); ?>" name="<?php echo $this->get_field_name('muted'); ?>">
-                <option value=""><?php _e('Select', HVP_TEXTDOMAIN) ?></option>
-                <?php foreach($this->option_arr as $key => $value) {?>
-                    <option <?php selected($muted, $key); ?> value="<?php print $key ?>"><?php print $value ?></option>
-                <?php } ?>
-            </select>
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Select yes/no for initially video sound on or off.', HVP_TEXTDOMAIN);?></span>
-            </div>
-        </p>
+        <div class="hvp-chk widefat">
+            <input type="checkbox" <?php checked($instance['controls'], 'on');?> id="<?php echo $this->get_field_id('controls'); ?>" 
+                name="<?php echo $this->get_field_name('controls'); ?>">
+            <label for="<?php _e($this->get_field_id('controls')); ?>"><?php _e('Show controls'); ?></label>
+        </div>
+
+        <div class="hvp-chk widefat">
+            <input type="checkbox" <?php checked($instance['autoplay'], 'on');?> id="<?php echo $this->get_field_id('autoplay'); ?>" 
+                name="<?php echo $this->get_field_name('autoplay'); ?>">
+            <label for="<?php echo $this->get_field_id('autoplay'); ?>"><?php _e('Autoplay (desktop only)'); ?></label>
+        </div>
+
+        <div class="hvp-chk widefat">
+            <input type="checkbox" <?php checked($instance['loop'], 'on');?> id="<?php echo $this->get_field_id('loop'); ?>" 
+                name="<?php echo $this->get_field_name('loop'); ?>">
+            <label for="<?php echo $this->get_field_id('loop'); ?>"><?php _e('Loop video'); ?></label>
+        </div>
+
+        <div class="hvp-chk widefat">
+            <input type="checkbox" <?php checked($instance['muted'], 'on');?> id="<?php echo $this->get_field_id('muted'); ?>" 
+                name="<?php echo $this->get_field_name('muted'); ?>">
+            <label for="<?php echo $this->get_field_id('muted'); ?>"><?php _e('Mute video'); ?></label>
+        </div>
 
         <!-- Youtube or Vimeo Control : Select Box -->
-        <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('muted'); ?>"><?php _e('Youtube or Viemo control:', HVP_TEXTDOMAIN); ?></label>
-            </p>
-            
-            <select class="widefat" id="<?php echo $this->get_field_id('ytcontrol'); ?>" name="<?php echo $this->get_field_name('ytcontrol'); ?>">
-                <option value=""><?php _e('Select', HVP_TEXTDOMAIN) ?></option>
-                <?php foreach($this->option_arr as $key => $value) {?>
-                    <option <?php selected($ytcontrol, $key); ?> value="<?php print $key ?>"><?php print $value ?></option>
-                <?php } ?>
-            </select>
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Select for show/hide controls for YouTube or Vimeo video.', HVP_TEXTDOMAIN);?></span>
-            </div>
-        </p>
-
-        <!-- Video id : Text Box -->
-        <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('video_id'); ?>"><?php _e('Id:', HVP_TEXTDOMAIN); ?></label>
-            </p>
-            
-            <input class="widefat" id="<?php echo $this->get_field_id('video_id'); ?>" name="<?php echo $this->get_field_name('video_id'); ?>" type="text" value="<?php echo esc_attr($video_id); ?>" />
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Enter YouTube or Vimeo video id', HVP_TEXTDOMAIN);?></span>
-            </div>
-        </p>
+        <div class="hvp-chk widefat">
+            <input type="checkbox" <?php checked($instance['ytcontrol'], 'on');?> id="<?php echo $this->get_field_id('ytcontrol'); ?>"
+                name="<?php echo $this->get_field_name('ytcontrol'); ?>">
+            <label for="<?php echo $this->get_field_id('ytcontrol'); ?>"><?php _e('YouTube or Vimeo controls'); ?></label>
+        </div>
 
         <!-- Modifier Class : Text Box -->
         <p>
@@ -247,65 +151,42 @@ class Hvp_Widget extends WP_Widget {
             </p>
             
             <input class="widefat" id="<?php echo $this->get_field_id('class'); ?>" name="<?php echo $this->get_field_name('class'); ?>" type="text" value="<?php echo esc_attr($class); ?>" />
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Enter class for customize video player design. ', HVP_TEXTDOMAIN);?></span>
-            </div>
         </p>
         
         <!-- template : Select Box -->
         <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('template'); ?>"><?php _e('Template:', HVP_TEXTDOMAIN); ?></label>
-            </p>
-            
-            <select id="<?php echo $this->get_field_id('template'); ?>" name="<?php echo $this->get_field_name('template'); ?>" class="widefat" style="width:100%;">
-                <option value=""><?php _e('Select', HVP_TEXTDOMAIN) ?></option>
+            <label for="<?php echo $this->get_field_id('template'); ?>"><?php _e('Template:', HVP_TEXTDOMAIN); ?></label>
+            <select id="<?php echo $this->get_field_id('template'); ?>" name="<?php echo $this->get_field_name('template'); ?>" class="widefat">
                 <?php foreach($this->template_arr as $key => $value) {?>
                     <option <?php selected($template, $key); ?> value="<?php print $key ?>"><?php print $value ?></option>
                 <?php } ?>
             </select>
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Select template for video player. ', HVP_TEXTDOMAIN);?></span>
-            </div>
         </p>
+
         <!-- Video type Simple, HLS or OSMF : Select Box -->
         <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('video_type'); ?>"><?php _e('Advanced Video Type Picker:', HVP_TEXTDOMAIN); ?></label>
-            </p>
+            <label for="<?php echo $this->get_field_id('video_type'); ?>"><?php _e('Advanced Video Type Picker:', HVP_TEXTDOMAIN); ?></label>
             <select class="widefat" id="<?php echo $this->get_field_id('video_type'); ?>" name="<?php echo $this->get_field_name('video_type'); ?>">
-                <option value=""><?php _e('Select', HVP_TEXTDOMAIN) ?></option>
                 <?php foreach($this->type_arr as $key => $value) {?>
                     <option <?php selected($video_type, $key); ?> value="<?php print $key ?>"><?php print $value ?></option>
                 <?php } ?>
             </select>
-            <div class="hvp-desc-container">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Keep it Simple. change this field only if you know you need HLS/OSMF support', HVP_TEXTDOMAIN);?></span>
-            </div>
         </p>
-        <!-- Ad tag URL: Text Box -->
-        <p>
-            <p class="hvp-title">
-                <label for="<?php echo $this->get_field_id('is_video_ads'); ?>"><?php _e('Ads in video?:', HVP_TEXTDOMAIN); ?></label>
-            </p>
-            <input class="widefat is_video_ads" id="<?php echo $this->get_field_id('is_video_ads'); ?>" name="<?php echo $this->get_field_name('is_video_ads'); ?>" type="checkbox" value="yes" <?php checked($is_video_ads, 'yes'); ?> />
-            <?php $hide = ''; if($is_video_ads != 'yes') { $hide = 'display:none;';}?>
-            <p>
-            <div class="hvp-ads-container" style="<?php print $hide?>">
-                <input class="widefat" id="<?php echo $this->get_field_id('video_adurl'); ?>" name="<?php echo $this->get_field_name('video_adurl'); ?>" type="text" value="<?php echo esc_attr($video_adurl); ?>" />
-            </div>
-            <div class="hvp-ads-container hvp-desc-container" style="<?php print $hide?>">
-                <span class="hvp-help-tip"></span><span class="hvp-desc"><?php _e('Ad tag url for advertisement.(IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?></span>
-            </div>
-            </p>
-        </p>
-        <p>
-            <p class="hvp-title">
-                <label><?php _e('Activate analytics:', HVP_TEXTDOMAIN);?></label>
-            </p>
-            
-            <label for="hvp_activate_analytics"> <a href="mailto:or@hola.org?subject=Activate free video player analytics" id="hvp_activate_analytics_link"><?php _e('To activate free video player analytics, click here', HVP_TEXTDOMAIN); ?></a></label>
-        </p>
+
+        <div class="hvp-chk widefat">
+            <input type="checkbox" <?php checked($instance['is_video_ads'], 'on');?> id="<?php echo $this->get_field_id('is_video_ads'); ?>"
+                name="<?php echo $this->get_field_name('is_video_ads'); ?>">
+            <label for="<?php echo $this->get_field_id('is_video_ads'); ?>"><?php _e('Display ads in video:'); ?></label>
+        </div>
+        <input class="widefat" type="text" id="<?php echo $this->get_field_id('video_adurl'); ?>" name="<?php echo $this->get_field_name('video_adurl'); ?>" 
+            placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>">
+
+        <div class="hvp-chk widefat">
+            <input type="checkbox" id="<?php echo $this->get_field_id('analytics_optin'); ?>" name="<?php echo $this->get_field_name('analytics_optin'); ?>"
+                onChange='hvp.set_user_info(<?php _e(json_encode(hvp_user_details())); ?>); hvp.create_lead();'>
+            <label for="<?php echo $this->get_field_id('analytics_optin'); ?>"><?php _e('Activate free video analytics'); ?></label>
+        </div>
+        <p>You will be contacted by a member of the HolaCDN team.</p>
 
         <?php
     }
@@ -316,21 +197,19 @@ class Hvp_Widget extends WP_Widget {
         $formNonce = $_POST['_wpnonce'];
 
         if(wp_verify_nonce($formNonce, HVP_PREFIX.'_noun')) {
-
             $instance['title'] = $this->model->hvp_escape_slashes_deep($new_instance['title']);
             $instance['url'] = $this->model->hvp_escape_slashes_deep($new_instance['url']);
-            $instance['is_video_ads'] = $this->model->hvp_escape_slashes_deep($new_instance['is_video_ads']);
+            $instance['is_video_ads'] = $new_instance['is_video_ads'];
             $instance['video_adurl'] = $this->model->hvp_escape_slashes_deep($new_instance['video_adurl']);
             $instance['width'] = $this->model->hvp_escape_slashes_deep($new_instance['width']);
             $instance['height'] = $this->model->hvp_escape_slashes_deep($new_instance['height']);
             $instance['video_type'] = $this->model->hvp_escape_slashes_deep($new_instance['video_type']);
-            $instance['controls'] = $this->model->hvp_escape_slashes_deep($new_instance['controls']);
-            $instance['autoplay'] = $this->model->hvp_escape_slashes_deep($new_instance['autoplay']);
+            $instance['controls'] = $new_instance['controls'];
+            $instance['autoplay'] = $new_instance['autoplay'];
             $instance['poster'] = $this->model->hvp_escape_slashes_deep($new_instance['poster']);
-            $instance['loop'] = $this->model->hvp_escape_slashes_deep($new_instance['loop']);
-            $instance['muted'] = $this->model->hvp_escape_slashes_deep($new_instance['muted']);
-            $instance['ytcontrol'] = $this->model->hvp_escape_slashes_deep($new_instance['ytcontrol']);
-            $instance['video_id'] = $this->model->hvp_escape_slashes_deep($new_instance['video_id']);
+            $instance['loop'] = $new_instance['loop'];
+            $instance['muted'] = $new_instance['muted'];
+            $instance['ytcontrol'] = $new_instance['ytcontrol'];
             $instance['class'] = $this->model->hvp_escape_slashes_deep($new_instance['class']);
             $instance['template'] = $this->model->hvp_escape_slashes_deep($new_instance['template']);
         }
@@ -339,23 +218,13 @@ class Hvp_Widget extends WP_Widget {
     }
 
     public function widget($args, $instance) {
-        // outputs the content of the widget
-        extract($args);
-        
         $title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
         $url= empty($instance['url']) ? '' : $instance['url'];
-        $is_video_ads    = empty($instance['is_video_ads']) ? '' : $instance['is_video_ads'];
-        $video_adurl    = empty($instance['video_adurl']) ? '' : $instance['video_adurl'];
+        $video_adurl = empty($instance['video_adurl']) ? '' : $instance['video_adurl'];
         $width = empty($instance['width']) ? '300' : $instance['width'];
         $height = empty($instance['height']) ? '' : $instance['height'];
         $video_type = empty($instance['video_type']) ? 'simple' : $instance['video_type'];
-        $controls = empty($instance['controls']) ? 'yes' : $instance['controls'];
-        $autoplay = empty($instance['autoplay']) ? 'no' : $instance['autoplay'];
         $poster = empty($instance['poster']) ? '' : $instance['poster'];
-        $loop = empty($instance['loop']) ? 'no' : $instance['loop'];
-        $muted = empty($instance['muted']) ? 'no' : $instance['muted'];
-        $ytcontrol = empty($instance['ytcontrol']) ? 'no' : $instance['ytcontrol'];
-        $video_id = empty($instance['video_id']) ? '' : $instance['video_id'];
         $class = empty($instance['class']) ? '' : $instance['class'];
         $template = empty($instance['template']) ? '' : $instance['template'];
         $preload = "auto";
@@ -364,43 +233,15 @@ class Hvp_Widget extends WP_Widget {
         if (strpos($width, '%') == false && strpos($width, 'px') == false) {
             $width = $width.'px';
         }
-
         
         // Get file MIME type
         $mime_type = hvp_get_mimetype($url);
 
-        echo $before_widget;
+        echo $args['before_widget'];
         
         if ($title)
-            echo $before_title . $title . $after_title;
+            echo $args['before_title'], $title, $args['after_title'];
 
-        /** Remove wordpress default template from 1.0.0
-        if($template == 'mediaelement') {
-            $attr = array();
-            $attr['src'] = $url;
-            if(is_numeric($width)){
-                $attr['width'] = $width;
-            }
-            if(is_numeric($height)){
-                $attr['height'] = $height;
-            }
-            if ($autoplay == 'yes'){
-                $attr['autoplay'] = 'on';
-            }
-            if ($loop == 'yes'){
-                $attr['loop'] = 'on';
-            }
-            if (!empty($poster)){
-                $attr['poster'] = $poster;
-            }
-            if (!empty($preload)){
-                $attr['preload'] = $preload;
-            }
-
-            echo wp_video_shortcode($attr);
-            echo $after_widget;
-            return '';
-        }*/
         if($template != 'basic') {
             wp_enqueue_style('hvp_hola_style');
             $skin = 'hola-skin';
@@ -417,10 +258,10 @@ class Hvp_Widget extends WP_Widget {
             <?php print $custom_css;?>
             </style>
         <?php
-                $muted = ($muted == 'yes') ? ' muted' : '';
-        $autoplay = ($autoplay == 'yes') ? ' autoplay' : '';
-        $loop = ($loop == 'yes') ? ' loop' : '';
-        $controls = ($controls == 'yes') ? ' controls' : '';
+        $muted = ($instance['muted'] == 'on') ? 'muted' : '';
+        $autoplay = ($instance['autoplay'] == 'on') ? 'autoplay' : '';
+        $loop = ($instance['loop'] == 'on') ? 'loop' : '';
+        $controls = ($instance['controls'] == 'on') ? 'controls' : '';
         $techorder = '';
 
         // include video javascript based on video type
@@ -473,24 +314,23 @@ class Hvp_Widget extends WP_Widget {
 
         // code to add ads to video
         $adtagurl = '';
-        if($is_video_ads == 'yes' && $video_adurl != '')
+        if($instance['is_video_ads'] == 'on' && $video_adurl != '')
             $adtagurl = 'data-adurl="'. $video_adurl .'" ';
-
         ?>
                 <?php if ($url) { ?>
-        <div id="<?php print $video_id;?>" class="hvp-video hvp-widget-video">
-          <video id="<?php print $res_class?>" <?php print $adtagurl ?> data-id="<?php print $res_class?>" class="video-js <?php print $skin.' '. $res_class; ?> <?php print $class?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>" <?php print $autoplay.$muted.$loop.$controls ?>
-              data-setup='{<?php print $techorder ?>"plugins":{}}'>
-            <source src="<?php print $url?>" type="<?php print $mime_type?>" />
-            <p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e('supports HTML5 video', HVP_TEXTDOMAIN) ?></a></p>
-              </video>
+        <div class="hvp-video hvp-widget-video">
+          <video id="<?php print $res_class?>" <?php print $adtagurl ?> data-id="<?php print $res_class?>" 
+            class="video-js <?php print $skin.' '. $res_class; ?> <?php print $class?>"
+            width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>" <?php print "$autoplay $muted $loop $controls"; ?>
+            data-setup='{<?php print $techorder ?>"plugins":{}}'>
+                <source src="<?php print $url?>" type="<?php print $mime_type?>" />
+                <p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e('supports HTML5 video', HVP_TEXTDOMAIN) ?></a></p>
+          </video>
           </div>
                 <?php } ?>
         <?php
-        
-        echo $after_widget;
+        echo $args['after_widget'];
     }
-
 }
 
 ?>

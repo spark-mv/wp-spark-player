@@ -66,6 +66,32 @@ jQuery(document).ready(function($) {
         $('#hvp-firstrun-content').fadeIn();
     });
 
+    // Display ads url input
+    $(document).on('change', '#hvp-video-ads', function(){
+        if($(this).is(':checked')){
+            $('#hvp-ads-url').prop('disabled', false).focus();
+        }
+        else{
+            $('#hvp-ads-url').prop('disabled', true);
+        }
+    });
+
+    // Auto-select video type for certain videos
+    $(document).on('change', '#hvp-video-url', function(){
+        var val = $(this).val();
+        if (val.match(/.m3u8$/i))
+            $('#hvp-type').val('hls');
+        if (val.match(/.f4m$/i))
+            $('#hvp-type').val('osmf');
+    });
+
+    $(document).on('change', '#hvp-analytics-optin', function(){
+        if ($(this).is(":checked"))
+            $('#hvp-analytics-info').fadeIn();
+        else
+            $('#hvp-analytics-info').fadeOut();
+    });
+
     window.hvp = {
         handle_close: function() {
             var checkbox = $('#hvp-analytics-optin')[0];
