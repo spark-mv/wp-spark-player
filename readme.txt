@@ -88,6 +88,9 @@ Greatly improved UI for inserting video player code
 = 1.2.1 =
 Fixed handling of shortcode options and better UX
 
+= 1.2.2 =
+Fixed UI and handling of options for widget
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -98,3 +101,6 @@ Updated UI and graphics for activating the plugin
 
 = 1.2 =
 Greatly improved UI for inserting video player code
+
+= 1.2.2 =
+Updated UI for video players and widgets
