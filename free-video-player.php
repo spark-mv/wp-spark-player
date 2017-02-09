@@ -2,9 +2,7 @@
 /*
 Plugin Name: Hola Free Video Player
 Plugin URI: http://holacdn.com/player
-Description: The Hola WordPress Free video player is VideoJS on steroids -
-a commercial grade, flexible video player, which provides your users the best
-viewing experience.
+Description: The Hola Free Video Player is VideoJS on steroids, a commercial grade, flexible video player, which provides your users the best viewing experience.
 Version: 1.2.1
 Author: Hola Networks
 Author URI: http://holacdn.com/player
