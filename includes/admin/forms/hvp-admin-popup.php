@@ -122,7 +122,7 @@ $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
                         <label for="hvp-mute"><?php _e('Mute video'); ?></label>
                     </div>
                     <div class="hvp-chk">
-                        <input type="checkbox" checked id="hvp-autoplay" name="hvp-autoplay">
+                        <input type="checkbox" id="hvp-autoplay" name="hvp-autoplay">
                         <label for="hvp-autoplay"><?php _e('Autoplay (desktop only)'); ?></label>
                     </div>
                 </div>
