@@ -70,25 +70,26 @@ class Hvp_Admin {
             include_once(HVP_ADMIN_DIR . '/forms/hvp-admin-popup.php');
         }
     }
-     /**
-     * Add html field in general setting page
+
+    public function hvp_add_menu_page(){
+        if(current_user_can('manage_options') || current_user_can('edit_posts')) {
+            $hook = add_menu_page(__('Hola Free Video Player', HVP_TEXTDOMAIN),
+                __('Hola Free Video Player', HVP_TEXTDOMAIN), 'manage_options',
+                'hvp_player_setting_page', 
+                array($this, 'hvp_player_setting_page'));
+        }
+    }
+
+    /**
+     * Includes Plugin Settings
+     *
+     * Including File for plugin settings
      *
      * @package Hola Video Player
-     * @since 1.0.0
+     * @since 1.3
      */
-    function hvp_general_settings_fields_html(){
-
-        $activate_analytics = get_option('hvp_activate_analytics');
-        if($activate_analytics == '1'){
-            $display = "display:block";
-        }else {
-            $display = "display:none";
-        }
-    ?>
-        <input name="hvp_activate_analytics" type="checkbox" id="hvp_activate_analytics" value="1" <?php checked('1', get_option('hvp_activate_analytics')); ?> />
-        <label><?php _e('Please Check for Activate analytics', HVP_TEXTDOMAIN); ?></label><br>
-        <a href="mailto:or@hola.org?subject=activate video analytics" id="hvp_activate_analytics_link" style="<?php echo $display ; ?>"><?php _e('to activate free video analytics, contact us', HVP_TEXTDOMAIN); ?></a>
-    <?php
+    public function hvp_player_setting_page() {
+        include_once(HVP_ADMIN_DIR . '/forms/hvp-plugin-settings.php');
     }
 
     /**
@@ -100,6 +101,8 @@ class Hvp_Admin {
     function add_hooks() {
         // add filters for add add button in post / page container
         add_action('admin_init', array($this, 'hvp_add_shortcode_button'));
+        // add admin menu for Hola video player setting page
+        add_action('admin_menu', array($this, 'hvp_add_menu_page'));
         // mark up for popup
         add_action('admin_footer-post.php', array($this,'hvp_shortcode_popup'));
         add_action('admin_footer-post-new.php', array($this,'hvp_shortcode_popup'));

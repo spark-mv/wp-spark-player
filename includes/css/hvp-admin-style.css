@@ -285,79 +285,8 @@
 #hvp-ads-url {
     width: 300px;
 }
-    width: 40%;
-}
-.hvp-popup-2col .hvp-popup-col {
-    width: 47%;
-}
-.hvp-popup-col {
-    display: inline-block;
-    margin: 1em;
-    vertical-align: top;
-}
-.hvp-input-row {
-    display: block;
-    margin-top: 20px;
-}
-.hvp-input-row * {
-    display: inline-block;
-    padding-left: 18px;
-    padding-right: 18px;
-}
-.hvp-input-row label {
-    font-size: 16px;
-    color: #333333;
-    padding: 0;
-    display: block;
-}
-.hvp-input-row input {
-    height: 36px;
-    border-radius: 3px;
-    background-color: #ffffff;
-    border: solid 1px #d8d8d8;
-    padding: 2px;
-}
-.hvp-input-row button {
-    vertical-align: middle !important;
-}
-.hvp-input-row p {
-    font-size: 14px;
-    color: #999999;
-}
-.hvp-input-row div {
-    margin: 0;
-    padding: 0;
-}
-.hvp-help-tip {
+#hvp-cdn-signup-step1, 
+#hvp-cdn-signup-step2, 
+#hvp-cdn-signup-inprogress {
     display: none;
-}
-.hvp-help {
-    position: relative;
-}
-.hvp-help:hover .hvp-help-tip {
-    display: block;
-    z-index: 100;
-    position: absolute;
-    top: 0;
-    left: 20px;
-    width: 200px;
-    background: white;
-    border: 1px solid #009cd6;
-    border-radius: 4px;
-    opacity: 1;
-    padding: 5px;
-    vertical-align: center;
-    font-size: 12px;
-}
-.hvp-help::before {
-    content: "";
-    display: inline-block;
-    height: 13px;
-    width: 13px;
-    background-image: url('../images/how.svg');
-    cursor: pointer;
-    vertical-align: middle;
-}
-#hvp-ads-url {
-    width: 300px;
 }
