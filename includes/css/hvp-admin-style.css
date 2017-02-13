@@ -122,7 +122,7 @@
 #hvp-analytics-info {
     display: none;
 }
-#hvp-shortcode-error {
+#hvp-shortcode-error, .hvp-error {
 	color: red;
 }
 #hvp-insert-container {
@@ -287,6 +287,31 @@
 }
 #hvp-cdn-signup-step1, 
 #hvp-cdn-signup-step2, 
-#hvp-cdn-signup-inprogress {
+#hvp-cdn-signup-inprogress,
+#hvp-cdn-signup-error,
+#hvp-cdn-signup-used {
     display: none;
+}
+.hvp-cdn-signup-steps {
+    list-style-type: none;
+    counter-reset: signupStep;
+}
+.hvp-cdn-signup-steps > li::before {
+    background-color: #009cd6;
+    border-radius: 100%;
+    counter-increment: signupStep;
+    content: counter(signupStep);
+    position: absolute;
+    margin-left: -24px;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+.hvp-cdn-signup-steps > li {
+    display: block;
+    margin-left: 30px;
 }

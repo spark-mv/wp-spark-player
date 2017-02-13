@@ -64,8 +64,9 @@ load_plugin_textdomain('wphvp', false, dirname(plugin_basename(__FILE__)) . '/la
  * @since 1.0.0
  */
 register_activation_hook(__FILE__, 'hvp_install');
-function hvp_install(){
+function hvp_install() {
 	add_option('hvp_firstrun','hvp-plugin-activated');
+  add_option('hvp-cdn-customerid', '');
 }
 
 /**

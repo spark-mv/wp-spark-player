@@ -93,34 +93,37 @@ jQuery(document).ready(function($) {
     });
 
     $(document).on('click', '#hvp-cdn-signup-btn', function(){
+        $('#hvp-cdn-signup-btn').prop('disabled', true);
         $('#hvp-cdn-signup-step1').slideDown();
+        return false;
     });
 
     $(document).on('click', '#hvp-cdn-step1-submit', function(){
         $('#hvp-cdn-signup-inprogress').slideDown();
         var email = $('#hvp-cdn-email').val();
         $.get('//holacdn.com/users/check_email', {email: email})
-            .success(function(data) {
+            .always(function(data) { // TODO: temp testing
                 if (data.used) {
-                    // TODO
-                    console.warn('used');
+                    $('#hvp-cdn-signup-inprogress').slideUp();
+                    $('#hvp-cdn-signup-used').slideDown();
                     return;
                 }
                 var password = $('#hvp-cdn-password').val();
                 $.post('//holacdn.com/users/auth/basic/signup?next=/', {username: email, password: password})
-                    .success(function(data){
+                    .always(function(data){
                         $('#hvp-cdn-signup-step1').slideUp();
                         $('#hvp-cdn-signup-step2').slideDown();
                     })
                     .fail(function() {
-                        console.warn('signup fail');
+                        $('#hvp-cdn-signup-inprogress').slideUp();
+                        $('#hvp-cdn-signup-error').slideDown();
                     });
             })
             .fail(function() {
-                console.warn('check_email fail');
-                // TODO
+                $('#hvp-cdn-signup-inprogress').slideUp();
+                $('#hvp-cdn-signup-error').slideDown();
             });
-        });
+        return false;
     });
 
     $(document).on('click', '#hvp-cdn-step2-submit', function(){
@@ -131,14 +134,15 @@ jQuery(document).ready(function($) {
         var phone = $('#hvp-cdn-phone').val();
         $.post('//holacdn.com/users/save_details', {contact_name: name, 
             website: site, company: company, skype: skype, phone: phone})
-            .success(function(data) {
-                $('#hvp-cdn-customerid').value(data.customer_id);
+            .always(function(data) {
+                $('#hvp-cdn-customerid').val(data.customer_id);
                 $('#hvp-cdn-signup-step2').slideUp();
             })
             .fail(function() {
                 // TODO
                 console.warn('save_details fail');
             });
+        return false;
     });
 
     window.hvp = {

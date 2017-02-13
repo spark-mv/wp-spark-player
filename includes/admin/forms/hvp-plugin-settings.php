@@ -11,9 +11,6 @@ if (!defined('ABSPATH')) exit;
  * @since 1.3
  */
 
-global $hvp_model , $hvp_options;
-
-$model = $hvp_model;  
 ?>
 <!-- . begining of wrap -->
 <div class="wrap">
@@ -23,9 +20,11 @@ $model = $hvp_model;
   ?>  
 
   <h2>Activate free video analytics</h2>
-  <ol class="hvp-cdn-signup-steps">
+  <ul class="hvp-cdn-signup-steps">
     <li>
-      <button id="hvp-cdn-signup-btn" class="hvp-button">Sign up</button> for HolaCDN
+      <button id="hvp-cdn-signup-btn" class="button button-primary">Sign 
+      up</button> for HolaCDN. If you already have a HolaCDN account, continue 
+      to step 2.
       <div id="hvp-cdn-signup-step1">
         <form>
           <div class="hvp-input-row">
@@ -37,8 +36,21 @@ $model = $hvp_model;
             <label for="hvp-cdn-password">Password</label>
             <input name="hvp-cdn-passwd" id="hvp-cdn-passwd" type="password" />
           </div>
-          <button id="hvp-cdn-step1-submit">Submit</button>
-          <div id="hvp-cdn-signup-inprogress">Creating your HolaCDN account...
+          <button id="hvp-cdn-step1-submit" class="button button-primary">
+            Submit
+          </button>
+          <div id="hvp-cdn-signup-inprogress">
+            Creating your HolaCDN account...
+          </div>
+          <div id="hvp-cdn-signup-error" class="hvp-error">
+            There was an error creating your HolaCDN account. Please go to <a 
+            href="//holacdn.com">http://holacdn.com</a> and complete your 
+            signup there.
+          </div>
+          <div id="hvp-cdn-signup-used" class="hvp-error">
+            There is already a user account for that email address. Please sign 
+            in at <a href="//holacdn.com">http://holacdn.com</a> to get your 
+            account ID.
           </div>
         </form>
       </div>
@@ -66,14 +78,19 @@ $model = $hvp_model;
             <label for="hvp-cdn-phone">Your phone number (optional)</label>
             <input type="text" phone="hvp-cdn-phone" id="hvp-cdn-phone" />
           </div>
-          <button id="hvp-cdn-step2-submit">Submit</button>
+          <button id="hvp-cdn-step2-submit" class="button button-primary">Submit</button>
         </form>
       </div>
     </li>
     <li>
-      <p>Insert your Customer ID</p>
-      <input type="text" class="hvp-input" id="hvp-cdn-userid" 
-        name="hvp-cdn-customerid" />
+      <form>
+        <p>Insert your Customer ID</p>
+        <input type="text" class="hvp-input" 
+          id="hvp-cdn-customerid" 
+          name="hvp-cdn-customerid" 
+          value="<?php echo esc_attr(get_option('hvp-cdn-customerid')); ?>" />
+        <button class="button button-primary">Save</button>
+      </form>
     </li>
     <li>
       <p>View video stats in your personal <a id="hvp-dashboard-link" 
