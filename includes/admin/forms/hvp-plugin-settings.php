@@ -22,38 +22,38 @@ if (!defined('ABSPATH')) exit;
   <h2>Activate free video analytics</h2>
   <ul class="hvp-cdn-signup-steps">
     <li>
-      <button id="hvp-cdn-signup-btn" class="button button-primary">Sign 
-      up</button> for HolaCDN. If you already have a HolaCDN account, continue 
-      to step 2.
-      <div id="hvp-cdn-signup-step1">
-        <form>
-          <div class="hvp-input-row">
-            <label for="hvp-cdn-email">Email</label>
-            <input name="hvp-cdn-email" id="hvp-cdn-email" type="email" 
-              value="<?php echo wp_get_current_user()->user_email; ?>" />
-          </div>
-          <div class="hvp-input-row">
-            <label for="hvp-cdn-password">Password</label>
-            <input name="hvp-cdn-passwd" id="hvp-cdn-passwd" type="password" />
-          </div>
-          <button id="hvp-cdn-step1-submit" class="button button-primary">
-            Submit
-          </button>
-          <div id="hvp-cdn-signup-inprogress">
-            Creating your HolaCDN account...
-          </div>
-          <div id="hvp-cdn-signup-error" class="hvp-error">
-            There was an error creating your HolaCDN account. Please go to <a 
-            href="//holacdn.com">http://holacdn.com</a> and complete your 
-            signup there.
-          </div>
-          <div id="hvp-cdn-signup-used" class="hvp-error">
-            There is already a user account for that email address. Please sign 
-            in at <a href="//holacdn.com">http://holacdn.com</a> to get your 
-            account ID.
-          </div>
-        </form>
-      </div>
+      <form>
+        <button id="hvp-cdn-signup-btn" class="button button-primary">Sign 
+        up</button> for HolaCDN. If you already have a HolaCDN account, 
+        continue to step 2.
+        <div id="hvp-cdn-signup-step1">
+            <div class="hvp-input-row">
+              <label for="hvp-cdn-email">Email</label>
+              <input name="hvp-cdn-email" id="hvp-cdn-email" type="email" 
+                value="<?php echo wp_get_current_user()->user_email; ?>" />
+            </div>
+            <div class="hvp-input-row">
+              <label for="hvp-cdn-passwd">Password</label>
+              <input name="hvp-cdn-passwd" id="hvp-cdn-passwd" type="password" />
+            </div>
+            <button id="hvp-cdn-step1-submit" class="button button-primary">
+              Submit
+            </button>
+            <div id="hvp-cdn-signup-inprogress">
+              Creating your HolaCDN account...
+            </div>
+            <div id="hvp-cdn-signup-error" class="hvp-error">
+              There was an error creating your HolaCDN account. Please go to <a 
+              href="//holacdn.com">http://holacdn.com</a> and complete your 
+              signup there.
+            </div>
+            <div id="hvp-cdn-signup-used" class="hvp-error">
+              There is already a user account for that email address. Please sign 
+              in at <a href="//holacdn.com">http://holacdn.com</a> to get your 
+              account ID.
+            </div>
+        </div>
+      </form>
       <div id="hvp-cdn-signup-step2">
         <form>
           <div class="hvp-input-row">

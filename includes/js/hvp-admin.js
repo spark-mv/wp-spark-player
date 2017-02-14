@@ -102,22 +102,27 @@ jQuery(document).ready(function($) {
         $('#hvp-cdn-signup-inprogress').slideDown();
         var email = $('#hvp-cdn-email').val();
         $.get('//holacdn.com/users/check_email', {email: email})
-            .always(function(data) { // TODO: temp testing
+            .done(function(data, status, jqXhr) { // TODO: temp testing
                 if (data.used) {
                     $('#hvp-cdn-signup-inprogress').slideUp();
                     $('#hvp-cdn-signup-used').slideDown();
                     return;
                 }
-                var password = $('#hvp-cdn-password').val();
-                $.post('//holacdn.com/users/auth/basic/signup?next=/', {username: email, password: password})
-                    .always(function(data){
-                        $('#hvp-cdn-signup-step1').slideUp();
-                        $('#hvp-cdn-signup-step2').slideDown();
-                    })
-                    .fail(function() {
-                        $('#hvp-cdn-signup-inprogress').slideUp();
-                        $('#hvp-cdn-signup-error').slideDown();
-                    });
+                var password = $('#hvp-cdn-passwd').val();
+                $.ajax('//holacdn.com/users/auth/basic/signup?next=/', {
+                    method: 'POST',
+                    crossDomain: true,
+                    xhrFields: { withCredentials: true },
+                    data: {username: email, password: password},
+                })
+                .done(function(data){
+                    $('#hvp-cdn-signup-step1').slideUp();
+                    $('#hvp-cdn-signup-step2').slideDown();
+                })
+                .fail(function() {
+                    $('#hvp-cdn-signup-inprogress').slideUp();
+                    $('#hvp-cdn-signup-error').slideDown();
+                });
             })
             .fail(function() {
                 $('#hvp-cdn-signup-inprogress').slideUp();
@@ -134,7 +139,7 @@ jQuery(document).ready(function($) {
         var phone = $('#hvp-cdn-phone').val();
         $.post('//holacdn.com/users/save_details', {contact_name: name, 
             website: site, company: company, skype: skype, phone: phone})
-            .always(function(data) {
+            .done(function(data) {
                 $('#hvp-cdn-customerid').val(data.customer_id);
                 $('#hvp-cdn-signup-step2').slideUp();
             })
