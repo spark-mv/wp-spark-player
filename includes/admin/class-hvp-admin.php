@@ -76,6 +76,7 @@ class Hvp_Admin {
                 'hvp_player_setting_page', 
                 array($this, 'hvp_player_setting_page'));
         }
+        register_setting('hvp-cdn-settings', 'hvp-cdn-customerid');
     }
 
     /**
@@ -104,6 +105,7 @@ class Hvp_Admin {
         // mark up for popup
         add_action('admin_footer-post.php', array($this,'hvp_shortcode_popup'));
         add_action('admin_footer-post-new.php', array($this,'hvp_shortcode_popup'));
+        // persistent CDN settings
     }
 }
 ?>
