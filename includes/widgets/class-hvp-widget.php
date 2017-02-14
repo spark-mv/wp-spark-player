@@ -273,21 +273,6 @@ class Hvp_Widget extends WP_Widget {
         elseif($video_type == 'osmf')
             wp_enqueue_script('hvp_osmf_video_script');
 
-        // IMA ADS SDK
-        wp_enqueue_script('hvp_ima_ads_sdk_script');
-
-        // Videojs ads script
-        wp_enqueue_script('hvp_video_ads_script');
-
-        // IMA ADS script
-        wp_enqueue_script('hvp_ima_ads_script');
-
-        // VAST-VAPID ADS script
-        wp_enqueue_script('hvp-vast-vpaid-ads-script');
-
-        // ADS init script
-        wp_enqueue_script('hvp_public_ads_script');
-        
         // Check if youtube url added
         if($mime_type == 'video/youtube') {
             // Include youtube support js
@@ -316,6 +301,23 @@ class Hvp_Widget extends WP_Widget {
         $adtagurl = '';
         if($instance['is_video_ads'] == 'on' && $video_adurl != '')
             $adtagurl = 'data-adurl="'. $video_adurl .'" ';
+        if ($adtagurl) {
+            // IMA ADS SDK
+            wp_enqueue_script('hvp_ima_ads_sdk_script');
+
+            // Videojs ads script
+            wp_enqueue_script('hvp_video_ads_script');
+
+            // IMA ADS script
+            wp_enqueue_script('hvp_ima_ads_script');
+
+            // VAST-VAPID ADS script
+            wp_enqueue_script('hvp-vast-vpaid-ads-script');
+
+            // ADS init script
+            wp_enqueue_script('hvp_public_ads_script');
+        }
+        
         ?>
                 <?php if ($url) { ?>
         <div class="hvp-video hvp-widget-video">

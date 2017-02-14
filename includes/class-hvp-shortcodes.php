@@ -60,21 +60,6 @@ class Hvp_Shortcode {
             wp_enqueue_script('hvp_osmf_video_script');
         }
 
-        // IMA ADS SDK
-        wp_enqueue_script('hvp_ima_ads_sdk_script');
-
-        // Videojs ads script
-        wp_enqueue_script('hvp_video_ads_script');
-
-        // IMA ADS script
-        wp_enqueue_script('hvp_ima_ads_script');
-
-        // VAST-VAPID ADS script
-        wp_enqueue_script('hvp-vast-vpaid-ads-script');
-
-        // ADS init script
-        wp_enqueue_script('hvp_public_ads_script');
-
         $skin = 'default-skin';
         if (strpos($width, '%') == false && strpos($width, 'px') == false) {
             $width = $width.'px';
@@ -126,7 +111,25 @@ class Hvp_Shortcode {
                 $techorder .= '"vimeo": { "ytControls": 2 },';
             }            
         }
+
         $adtagurl = (!empty($adtagurl)) ? 'data-adurl="'. $adtagurl .'" ' : '';
+        if ($adtagurl) {
+            // IMA ADS SDK
+            wp_enqueue_script('hvp_ima_ads_sdk_script');
+
+            // Videojs ads script
+            wp_enqueue_script('hvp_video_ads_script');
+
+            // IMA ADS script
+            wp_enqueue_script('hvp_ima_ads_script');
+
+            // VAST-VAPID ADS script
+            wp_enqueue_script('hvp-vast-vpaid-ads-script');
+
+            // ADS init script
+            wp_enqueue_script('hvp_public_ads_script');
+        }
+
 
         ob_start();
         ?>
