@@ -310,6 +310,8 @@
     color: white;
     font-weight: bold;
     text-align: center;
+    padding-right: 1px;
+    padding-bottom: 1px;
 }
 .hvp-cdn-signup-steps > li {
     display: block;
