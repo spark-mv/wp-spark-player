@@ -92,64 +92,6 @@ jQuery(document).ready(function($) {
             $('#hvp-analytics-info').fadeOut();
     });
 
-    $(document).on('click', '#hvp-cdn-signup-btn', function(){
-        $('#hvp-cdn-signup-btn').prop('disabled', true);
-        $('#hvp-cdn-signup-step1').slideDown();
-        return false;
-    });
-
-    $(document).on('click', '#hvp-cdn-step1-submit', function(){
-        $('#hvp-cdn-signup-inprogress').slideDown();
-        var email = $('#hvp-cdn-email').val();
-        $.get('//holacdn.com/users/check_email', {email: email})
-            .done(function(data, status, jqXhr) { // TODO: temp testing
-                if (data.used) {
-                    $('#hvp-cdn-signup-inprogress').slideUp();
-                    $('#hvp-cdn-signup-used').slideDown();
-                    return;
-                }
-                var password = $('#hvp-cdn-passwd').val();
-                $.ajax('//holacdn.com/users/auth/basic/signup?next=/', {
-                    method: 'POST',
-                    crossDomain: true,
-                    xhrFields: { withCredentials: true },
-                    data: {username: email, password: password},
-                })
-                .done(function(data){
-                    $('#hvp-cdn-signup-step1').slideUp();
-                    $('#hvp-cdn-signup-step2').slideDown();
-                })
-                .fail(function() {
-                    $('#hvp-cdn-signup-inprogress').slideUp();
-                    $('#hvp-cdn-signup-error').slideDown();
-                });
-            })
-            .fail(function() {
-                $('#hvp-cdn-signup-inprogress').slideUp();
-                $('#hvp-cdn-signup-error').slideDown();
-            });
-        return false;
-    });
-
-    $(document).on('click', '#hvp-cdn-step2-submit', function(){
-        var name = $('#hvp-cdn-name').val();
-        var site = $('#hvp-cdn-site').val();
-        var company = $('#hvp-cdn-company').val();
-        var skype = $('#hvp-cdn-skype').val();
-        var phone = $('#hvp-cdn-phone').val();
-        $.post('//holacdn.com/users/save_details', {contact_name: name, 
-            website: site, company: company, skype: skype, phone: phone})
-            .done(function(data) {
-                $('#hvp-cdn-customerid').val(data.customer_id);
-                $('#hvp-cdn-signup-step2').slideUp();
-            })
-            .fail(function() {
-                // TODO
-                console.warn('save_details fail');
-            });
-        return false;
-    });
-
     window.hvp = {
         handle_close: function() {
             var checkbox = $('#hvp-analytics-optin')[0];
