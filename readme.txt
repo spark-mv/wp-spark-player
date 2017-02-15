@@ -94,6 +94,10 @@ Fixed UI and handling of options for widget
 = 1.3 =
 Integrated analytics signup into the plugin
 
+= 1.3.1 =
+Fixed intermittent playback failures with Vimeo and YouTube. Ensured that ads
+are not used together with those sources.
+
 == Upgrade Notice ==
 
 = 1.0 =
