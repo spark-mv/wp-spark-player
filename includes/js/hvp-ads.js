@@ -48,14 +48,14 @@ jQuery(document).ready(function($){
             player.play();
         });
 
-      player.vastClient({
-       url: adurl,
-       playAdAlways: true,
-       //Note: As requested we set the preroll timeout at the same place thant the adsCancelTimeout
-       adCancelTimeout: 5000,
-       vpaidFlashLoaderPath : HVP.flashPath,
-       adsEnabled: true
-      });
+       player.vastClient({
+           url: adurl,
+           playAdAlways: true,
+           //Note: As requested we set the preroll timeout at the same place thant the adsCancelTimeout
+           adCancelTimeout: 5000,
+           vpaidFlashLoaderPath : HVP.flashPath,
+           adsEnabled: true
+       });
 
        player.on('reset', function () {
            if (!player.vast.isEnabled()) {
@@ -63,6 +63,5 @@ jQuery(document).ready(function($){
            } 
        });
     }
-
   });
 });
