@@ -95,11 +95,17 @@ class Hvp_Scripts {
         $NoDefaultTheme = 'window.VIDEOJS_NO_BASE_THEME = true;window.VIDEOJS_NO_DYNAMIC_STYLE = true;';
         $osmf_file = $flash_file . 'videojs.options.osmf.swf = "' . HVP_INC_URL . '/flash/videojs-osmf.swf";';
 
-         // wp_add_inline_script('hvp_video_script', $NoDefaultTheme, 'before');
-         // wp_add_inline_script('hvp_hls_video_script', $NoDefaultTheme, 'before');        
-         wp_add_inline_script('hvp_video_script', $flash_file);
-         wp_add_inline_script('hvp_hls_video_script', $flash_file);
-         wp_add_inline_script('hvp_osmf_video_script', $osmf_file);
+        // wp_add_inline_script('hvp_video_script', $NoDefaultTheme, 'before');
+        // wp_add_inline_script('hvp_hls_video_script', $NoDefaultTheme, 'before');        
+        wp_add_inline_script('hvp_video_script', $flash_file);
+        wp_add_inline_script('hvp_hls_video_script', $flash_file);
+        wp_add_inline_script('hvp_osmf_video_script', $osmf_file);
+
+        // Disable right-click
+        $no_rtclick = "jQuery(document).on('contextmenu', '.vjs-tech', function(e) { e.preventDefault(); });";
+        wp_add_inline_script('hvp_video_script', $no_rtclick);
+        wp_add_inline_script('hvp_hls_video_script', $no_rtclick);
+        wp_add_inline_script('hvp_osmf_video_script', $no_rtclick);
     }
 
     /**
