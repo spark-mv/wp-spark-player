@@ -11,6 +11,7 @@ if (!defined('ABSPATH')) exit;
  * @since 1.3
  */
 
+$cdn_customerid = get_option('hvp-cdn-customerid');
 ?>
 <!-- . begining of wrap -->
 <div class="wrap">
@@ -22,8 +23,12 @@ if (!defined('ABSPATH')) exit;
   <h2>Activate free video analytics</h2>
   <ul class="hvp-cdn-signup-steps">
     <li>
-      <a href="//holacdn.com/cp" target="_blank" class="button
-      button-primary">Sign up</a> for HolaCDN.
+      <?php if ($cdn_customerid) { ?>
+          <p>HolaCDN analytics account activated!!</p>
+      <?php } else { ?>
+        <a href="//holacdn.com/cp" target="_blank" class="button
+        button-primary">Sign up</a> for HolaCDN.
+      <?php } ?>
     </li>
     <li>
       <form method="post" name="hvp-cdn-customerid" action="options.php">

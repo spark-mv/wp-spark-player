@@ -17,6 +17,7 @@ if (!defined('ABSPATH')) exit;
 // Get all post types
 $type_arr = array('simple'=> 'Simple', 'hls' => 'HLS', 'osmf' => 'OSMF');
 $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
+$cdn_customerid = get_option('hvp-cdn-customerid');
 ?>
 
 <div class="hvp-popup-content" id="hvp-popup-shortcode">
@@ -135,12 +136,14 @@ $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
                         placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>">
                 </div>
                 <div class="hvp-input-row">
-                    <div class="hvp-chk">
-                        <input type="checkbox" id="hvp-analytics-optin" name="hvp-analytics-optin"
-                            onChange='hvp.set_user_info(<?php _e(json_encode(hvp_user_details())); ?>)'>
-                        <label for="hvp-analytics-optin"><?php _e('Activate free video analytics'); ?></label>
-                    </div>
-                    <p id="hvp-analytics-info">You will be contacted by a member of the HolaCDN team.</p>
+                <?php if ($cdn_customerid) { ?>
+                    <p>HolaCDN analytics activated for account <?php _e($cdn_customerid); ?>!</p>
+                <?php } else { ?>
+                    <a target="_blank" 
+                      href="<?php echo admin_url('admin.php?page=hvp_player_setting_page'); ?>">
+                        <?php _e('Activate free video analytics'); ?>
+                    </a>
+                <?php } ?>
                 </div>
             </div>
         </div>
