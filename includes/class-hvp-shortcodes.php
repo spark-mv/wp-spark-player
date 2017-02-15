@@ -96,28 +96,33 @@ class Hvp_Shortcode {
             wp_enqueue_script('hvp_youtube_video_script');
             $techorder = '"techOrder": ["youtube"],'; // Videojs attrib
             $data_setup = '';
+            $adtagurl = '';
 
             // Check for display youtube control or not
             if($ytcontrol === true || $ytcontrol === 'true') {
                 $controls = '';
                 $techorder .= '"youtube": { "ytControls": 2 },';
             }
-            wp_add_inline_script('hvp_youtube_video_script', "videojs('$res_class', { $techorder });");
+            wp_add_inline_script('hvp_youtube_video_script',
+                "videojs('$res_class', { $techorder });");
         } elseif ($mime_type == 'video/vimeo') {
             // Include vimeo support js
             wp_enqueue_script('hvp_vimeo_video_script');
             $techorder = '"techOrder": ["vimeo"],'; // Videojs attrib
             $data_setup = '';
+            $adtagurl = '';
 
             // Check for display vimeo control or not
             if($ytcontrol === true || $ytcontrol === 'true') {
                 $controls = '';
                 $techorder .= '"vimeo": { "ytControls": 2 },';
             }            
-            wp_add_inline_script('hvp_vimeo_video_script', "videojs('$res_class', { $techorder });");
+            wp_add_inline_script('hvp_vimeo_video_script', 
+                "videojs('$res_class', { $techorder });");
         }
 
-        $adtagurl = (!empty($adtagurl)) ? 'data-adurl="'. $adtagurl .'" ' : '';
+        // Only support as when NOT YouTube or Vimeo
+        $adtagurl = (!empty($adtagurl)) ? 'data-adurl="'. esc_attr($adtagurl) .'" ' : '';
         if ($adtagurl) {
             // IMA ADS SDK
             wp_enqueue_script('hvp_ima_ads_sdk_script');
