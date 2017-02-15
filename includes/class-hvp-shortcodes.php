@@ -88,7 +88,7 @@ class Hvp_Shortcode {
         $controls = ($controls === true || $controls === 'true') ? 'controls' : '';
 
         // Causes auto-setup of videojs. Can't use with YT, Vimeo, or ads
-        $data_setup = 'data-setup="{plugins:{}}"';
+        $data_setup = 'data-setup=\'{"plugins":{}}\'';
 
         // Check if youtube url added
         if($mime_type == 'video/youtube') {
