@@ -84,10 +84,6 @@ class Hvp_Scripts {
      * @since 1.0.0
      */
     public function hvp_public_styles() {
-        
-        // Register front style for default skin
-        wp_register_style('hvp_video_style',  HVP_INC_URL . '/css/ver-5.8.8/video-js.css',HVP_VERSION);
-        
         // Register front style for hola skin
         wp_register_style('hvp_hola_style',  HVP_INC_URL . '/css/hola-skin.css',HVP_VERSION);
 
@@ -99,11 +95,6 @@ class Hvp_Scripts {
 
         // Register front style for VAST-VPAID ADS
         wp_register_style('hvp-vast-vpaid-style',  HVP_INC_URL . '/css/ads/videojs.vast.vpaid.min.css',HVP_VERSION);
-
-        wp_enqueue_style('hvp_video_style');
-        wp_enqueue_style('hvp_hola_public_style');
-        wp_enqueue_style('hvp_ima_style');
-        wp_enqueue_style('hvp-vast-vpaid-style');
     }
     
     /**
