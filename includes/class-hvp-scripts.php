@@ -52,7 +52,13 @@ class Hvp_Scripts {
         global $post;        
 
         // Simple video js
-        wp_register_script('hvp_video_script', HVP_INC_URL . '/js/hola_player.js', array(), HVP_VERSION);
+        $customer = get_option('hvp-cdn-customerid');
+        if ($customer) {
+            wp_register_script('hvp_video_script', HVP_INC_URL . "/js/hola_player.js?customer=$customer", array(), HVP_VERSION);
+        }
+        else {
+            wp_register_script('hvp_video_script', HVP_INC_URL . "/js/hola_player.js", array(), HVP_VERSION);
+        }
 
         // Youtube videojs support
         wp_register_script('hvp_youtube_video_script', HVP_INC_URL . '/js/Youtube.js', array(), HVP_VERSION);
