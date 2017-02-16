@@ -51,17 +51,8 @@ class Hvp_Scripts {
     public function hvp_public_scripts(){
         global $post;        
 
-        // Support js for IE
-        wp_register_script('hvp_video_ie_script', HVP_INC_URL . '/js/ie8/videojs-ie8.min.js', array(), HVP_VERSION);
-
         // Simple video js
-        wp_register_script('hvp_video_script', HVP_INC_URL . '/js/video.min.js', array(), HVP_VERSION);
-
-        // HLS video js
-        wp_register_script('hvp_hls_video_script', HVP_INC_URL . '/js/video.hls.min.js', array(), HVP_VERSION);
-
-        // OSMF video js
-        wp_register_script('hvp_osmf_video_script', HVP_INC_URL . '/js/videojs.osmf.min.js', array(), HVP_VERSION);
+        wp_register_script('hvp_video_script', HVP_INC_URL . '/js/hola_player.js', array(), HVP_VERSION);
 
         // Youtube videojs support
         wp_register_script('hvp_youtube_video_script', HVP_INC_URL . '/js/Youtube.js', array(), HVP_VERSION);
@@ -74,13 +65,6 @@ class Hvp_Scripts {
 
         // IMA ADS SDK loader
         wp_register_script('hvp_ima_ads_sdk_script', '//imasdk.googleapis.com/js/sdkloader/ima3.js', array(), HVP_VERSION);
-        // wp_register_script('hvp_ima_ads_sdk_script', HVP_INC_URL . '/js/ads/ima/ima3.js', array(), HVP_VERSION);
-
-        // Videojs ADS support
-        wp_register_script('hvp_video_ads_script', HVP_INC_URL . '/js/videojs.ads.js', array(), HVP_VERSION);
-
-        // VAST and Vpaid ADS support from libraries.io/github/hola/videojs-vast-vpaid
-        wp_register_script('hvp-vast-vpaid-ads-script', HVP_INC_URL . '/js/ads/vast-vpaid/videojs-vast-vpaid.min.js', array(), HVP_VERSION);
 
         // Include ADS support
         wp_register_script('hvp_public_ads_script', HVP_INC_URL . '/js/hvp-ads.js', array(), HVP_VERSION);
@@ -88,25 +72,10 @@ class Hvp_Scripts {
         wp_localize_script('hvp_public_ads_script', 'HVP', 
             array('flashPath' => $ads_flashPath));
 
-        wp_enqueue_script('hvp_video_ie_script');
-
-        // Flash file path
-        $flash_file = 'videojs.options.flash.swf = "' . HVP_INC_URL .'/flash/ver-5.8.8/video-js.swf";';
-        $NoDefaultTheme = 'window.VIDEOJS_NO_BASE_THEME = true;window.VIDEOJS_NO_DYNAMIC_STYLE = true;';
-        $osmf_file = $flash_file . 'videojs.options.osmf.swf = "' . HVP_INC_URL . '/flash/videojs-osmf.swf";';
-
-        // wp_add_inline_script('hvp_video_script', $NoDefaultTheme, 'before');
-        // wp_add_inline_script('hvp_hls_video_script', $NoDefaultTheme, 'before');        
-        wp_add_inline_script('hvp_video_script', $flash_file);
-        wp_add_inline_script('hvp_hls_video_script', $flash_file);
-        wp_add_inline_script('hvp_osmf_video_script', $osmf_file);
-
         // Disable right-click
         $no_rtclick = "jQuery(document).on('contextmenu', '.vjs-tech', function(e) { e.preventDefault(); });";
         wp_add_inline_script('hvp_video_script', $no_rtclick);
-        wp_add_inline_script('hvp_hls_video_script', $no_rtclick);
-        wp_add_inline_script('hvp_osmf_video_script', $no_rtclick);
-    }
+   }
 
     /**
      * Enqueue styles on front Side

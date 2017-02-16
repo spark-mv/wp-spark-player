@@ -18,7 +18,7 @@ jQuery(document).ready(function($){
     var id = $(this).attr('id');
     var adurl = $(this).data('adurl');
     if(adurl != '') {
-        var player = videojs(id);
+        var player = hola_player(id);
         var options = {
           id: id,
           adTagUrl: adurl

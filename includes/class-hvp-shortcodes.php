@@ -50,15 +50,7 @@ class Hvp_Shortcode {
         $mime_type = hvp_get_mimetype($url);
 
         // include video javascript based on video type
-        if (!$hls && !$osmf) {
-            wp_enqueue_script('hvp_video_script');
-        }
-        if ($hls) {
-            wp_enqueue_script('hvp_hls_video_script');
-        }
-        if ($osmf) {
-            wp_enqueue_script('hvp_osmf_video_script');
-        }
+        wp_enqueue_script('hvp_video_script');
 
         $skin = 'default-skin';
         if (strpos($width, '%') == false && strpos($width, 'px') == false) {
@@ -126,15 +118,6 @@ class Hvp_Shortcode {
         if ($adtagurl) {
             // IMA ADS SDK
             wp_enqueue_script('hvp_ima_ads_sdk_script');
-
-            // Videojs ads script
-            wp_enqueue_script('hvp_video_ads_script');
-
-            // IMA ADS script
-            wp_enqueue_script('hvp_ima_ads_script');
-
-            // VAST-VAPID ADS script
-            wp_enqueue_script('hvp-vast-vpaid-ads-script');
 
             // ADS init script
             wp_enqueue_script('hvp_public_ads_script');

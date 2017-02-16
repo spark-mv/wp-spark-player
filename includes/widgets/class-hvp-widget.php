@@ -265,13 +265,7 @@ class Hvp_Widget extends WP_Widget {
         $techorder = '';
 
         // include video javascript based on video type
-        if($video_type == 'simple') {
-            wp_enqueue_script('hvp_video_script');
-        }
-        elseif($video_type == 'hls')
-            wp_enqueue_script('hvp_hls_video_script');
-        elseif($video_type == 'osmf')
-            wp_enqueue_script('hvp_osmf_video_script');
+        wp_enqueue_script('hvp_video_script');
 
         // Check if youtube url added
         if($mime_type == 'video/youtube') {
@@ -284,6 +278,8 @@ class Hvp_Widget extends WP_Widget {
                 $controls = '';
                 $techorder .= '"youtube": { "ytControls": 2 },';
             }
+            wp_add_inline_script('hvp_youtube_video_script', 
+                "videojs('$res_class', { $techorder });");
 
         } elseif ($mime_type == 'video/vimeo') {
             // Include vimeo support js
@@ -295,6 +291,8 @@ class Hvp_Widget extends WP_Widget {
                 $controls = '';
                 $techorder .= '"vimeo": { "ytControls": 2 },';
             }            
+            wp_add_inline_script('hvp_vimeo_video_script', 
+                "videojs('$res_class', { $techorder });");
         }
 
         // code to add ads to video
@@ -304,15 +302,6 @@ class Hvp_Widget extends WP_Widget {
         if ($adtagurl) {
             // IMA ADS SDK
             wp_enqueue_script('hvp_ima_ads_sdk_script');
-
-            // Videojs ads script
-            wp_enqueue_script('hvp_video_ads_script');
-
-            // IMA ADS script
-            wp_enqueue_script('hvp_ima_ads_script');
-
-            // VAST-VAPID ADS script
-            wp_enqueue_script('hvp-vast-vpaid-ads-script');
 
             // ADS init script
             wp_enqueue_script('hvp_public_ads_script');
