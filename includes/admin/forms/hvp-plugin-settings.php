@@ -45,7 +45,10 @@ $cdn_customerid = get_option('hvp-cdn-customerid');
     </li>
     <li>
       <p>View video stats in your personal <a id="hvp-dashboard-link"
-        href="//holacdn.com/cp" target="_blank">Dashboard</a>.
+        href="//holacdn.com/cp/stats/dashboard" target="_blank">Dashboard</a>.
+      </p>
+      <p><a href="mailto:sales@holacdn.com?subject=Help with HolaCDN on Wordpress&cc=or@hola.org">
+        Contact us for help.</a>
       </p>
     </li>
   </ol>
