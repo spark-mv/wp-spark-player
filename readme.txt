@@ -98,6 +98,11 @@ Integrated analytics signup into the plugin
 Fixed intermittent playback failures with Vimeo and YouTube. Ensured that ads
 are not used together with those sources.
 
+= 1.3.2 =
+More thorough fix for playback failures with Vimeo and YouTube.
+Moved to current version of hola_player.js
+Better analytics integration
+
 == Upgrade Notice ==
 
 = 1.0 =
