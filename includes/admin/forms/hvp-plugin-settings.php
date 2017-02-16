@@ -26,7 +26,7 @@ $cdn_customerid = get_option('hvp-cdn-customerid');
       <?php if ($cdn_customerid) { ?>
           <p>HolaCDN analytics account activated!!</p>
       <?php } else { ?>
-        <a href="//holacdn.com/cp" target="_blank" class="button
+        <a href="//holacdn.com?need_signup=1&cam=wordpress" target="_blank" class="button
         button-primary">Sign up</a> for HolaCDN.
       <?php } ?>
     </li>
