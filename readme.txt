@@ -114,3 +114,10 @@ Updated UI for video players and widgets
 
 = 1.3 =
 Improved user experience and analytics integration.
+
+== Screenshots ==
+
+1. The video player setup console.
+2. Activating your free video analytics.
+3. Completed video analytics.
+4. Your video analytics dashboard.
