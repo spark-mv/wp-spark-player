@@ -16,23 +16,8 @@ class Hvp_Model {
           
      //class constructor
     public function __construct()    {        
-
     }
         
-    /**
-      * Escape Tags & Slashes
-      *
-      * Handles escapping the slashes and tags
-      *
-      * @package Hola Video Player
-      * @since 1.0.0
-      */
-    
-     public function hvp_escape_attr($data){
-    
-         return esc_attr(stripslashes($data));
-     }
-    
      /**
       * Stripslashes
        *

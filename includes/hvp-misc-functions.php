@@ -74,3 +74,109 @@ function hvp_user_details() {
         'site' => $url,
     );
 }
+
+function hvp_build_video_tag($attr) {
+    $url = $attr['url'];
+    $adtagurl = $attr['adtagurl'];
+    $poster = $attr['poster'];
+    $video_type = $attr['video_type'];
+    $width = $attr['width'];
+    $height = $attr['height'];
+    $controls = $attr['controls'];
+    $autoplay = $attr['autoplay'];
+    $loop = $attr['loop'];
+    $muted = $attr['muted'];
+    $preload = $attr['preload'];
+    $ytcontrol = $attr['ytcontrol'];
+    $class = $attr['class'];
+    $template = $attr['template'];
+
+    $mime_type = hvp_get_mimetype($url);
+
+    $res_class = 'hvp-responsive-video-'.rand(1,1000);
+    wp_enqueue_script('hvp_video_script');
+    // XXX: remove this workaround once all options are supported through hola_player
+    if ($mime_type != "video/youtube" && $mime_type != "video/vimeo") {
+        if ($autoplay || $muted || $loop || $controls) {
+            wp_add_inline_script('hvp_video_script', 
+                "videojs('$res_class', {});");
+        }
+        else {
+            wp_add_inline_script('hvp_video_script', 
+                "window.hola_player({ player: jQuery('#$res_class')[0] });");
+        }
+    }
+
+    $muted = ($muted === true || $muted === 'true') ? 'muted' : '';
+    $autoplay = ($autoplay === true || $autoplay === 'true') ? 'autoplay' : '';
+    $loop = ($loop === true || $loop === 'true') ? 'loop' : '';
+    $controls = ($controls === true || $controls === 'true') ? 'controls' : '';
+
+    $skin = 'default-skin';
+    if (!empty($width) && strpos($width, '%') == false && strpos($width, 'px') == false) {
+        $width = $width.'px';
+    }
+
+    if ($template != 'basic-skin') {
+        wp_enqueue_style('hvp_hola_style');
+        $skin = 'hola-skin';
+    }
+
+    // Check if youtube url added
+    if($mime_type == 'video/youtube') {
+        // Include youtube support js
+        wp_enqueue_script('hvp_youtube_video_script');
+        $techorder = '"techOrder": ["youtube"],'; // Videojs attrib
+        $adtagurl = '';
+
+        // Check for display youtube control or not
+        if($ytcontrol === true || $ytcontrol === 'true') {
+            $controls = '';
+            $techorder .= '"youtube": { "ytControls": 2 },';
+        }
+        wp_add_inline_script('hvp_youtube_video_script',
+            "videojs('$res_class', { $techorder });");
+    } elseif ($mime_type == 'video/vimeo') {
+        // Include vimeo support js
+        wp_enqueue_script('hvp_vimeo_video_script');
+        $techorder = '"techOrder": ["vimeo"],'; // Videojs attrib
+        $adtagurl = '';
+
+        // Check for display vimeo control or not
+        if($ytcontrol === true || $ytcontrol === 'true') {
+            $controls = '';
+            $techorder .= '"vimeo": { "ytControls": 2 },';
+        }
+        wp_add_inline_script('hvp_vimeo_video_script',
+            "videojs('$res_class', { $techorder });");
+    }
+    if ($adtagurl) {
+        // IMA ADS SDK
+        wp_enqueue_script('hvp_ima_ads_sdk_script');
+        // urls are stored html-encoded
+        $adtagurl = html_entity_decode($adtagurl);
+        wp_add_inline_script('hvp_ima_ads_sdk_script',
+            "window.hola_player({ player: document.getElementById('$res_class'), ads: { adTagUrl: '$adtagurl' } });");
+    }
+
+    ob_start();
+    ?>
+    <style type="text/css">
+    .<?php echo $res_class; ?> {
+        width: 100% !important;
+        max-width: <?php echo $width; ?>;
+    }
+    </style>
+    <div class="hvp-video hvp-content-video">
+      <video id="<?php print $res_class?>" data-id="<?php print $res_class?>"
+        class="video-js <?php print $skin.' '.$res_class ?> <?php print $class?>"
+        preload="<?php print $preload; ?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>"
+        <?php print "$autoplay $muted $loop $controls "; ?>>
+            <source src="<?php print $url?>" type="<?php print $mime_type?>" />
+            <p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e('supports HTML5 video', HVP_TEXTDOMAIN) ?></a></p>
+      </video>
+    </div>
+    <?php
+    $content = ob_get_clean();
+    return $content;
+}
