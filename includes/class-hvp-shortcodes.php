@@ -13,11 +13,11 @@ if (!defined('ABSPATH')) exit;
  */
 
 class Hvp_Shortcode {
-     
+
      public $model;
      //class constructor
     public function __construct()    {
-        global $hvp_model;        
+        global $hvp_model;
         $this->model = $hvp_model;
     }
 
@@ -45,7 +45,7 @@ class Hvp_Shortcode {
             'class' => '',
             'template' => ''), $atts));
         $url = $this->model->hvp_escape_slashes_deep($url);
-        
+
         // Get file MIME type
         $mime_type = hvp_get_mimetype($url);
 
@@ -64,9 +64,9 @@ class Hvp_Shortcode {
             wp_enqueue_style('hvp_hola_style');
             $skin = 'hola-skin';
         }
-        
+
         $res_class = 'hvp-responsive-video-'.rand(1,1000);
-        
+
         $muted = ($muted === true || $muted === 'true') ? 'muted' : '';
         $autoplay = ($autoplay === true || $autoplay === 'true') ? 'autoplay' : '';
         $loop = ($loop === true || $loop === 'true') ? 'loop' : '';
@@ -96,19 +96,17 @@ class Hvp_Shortcode {
             if($ytcontrol === true || $ytcontrol === 'true') {
                 $controls = '';
                 $techorder .= '"vimeo": { "ytControls": 2 },';
-            }            
-            wp_add_inline_script('hvp_vimeo_video_script', 
+            }
+            wp_add_inline_script('hvp_vimeo_video_script',
                 "videojs('$res_class', { $techorder });");
         }
-
-        // Only support as when NOT YouTube or Vimeo
-        $adtagurl = (!empty($adtagurl)) ? 'data-adurl="'. esc_attr($adtagurl) .'" ' : '';
         if ($adtagurl) {
             // IMA ADS SDK
             wp_enqueue_script('hvp_ima_ads_sdk_script');
-
-            // ADS init script
-            wp_enqueue_script('hvp_public_ads_script');
+            // urls are stored html-encoded
+            $adtagurl = html_entity_decode($adtagurl);
+            wp_add_inline_script('hvp_ima_ads_sdk_script',
+                "window.hola_player({ player: document.getElementById('$res_class'), ads: { adTagUrl: '$adtagurl' } });");
         }
 
         ob_start();
@@ -120,9 +118,9 @@ class Hvp_Shortcode {
         }
         </style>
         <div class="hvp-video hvp-content-video">
-          <video id="<?php print $res_class?>" data-id="<?php print $res_class?>" 
-            <?php print $adtagurl ?>  class="video-js <?php print $skin.' '.$res_class ?> <?php print $class?>" 
-            preload="<?php print $preload; ?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>" 
+          <video id="<?php print $res_class?>" data-id="<?php print $res_class?>"
+            class="video-js <?php print $skin.' '.$res_class ?> <?php print $class?>"
+            preload="<?php print $preload; ?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>"
             <?php print "$autoplay $muted $loop $controls "; ?>>
                 <source src="<?php print $url?>" type="<?php print $mime_type?>" />
                 <p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e('supports HTML5 video', HVP_TEXTDOMAIN) ?></a></p>

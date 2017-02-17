@@ -66,17 +66,8 @@ class Hvp_Scripts {
         // Vimeo videojs support
         wp_register_script('hvp_vimeo_video_script', HVP_INC_URL . '/js/Vimeo.js', array(), HVP_VERSION);
 
-        // IMA ADS support
-        wp_register_script('hvp_ima_ads_script', HVP_INC_URL . '/js/ads/ima/videojs.ima.js', array(), HVP_VERSION);
-
         // IMA ADS SDK loader
         wp_register_script('hvp_ima_ads_sdk_script', '//imasdk.googleapis.com/js/sdkloader/ima3.js', array(), HVP_VERSION);
-
-        // Include ADS support
-        wp_register_script('hvp_public_ads_script', HVP_INC_URL . '/js/hvp-ads.js', array(), HVP_VERSION);
-        $ads_flashPath = HVP_INC_URL.'/flash/VPAIDFlash.swf';
-        wp_localize_script('hvp_public_ads_script', 'HVP', 
-            array('flashPath' => $ads_flashPath));
 
         // Disable right-click
         $no_rtclick = "jQuery(document).on('contextmenu', '.vjs-tech', function(e) { e.preventDefault(); });";
@@ -95,12 +86,6 @@ class Hvp_Scripts {
 
         // Register front style for public style
         wp_register_style('hvp_hola_public_style',  HVP_INC_URL . '/css/hvp-public-style.css',HVP_VERSION);
-
-        // Register front style for IMA ADS
-        wp_register_style('hvp_ima_style',  HVP_INC_URL . '/css/ads/videojs.ima.css',HVP_VERSION);
-
-        // Register front style for VAST-VPAID ADS
-        wp_register_style('hvp-vast-vpaid-style',  HVP_INC_URL . '/css/ads/videojs.vast.vpaid.min.css',HVP_VERSION);
     }
     
     /**
