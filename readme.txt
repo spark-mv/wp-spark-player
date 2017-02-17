@@ -103,6 +103,9 @@ More thorough fix for playback failures with Vimeo and YouTube.
 Moved to current version of hola_player.js
 Better analytics integration
 
+= 1.3.3 =
+Properly integrate ads in all video types.
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -119,6 +122,9 @@ Updated UI for video players and widgets
 
 = 1.3 =
 Improved user experience and analytics integration.
+
+= 1.3.3 =
+Now with better integration with ads and video analytics.
 
 == Screenshots ==
 
