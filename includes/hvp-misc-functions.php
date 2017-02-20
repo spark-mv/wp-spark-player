@@ -99,7 +99,8 @@ function hvp_build_video_tag($attr) {
     wp_enqueue_script('hvp_video_script');
 
     $skin = 'default-skin';
-    if (strpos($width, '%') == false && strpos($width, 'px') == false) {
+    if (!empty($width) && strpos($width, '%') == false 
+        && strpos($width, 'px') == false) {
         $width = $width.'px';
     }
     if($template != 'basic-skin') {
