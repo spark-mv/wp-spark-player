@@ -38,19 +38,13 @@ class Hvp_Shortcode {
             'height' => '320',
             'controls' => true,
             'autoplay' => false,
-            'loop' => false,
+            'loop' => false, 
             'muted' => false,
             'preload' => 'none',
             'ytcontrol' => false,
             'class' => '',
             'template' => ''), $atts);
         $atts['url'] = $this->model->hvp_escape_slashes_deep($atts['url']);
-        if (!($atts['hls'] || $atts['osmf'])) {
-            $atts['video_type'] = 'simple';
-        }
-        else {
-            $atts['video_type'] = 'hls/osmf';
-        }
         return hvp_build_video_tag($atts);
     }
 

@@ -91,20 +91,20 @@ function hvp_build_video_tag($attr) {
     $class = $attr['class'];
     $template = $attr['template'];
 
+    // Get file MIME type
     $mime_type = hvp_get_mimetype($url);
-
     $res_class = 'hvp-responsive-video-'.rand(1,1000);
+    $inited_player = false;
+
     wp_enqueue_script('hvp_video_script');
-    // XXX: remove this workaround once all options are supported through hola_player
-    if ($mime_type != "video/youtube" && $mime_type != "video/vimeo") {
-        if ($autoplay || $muted || $loop || $controls) {
-            wp_add_inline_script('hvp_video_script', 
-                "videojs('$res_class', {});");
-        }
-        else {
-            wp_add_inline_script('hvp_video_script', 
-                "window.hola_player({ player: jQuery('#$res_class')[0] });");
-        }
+
+    $skin = 'default-skin';
+    if (strpos($width, '%') == false && strpos($width, 'px') == false) {
+        $width = $width.'px';
+    }
+    if($template != 'basic-skin') {
+        wp_enqueue_style('hvp_hola_style');
+        $skin = 'hola-skin';
     }
 
     $muted = ($muted === true || $muted === 'true') ? 'muted' : '';
@@ -112,14 +112,9 @@ function hvp_build_video_tag($attr) {
     $loop = ($loop === true || $loop === 'true') ? 'loop' : '';
     $controls = ($controls === true || $controls === 'true') ? 'controls' : '';
 
-    $skin = 'default-skin';
-    if (!empty($width) && strpos($width, '%') == false && strpos($width, 'px') == false) {
-        $width = $width.'px';
-    }
-
-    if ($template != 'basic-skin') {
-        wp_enqueue_style('hvp_hola_style');
-        $skin = 'hola-skin';
+    $opts = "player: jQuery('#$res_class')";
+    if ($muted) {
+        $opts = "$opts, muted: true, volume: false";
     }
 
     // Check if youtube url added
@@ -136,6 +131,7 @@ function hvp_build_video_tag($attr) {
         }
         wp_add_inline_script('hvp_youtube_video_script',
             "videojs('$res_class', { $techorder });");
+        $inited_player = true;
     } elseif ($mime_type == 'video/vimeo') {
         // Include vimeo support js
         wp_enqueue_script('hvp_vimeo_video_script');
@@ -149,6 +145,7 @@ function hvp_build_video_tag($attr) {
         }
         wp_add_inline_script('hvp_vimeo_video_script',
             "videojs('$res_class', { $techorder });");
+        $inited_player = true;
     }
     if ($adtagurl) {
         // IMA ADS SDK
@@ -156,7 +153,12 @@ function hvp_build_video_tag($attr) {
         // urls are stored html-encoded
         $adtagurl = html_entity_decode($adtagurl);
         wp_add_inline_script('hvp_ima_ads_sdk_script',
-            "window.hola_player({ player: document.getElementById('$res_class'), ads: { adTagUrl: '$adtagurl' } });");
+            "window.hola_player({ $opts, ads: { adTagUrl: '$adtagurl' } });");
+        $inited_player = true;
+    }
+    if (!$inited_player) {
+        wp_add_inline_script('hvp_video_script', 
+            "window.hola_player({ $opts });");
     }
 
     ob_start();
