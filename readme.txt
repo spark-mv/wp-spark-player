@@ -106,6 +106,11 @@ Better analytics integration
 = 1.3.3 =
 Properly integrate ads in all video types.
 
+= 1.3.4 =
+New version of hola_player.js
+Correct and consistent handling of all tag options
+Made widget and shortcode use same output code
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -125,6 +130,10 @@ Improved user experience and analytics integration.
 
 = 1.3.3 =
 Now with better integration with ads and video analytics.
+
+= 1.3.4 =
+Fixed some visual errors with ad integration and made a consistent user
+experience across all playback types.
 
 == Screenshots ==
 
