@@ -113,7 +113,7 @@ function hvp_build_video_tag($attr) {
     $loop = ($loop === true || $loop === 'true') ? 'loop' : '';
     $controls = ($controls === true || $controls === 'true') ? 'controls' : '';
 
-    $opts = "player: jQuery('#$res_class')";
+    $opts = "player: jQuery('#$res_class')[0]";
     if ($muted) {
         $opts = "$opts, muted: true, volume: false";
     }
