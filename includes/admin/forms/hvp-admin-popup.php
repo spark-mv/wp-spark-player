@@ -15,7 +15,6 @@ if (!defined('ABSPATH')) exit;
  **/
 
 // Get all post types
-$type_arr = array('simple'=> 'Simple', 'hls' => 'HLS', 'osmf' => 'OSMF');
 $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
 $cdn_customerid = get_option('hvp-cdn-customerid');
 ?>
@@ -74,23 +73,6 @@ $cdn_customerid = get_option('hvp-cdn-customerid');
                         </label>
                         <select id="hvp-template" name="hvp-template">
                             <?php $first_opt = true; foreach($template_arr as $key => $value) { ?>
-                                <option <?php if ($first_opt) { print 'selected="selected"'; } $first_opt = false; ?> 
-                                    value="<?php print $key ?>"><?php print $value ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="hvp-type">
-                            <?php _e('Advanced Video Type Picker'); ?>
-                            <div class="hvp-help">
-                                <div class="hvp-help-tip">
-                                    <?php _e('Keep it simple. Change this field only if you know you need HLS/OSMF support. '.
-                                        'HLS support is required for M3U8 video sources, and OSMF support for F4M video sources.', HVP_TEXTDOMAIN);?>
-                                </div>
-                            </div>
-                        </label>
-                        <select id="hvp-type" name="hvp-type">
-                            <?php $first_opt = true; foreach($type_arr as $key => $value) { ?>
                                 <option <?php if ($first_opt) { print 'selected="selected"'; } $first_opt = false; ?> 
                                     value="<?php print $key ?>"><?php print $value ?></option>
                             <?php } ?>

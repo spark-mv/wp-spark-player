@@ -46,7 +46,6 @@ jQuery(document).ready(function($) {
         var hvp_ads_url = $('#hvp-ads-url').val();
         var hvp_width = $('#hvp-width').val();
         var hvp_height = $('#hvp-height').val();
-        var hvp_type = $('#hvp-type').val();
         var hvp_poster = $('#hvp-poster').val();
         var hvp_class = $('#hvp-class').val();
         var hvp_template = $('#hvp-template').val();
@@ -66,8 +65,6 @@ jQuery(document).ready(function($) {
             hvpshortcodestr += ' width="'+hvp_width+'"';
         if(hvp_height != '')
             hvpshortcodestr += ' height="'+hvp_height+'"';
-        if(hvp_type != 'simple' && hvp_type != '')
-            hvpshortcodestr += ' ' + hvp_type + '="true"';
         if(hvp_poster != '')
             hvpshortcodestr += ' poster="'+hvp_poster+'"';
         if(hvp_class != '')

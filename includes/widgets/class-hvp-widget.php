@@ -27,8 +27,6 @@ function hvp_widget() {
 class Hvp_Widget extends WP_Widget {
     
     public $model;
-
-    public $type_arr = array('simple'=> 'Simple', 'hls' => 'HLS', 'osmf' => 'OSMF');
     public $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic');
     
     public function __construct() {
@@ -47,7 +45,6 @@ class Hvp_Widget extends WP_Widget {
             'adtagurl' => '',
             'width' => '',
             'height' => '',
-            'video_type' => $this->type_arr[0],
             'poster' => '',
             'class' => '',
             'template' => $this->template_arr[0],
@@ -60,7 +57,6 @@ class Hvp_Widget extends WP_Widget {
         $adtagurl = $instance['adtagurl'];
         $width = $instance['width'];
         $height = $instance['height'];
-        $video_type = $instance['video_type'];
         $poster = $instance['poster'];
         $ytcontrol = $instance['ytcontrol'];
         $class = $instance['class'];
@@ -162,16 +158,6 @@ class Hvp_Widget extends WP_Widget {
             </select>
         </p>
 
-        <!-- Video type Simple, HLS or OSMF : Select Box -->
-        <p>
-            <label for="<?php echo $this->get_field_id('video_type'); ?>"><?php _e('Advanced Video Type Picker:', HVP_TEXTDOMAIN); ?></label>
-            <select class="widefat" id="<?php echo $this->get_field_id('video_type'); ?>" name="<?php echo $this->get_field_name('video_type'); ?>">
-                <?php foreach($this->type_arr as $key => $value) {?>
-                    <option <?php selected($video_type, $key); ?> value="<?php print $key ?>"><?php print $value ?></option>
-                <?php } ?>
-            </select>
-        </p>
-
         <div class="hvp-chk widefat">
             <input type="checkbox" <?php checked($instance['is_video_ads'], 'on');?> id="<?php echo $this->get_field_id('is_video_ads'); ?>"
                 name="<?php echo $this->get_field_name('is_video_ads'); ?>">
@@ -202,7 +188,6 @@ class Hvp_Widget extends WP_Widget {
             $instance['adtagurl'] = $this->model->hvp_escape_slashes_deep($new_instance['adtagurl']);
             $instance['width'] = $this->model->hvp_escape_slashes_deep($new_instance['width']);
             $instance['height'] = $this->model->hvp_escape_slashes_deep($new_instance['height']);
-            $instance['video_type'] = $this->model->hvp_escape_slashes_deep($new_instance['video_type']);
             $instance['controls'] = $new_instance['controls'];
             $instance['autoplay'] = $new_instance['autoplay'];
             $instance['poster'] = $this->model->hvp_escape_slashes_deep($new_instance['poster']);

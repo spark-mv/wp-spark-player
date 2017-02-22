@@ -32,8 +32,6 @@ class Hvp_Shortcode {
             'url' => '',
             'adtagurl'=> '',
             'poster' => '',
-            'hls' => false,
-            'osmf' => false,
             'width' => '640',
             'height' => '320',
             'controls' => true,
