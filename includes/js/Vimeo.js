@@ -333,7 +333,9 @@ THE SOFTWARE. */
         image.src = uri;
       }
       catch(e){}
-    }
+    },
+
+    controls: function() { /* required by interface */ },
   });
 
   Vimeo.isSupported = function() {

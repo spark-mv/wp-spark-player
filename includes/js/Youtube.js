@@ -612,7 +612,9 @@ THE SOFTWARE. */
         image.src = uri;
       }
       catch(e){}
-    }
+    },
+
+    controls: function() { /* required by interface */ },
   });
 
   Youtube.isSupported = function() {
