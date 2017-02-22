@@ -77,21 +77,11 @@ function hvp_user_details() {
 
 function hvp_build_video_tag($attr) {
     $url = $attr['url'];
-    $adtagurl = $attr['adtagurl'];
-    $poster = $attr['poster'];
-    $video_type = $attr['video_type'];
     $width = $attr['width'];
     $height = $attr['height'];
-    $controls = $attr['controls'];
-    $autoplay = $attr['autoplay'];
-    $loop = $attr['loop'];
     $muted = $attr['muted'];
-    $preload = $attr['preload'];
     $ytcontrol = $attr['ytcontrol'];
-    $class = $attr['class'];
-    $template = $attr['template'];
 
-    // Get file MIME type
     $mime_type = hvp_get_mimetype($url);
     $res_class = 'hvp-responsive-video-'.rand(1,1000);
 
@@ -99,66 +89,64 @@ function hvp_build_video_tag($attr) {
     wp_enqueue_script($last_script);
 
     $skin = 'default-skin';
-    if (!empty($width) && strpos($width, '%') == false 
+    if (!empty($width) && strpos($width, '%') == false
         && strpos($width, 'px') == false) {
         $width = $width.'px';
     }
-    if($template != 'basic-skin') {
+    if ($attr['template'] != 'basic-skin') {
         wp_enqueue_style('hvp_hola_style');
         $skin = 'hola-skin';
     }
 
-    $muted = ($muted === true || $muted === 'true') ? 'muted' : '';
-    $autoplay = ($autoplay === true || $autoplay === 'true') ? 'autoplay' : '';
-    $loop = ($loop === true || $loop === 'true') ? 'loop' : '';
-    $controls = ($controls === true || $controls === 'true') ? 'controls' : '';
+    $opts = array();
+    $opts['player'] = "jQuery('#$res_class')[0]";
+    $opts['sources'] = "[{ type: '$mime_type', src: '$url'}]";
 
-    $opts = "player: jQuery('#$res_class')[0]";
-    if ($muted) {
-        $opts = "$opts, muted: true, volume: false";
-    }
+    if (!empty($muted))
+        $opts['muted'] = $muted;
+    if (!empty($attr['autoplay']))
+        $opts['autoplay'] = $attr['autoplay'];
+    if (!empty($attr['loop']))
+        $opts['loop'] = $attr['loop'];
+    if (!empty($attr['controls']))
+        $opts['controls'] = $attr['controls'];
+    if ($muted)
+        $opts['volume'] = 'false';
 
-    // Check if youtube url added
     if($mime_type == 'video/youtube') {
-        // Include youtube support js
         $last_script = 'hvp_youtube_video_script';
         wp_enqueue_script($last_script);
-        $adtagurl = '';
-        $opts = "$opts, sources: [{ type: '$mime_type', src: '$url'}]";
-
-        // Check for display youtube control or not
+        $videojs_opts = "techOrder: ['youtube']";
         if($ytcontrol === true || $ytcontrol === 'true') {
-            $opts = "$opts, videojs_options: { techOrder: ['youtube'], youtube: { ytControls: 2 } }";
-            $controls = '';
+            $videojs_opts .= ", youtube: { ytControls: 2 }";
+            unset($opts['controls']);
         }
-        else {
-            $opts = "$opts, videojs_options: { techOrder: ['youtube'] }";
-        }
+        $opts['videojs_options'] = "{ $videojs_opts }";
+        unset($attr['adtagurl']);
     } elseif ($mime_type == 'video/vimeo') {
-        // Include vimeo support js
         $last_script = 'hvp_vimeo_video_script';
         wp_enqueue_script($last_script);
-        $adtagurl = '';
-        $opts = "$opts, sources: [{ type: '$mime_type', src: '$url'}]";
-
-        // Check for display youtube control or not
+        $videojs_opts = "techOrder: ['vimeo']";
         if($ytcontrol === true || $ytcontrol === 'true') {
-            $opts = "$opts, videojs_options: { techOrder: ['vimeo'], vimeo: { ytControls: 2 } }";
-            $controls = '';
+            $videojs_opts .= ", vimeo: { ytControls: 2 }";
+            unset($opts['controls']);
         }
-        else {
-            $opts = "$opts, videojs_options: { techOrder: ['vimeo'] }";
-        }
+        $opts['videojs_options'] = "{ $videojs_opts }";
+        unset($attr['adtagurl']);
     }
-    if ($adtagurl) {
+
+    if ($attr['adtagurl']) {
         // IMA ADS SDK
         $last_script = 'hvp_ima_ads_sdk_script';
         wp_enqueue_script($last_script);
-        $adtagurl = html_entity_decode($adtagurl);
-        $opts = "$opts, ads: { adTagUrl: '$adtagurl' }";
+        $adtagurl = html_entity_decode($attr['adtagurl']);
+        $opts['ads'] = "{ adTagUrl: '$adtagurl' }";
     }
 
-    wp_add_inline_script($last_script, "window.hola_player({ $opts });");
+    $opt_string = implode(', ', array_map(
+        function ($v, $k) { return "$k: $v"; },
+        $opts, array_keys($opts)));
+    wp_add_inline_script($last_script, "window.hola_player({ $opt_string });");
 
     ob_start();
     ?>
@@ -170,10 +158,10 @@ function hvp_build_video_tag($attr) {
     </style>
     <div class="hvp-video hvp-content-video">
       <video id="<?php print $res_class?>" data-id="<?php print $res_class?>"
-        class="video-js <?php print $skin.' '.$res_class ?> <?php print $class?>"
-        preload="<?php print $preload; ?>" width="<?php print $width?>" height="<?php print $height?>" poster="<?php print $poster;?>"
-        <?php print "$autoplay $muted $loop $controls "; ?>>
-            <source src="<?php print $url?>" type="<?php print $mime_type?>" />
+        class="video-js <?php print "$skin $res_class {$attr['class']}"; ?>"
+        preload="<?php print $attr['preload']; ?>" width="<?php print $width?>"
+        <?php print $muted ? "muted" : ""?>
+        height="<?php print $height?>" poster="<?php print $attr['poster'];?>">
             <p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e('supports HTML5 video', HVP_TEXTDOMAIN) ?></a></p>
       </video>
     </div>
