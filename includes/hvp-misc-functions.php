@@ -36,14 +36,14 @@ function hvp_get_mimetype($file) {
     }
 
     $youtube = array('youtube', 'com');
-    $vimio = array('vimeo', 'com');
+    $vimeo = array('vimeo', 'com');
 
     // Check if youtube url
     if(count(array_intersect($extension, $youtube)) == count($youtube))
         return 'video/youtube';
 
-    // Check if vimio url
-    if(count(array_intersect($extension, $vimio)) == count($vimio))
+    // Check if vimeo url
+    if(count(array_intersect($extension, $vimeo)) == count($vimeo))
         return 'video/vimeo';
 
     return 'video/mp4';
