@@ -111,6 +111,11 @@ New version of hola_player.js
 Correct and consistent handling of all tag options
 Made widget and shortcode use same output code
 
+= 1.3.5 =
+Made Vimeo and YouTube respect all options
+Simplified backend handling of tag generation
+Removed unnecessary UI elements
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -132,6 +137,10 @@ Improved user experience and analytics integration.
 Now with better integration with ads and video analytics.
 
 = 1.3.4 =
+Fixed some visual errors with ad integration and made a consistent user
+experience across all playback types.
+
+= 1.3.5 =
 Fixed some visual errors with ad integration and made a consistent user
 experience across all playback types.
 
