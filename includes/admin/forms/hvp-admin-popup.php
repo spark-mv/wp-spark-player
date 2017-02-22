@@ -17,6 +17,7 @@ if (!defined('ABSPATH')) exit;
 // Get all post types
 $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
 $cdn_customerid = get_option('hvp-cdn-customerid');
+wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'hvp-shortcode-popup');");
 ?>
 
 <div class="hvp-popup-content" id="hvp-popup-shortcode">

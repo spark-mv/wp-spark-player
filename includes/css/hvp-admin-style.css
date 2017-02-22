@@ -114,14 +114,6 @@
 .hvp-popup {
   padding: 10px 15px;
 }
-#hvp-analytics-optin {
-    height: 1.5rem;
-    width: 1.5rem;
-    border-radius: 1rem;
-}
-#hvp-analytics-info {
-    display: none;
-}
 #hvp-shortcode-error, .hvp-error {
 	color: red;
 }

@@ -36,6 +36,9 @@ class Hvp_Scripts {
             // Register admin style for shortcode button and poup
             wp_register_style('hvp_admin_style',  HVP_INC_URL . '/css/hvp-admin-style.css',HVP_VERSION);
             wp_enqueue_style('hvp_admin_style');
+
+            wp_register_script('hvp_ga_script', HVP_INC_URL . '/js/ga.js', HVP_VERSION);
+            wp_enqueue_script('hvp_ga_script');
             
             if (is_admin ())
                 wp_enqueue_media();

@@ -3,14 +3,15 @@ jQuery(document).ready(function($) {
         if (typeof wp !== 'undefined' && wp.media && wp.media.editor) {
             $(document).on('click', '.hvp-video-upload', function(e) {
                 e.preventDefault();
+                window.ga('hvp.send', 'event', 'video-upload', 'click');
                 var button = $(this);
                 var id = button.prev();
                 uploader(button, id, 'video');
                 return false;
             });
-
             $(document).on('click', '.hvp-poster-upload', function(e) {
                 e.preventDefault();
+                window.ga('hvp.send', 'event', 'image-upload', 'click');
                 var button = $(this);
                 var id = button.prev();
                 uploader(button, id, 'image');
@@ -19,13 +20,8 @@ jQuery(document).ready(function($) {
         }
     }
 
-    function uploader(button,id, upload_type) {
-        var file_frame;
-        if (file_frame) {
-            file_frame.open();
-            return;
-        }
-        file_frame = wp.media.frames.file_frame = wp.media({
+    function uploader(button, id, upload_type) {
+        var file_frame = wp.media.frames.file_frame = wp.media({
             frame: 'post',
             state: 'insert',
             title: button.data('uploader-title'),
@@ -37,10 +33,11 @@ jQuery(document).ready(function($) {
         });
 
         file_frame.on('insert', function() {
+            window.ga('hvp.send', 'event', upload_type+'-upload', 'insert');
             var selection = file_frame.state().get('selection');
             selection.each(function(attachment, index) {
-                        attachment = attachment.toJSON();
-                        id.val(attachment.url);
+                attachment = attachment.toJSON();
+                id.val(attachment.url);
             });
         });
 
@@ -48,9 +45,11 @@ jQuery(document).ready(function($) {
     }
 
     $(document).on('click', '.hvp-close-button', function() {
+        window.ga('hvp.send', 'event', 'hvp-close-button', 'click');
         hvp.handle_close();
         return true;
     });
+
     $(document).on('ready', function() {
         $('#hvp-firstrun-overlay').fadeIn();
         $('#hvp-firstrun-content').fadeIn();
@@ -59,9 +58,11 @@ jQuery(document).ready(function($) {
     // Display ads url input
     $(document).on('change', '#hvp-video-ads', function(){
         if($(this).is(':checked')){
+            window.ga('hvp.send', 'event', 'hvp-video-ads', 'change', '', 1);
             $('#hvp-ads-url').prop('disabled', false).focus();
         }
         else{
+            window.ga('hvp.send', 'event', 'hvp-video-ads', 'change', '', 0);
             $('#hvp-ads-url').prop('disabled', true);
         }
     });

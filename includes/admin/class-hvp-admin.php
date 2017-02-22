@@ -105,7 +105,6 @@ class Hvp_Admin {
         // mark up for popup
         add_action('admin_footer-post.php', array($this,'hvp_shortcode_popup'));
         add_action('admin_footer-post-new.php', array($this,'hvp_shortcode_popup'));
-        // persistent CDN settings
     }
 }
 ?>

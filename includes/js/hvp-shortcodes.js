@@ -33,6 +33,7 @@ jQuery(document).ready(function($) {
     });
 
     $(document).on("click", "#hvp-insert-shortcode", function() {
+        window.ga('hvp.send', 'event', 'hvp-insert-shortcode', 'click');
         var hvpshortcode = 'hvp-video';
         var hvpshortcodestr = '';
 
@@ -73,8 +74,7 @@ jQuery(document).ready(function($) {
         hvpshortcodestr += ' ytcontrol="'+hvp_ytcontrol+'"';
 
         hvpshortcodestr += '][/'+hvpshortcode+']';
-        //send_to_editor(hvpshortcodestr);
-        //tinymce.get('content').execCommand('mceInsertContent',false, wpwfpshortcodestr);
+
         window.send_to_editor(hvpshortcodestr);
         jQuery('.hvp-popup-overlay').fadeOut();
         jQuery('.hvp-popup-content').fadeOut();

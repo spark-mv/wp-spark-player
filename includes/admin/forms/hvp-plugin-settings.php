@@ -12,6 +12,7 @@ if (!defined('ABSPATH')) exit;
  */
 
 $cdn_customerid = get_option('hvp-cdn-customerid');
+wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'hvp-plugin-settings'); ga('hvp.send', 'pageview');");
 ?>
 <!-- . begining of wrap -->
 <div class="wrap">
