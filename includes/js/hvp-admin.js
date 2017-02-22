@@ -1,14 +1,4 @@
 jQuery(document).ready(function($) {
-    // Display ads url input
-    $(document).on('change', '.is_video_ads', function(){
-        if($(this).is(':checked')){
-            $('.hvp-ads-container').show();
-        }
-        else{
-            $('.hvp-ads-container').hide();
-        }
-    });
-
     if ($('.hvp-video-upload').length > 0) {
         if (typeof wp !== 'undefined' && wp.media && wp.media.editor) {
             $(document).on('click', '.hvp-video-upload', function(e) {
@@ -76,27 +66,8 @@ jQuery(document).ready(function($) {
         }
     });
 
-    // Auto-select video type for certain videos
-    $(document).on('change', '#hvp-video-url', function(){
-        var val = $(this).val();
-        if (val.match(/.m3u8$/i))
-            $('#hvp-type').val('hls');
-        if (val.match(/.f4m$/i))
-            $('#hvp-type').val('osmf');
-    });
-
-    $(document).on('change', '#hvp-analytics-optin', function(){
-        if ($(this).is(":checked"))
-            $('#hvp-analytics-info').fadeIn();
-        else
-            $('#hvp-analytics-info').fadeOut();
-    });
-
     window.hvp = {
         handle_close: function() {
-            var checkbox = $('#hvp-analytics-optin')[0];
-            if (checkbox && checkbox.checked)
-                this.create_lead();
             $('.hvp-popup-overlay').fadeOut();
             $('.hvp-popup-content').fadeOut();
         },

@@ -36,11 +36,6 @@ jQuery(document).ready(function($) {
         var hvpshortcode = 'hvp-video';
         var hvpshortcodestr = '';
 
-        var analytics = $('#hvp-analytics-optin')[0];
-        if (analytics && analytics.checked) {
-            window.hvp.create_lead();
-        }
-
         hvpSwitchDefaultEditorVisual();
         var hvp_vid_url = $('#hvp-video-url').val();
         var hvp_ads_url = $('#hvp-ads-url').val();
