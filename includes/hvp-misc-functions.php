@@ -94,9 +94,9 @@ function hvp_build_video_tag($attr) {
     // Get file MIME type
     $mime_type = hvp_get_mimetype($url);
     $res_class = 'hvp-responsive-video-'.rand(1,1000);
-    $inited_player = false;
 
-    wp_enqueue_script('hvp_video_script');
+    $last_script = 'hvp_video_script';
+    wp_enqueue_script($last_script);
 
     $skin = 'default-skin';
     if (!empty($width) && strpos($width, '%') == false 
@@ -121,46 +121,44 @@ function hvp_build_video_tag($attr) {
     // Check if youtube url added
     if($mime_type == 'video/youtube') {
         // Include youtube support js
-        wp_enqueue_script('hvp_youtube_video_script');
-        $techorder = '"techOrder": ["youtube"],'; // Videojs attrib
+        $last_script = 'hvp_youtube_video_script';
+        wp_enqueue_script($last_script);
         $adtagurl = '';
+        $opts = "$opts, sources: [{ type: '$mime_type', src: '$url'}]";
 
         // Check for display youtube control or not
         if($ytcontrol === true || $ytcontrol === 'true') {
+            $opts = "$opts, videojs_options: { techOrder: ['youtube'], youtube: { ytControls: 2 } }";
             $controls = '';
-            $techorder .= '"youtube": { "ytControls": 2 },';
         }
-        wp_add_inline_script('hvp_youtube_video_script',
-            "videojs('$res_class', { $techorder });");
-        $inited_player = true;
+        else {
+            $opts = "$opts, videojs_options: { techOrder: ['youtube'] }";
+        }
     } elseif ($mime_type == 'video/vimeo') {
         // Include vimeo support js
-        wp_enqueue_script('hvp_vimeo_video_script');
-        $techorder = '"techOrder": ["vimeo"],'; // Videojs attrib
+        $last_script = 'hvp_vimeo_video_script';
+        wp_enqueue_script($last_script);
         $adtagurl = '';
+        $opts = "$opts, sources: [{ type: '$mime_type', src: '$url'}]";
 
-        // Check for display vimeo control or not
+        // Check for display youtube control or not
         if($ytcontrol === true || $ytcontrol === 'true') {
+            $opts = "$opts, videojs_options: { techOrder: ['vimeo'], vimeo: { ytControls: 2 } }";
             $controls = '';
-            $techorder .= '"vimeo": { "ytControls": 2 },';
         }
-        wp_add_inline_script('hvp_vimeo_video_script',
-            "videojs('$res_class', { $techorder });");
-        $inited_player = true;
+        else {
+            $opts = "$opts, videojs_options: { techOrder: ['vimeo'] }";
+        }
     }
     if ($adtagurl) {
         // IMA ADS SDK
-        wp_enqueue_script('hvp_ima_ads_sdk_script');
-        // urls are stored html-encoded
+        $last_script = 'hvp_ima_ads_sdk_script';
+        wp_enqueue_script($last_script);
         $adtagurl = html_entity_decode($adtagurl);
-        wp_add_inline_script('hvp_ima_ads_sdk_script',
-            "window.hola_player({ $opts, ads: { adTagUrl: '$adtagurl' } });");
-        $inited_player = true;
+        $opts = "$opts, ads: { adTagUrl: '$adtagurl' }";
     }
-    if (!$inited_player) {
-        wp_add_inline_script('hvp_video_script', 
-            "window.hola_player({ $opts });");
-    }
+
+    wp_add_inline_script($last_script, "window.hola_player({ $opts });");
 
     ob_start();
     ?>
