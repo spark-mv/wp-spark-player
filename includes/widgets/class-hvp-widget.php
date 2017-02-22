@@ -49,6 +49,7 @@ class Hvp_Widget extends WP_Widget {
             'class' => '',
             'template' => $this->template_arr[0],
         );
+        $cdn_customerid = get_option('hvp-cdn-customerid');
 
         $instance = wp_parse_args((array) $instance, $default);
 
@@ -166,14 +167,18 @@ class Hvp_Widget extends WP_Widget {
         <input class="widefat" type="text" id="<?php echo $this->get_field_id('adtagurl'); ?>" name="<?php echo $this->get_field_name('adtagurl'); ?>" 
             placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>">
 
-        <div class="hvp-chk widefat">
-            <input type="checkbox" id="<?php echo $this->get_field_id('analytics_optin'); ?>" name="<?php echo $this->get_field_name('analytics_optin'); ?>"
-                onChange='hvp.set_user_info(<?php _e(json_encode(hvp_user_details())); ?>); hvp.create_lead();'>
-            <label for="<?php echo $this->get_field_id('analytics_optin'); ?>"><?php _e('Activate free video analytics'); ?></label>
-        </div>
-        <p>You will be contacted by a member of the HolaCDN team.</p>
+        <p>
+        <?php if ($cdn_customerid) { ?>
+            <p>HolaCDN analytics activated for account <?php _e($cdn_customerid); ?>!</p>
+        <?php } else { ?>
+            <a target="_blank" 
+              href="<?php echo admin_url('admin.php?page=hvp_player_setting_page'); ?>">
+                <?php _e('Activate free video analytics'); ?>
+            </a>
+        <?php } ?>
+        </p>
 
-        <?php
+    <?php
     }
 
     public function update($new_instance, $old_instance) {
