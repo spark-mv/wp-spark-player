@@ -123,6 +123,7 @@ wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'hvp-shortcode-popu
                     <p>HolaCDN analytics activated for account <?php _e($cdn_customerid); ?>!</p>
                 <?php } else { ?>
                     <a target="_blank" 
+                      onclick="window.ga('hvp.send', 'event', 'hvp-analytics-link', 'click')"
                       href="<?php echo admin_url('admin.php?page=hvp_player_setting_page'); ?>">
                         <?php _e('Activate free video analytics'); ?>
                     </a>
