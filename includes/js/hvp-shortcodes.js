@@ -11,9 +11,9 @@ jQuery(document).ready(function($) {
                     image : url+'/../images/hola_player.svg',
                     onclick : function() {
                         $('.hvp-popup-overlay').fadeIn();
-                        window.ga('hvp.set', 'page', 'hvp-shortcode-popup', 'click');
+                        window.ga('hvp.set', 'page', 'wp-shortcode-popup', 'click');
                         window.ga('hvp.send', 'pageview');
-                        window.ga('hvp.send', 'event', 'hvp-shortcode-btn', 'click');
+                        window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'open-shortcode-btn');
 
                         var popupcontent = $('.hvp-popup-content');
                         popupcontent.fadeIn();
@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
     });
 
     $(document).on("click", "#hvp-insert-shortcode", function() {
-        window.ga('hvp.send', 'event', 'hvp-insert-shortcode', 'click');
+        window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'insert-shortcode-btn');
         var hvpshortcode = 'hvp-video';
         var hvpshortcodestr = '';
 

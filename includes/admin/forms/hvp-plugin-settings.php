@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) exit;
  */
 
 $cdn_customerid = get_option('hvp-cdn-customerid');
-wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'hvp-plugin-settings'); ga('hvp.send', 'pageview');");
+wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-plugin-settings'); ga('hvp.send', 'pageview');");
 ?>
 <!-- . begining of wrap -->
 <div class="wrap">
@@ -28,7 +28,7 @@ wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'hvp-plugin-setting
           <p>HolaCDN analytics account activated!!</p>
       <?php } else { ?>
         <a href="//holacdn.com?need_signup=1&cam=wordpress" target="_blank"
-        onclick="window.ga('hvp.send', 'event', 'hvp-cdn-signup', 'click')"
+        onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'cdn-signup')"
         class="button button-primary">Sign up</a> for HolaCDN.
       <?php } ?>
     </li>
@@ -41,14 +41,14 @@ wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'hvp-plugin-setting
         account page</a>.</p>
         <input type="text" class="hvp-input"
           id="hvp-cdn-customerid" name="hvp-cdn-customerid"
-          onchange="window.ga('hvp.send', 'event', 'hvp-cdn-customerid', 'change')"
+          onchange="window.ga('hvp.send', 'event', 'wp-plugin', 'setvalue', 'cdn-customerid')"
           value="<?php echo esc_attr(get_option('hvp-cdn-customerid')); ?>" />
         <?php submit_button(); ?>
       </form>
     </li>
     <li>
       <p>View video stats in your personal <a id="hvp-dashboard-link"
-        onclick="window.ga('hvp.send', 'event', 'hvp-dashboard-link', 'click')"
+        onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'dashboard-link')"
         href="//holacdn.com/cp/stats/dashboard" target="_blank">Dashboard</a>.
       </p>
       <p><a href="mailto:sales@holacdn.com?subject=Help with HolaCDN on Wordpress&cc=or@hola.org">

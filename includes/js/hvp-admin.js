@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
         if (typeof wp !== 'undefined' && wp.media && wp.media.editor) {
             $(document).on('click', '.hvp-video-upload', function(e) {
                 e.preventDefault();
-                window.ga('hvp.send', 'event', 'video-upload', 'click');
+                window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'video-upload-btn');
                 var button = $(this);
                 var id = button.prev();
                 uploader(button, id, 'video');
@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
             });
             $(document).on('click', '.hvp-poster-upload', function(e) {
                 e.preventDefault();
-                window.ga('hvp.send', 'event', 'image-upload', 'click');
+                window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'image-upload-btn');
                 var button = $(this);
                 var id = button.prev();
                 uploader(button, id, 'image');
@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
         });
 
         file_frame.on('insert', function() {
-            window.ga('hvp.send', 'event', upload_type+'-upload', 'insert');
+            window.ga('hvp.send', 'event', 'wp-plugin', 'insert', upload_type+'-upload');
             var selection = file_frame.state().get('selection');
             selection.each(function(attachment, index) {
                 attachment = attachment.toJSON();
@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
     }
 
     $(document).on('click', '.hvp-close-button', function() {
-        window.ga('hvp.send', 'event', 'hvp-close-button', 'click');
+        window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'close-btn');
         hvp.handle_close();
         return true;
     });
@@ -58,11 +58,11 @@ jQuery(document).ready(function($) {
     // Display ads url input
     $(document).on('change', '#hvp-video-ads', function(){
         if($(this).is(':checked')){
-            window.ga('hvp.send', 'event', 'hvp-video-ads', 'change', '', 1);
+            window.ga('hvp.send', 'event', 'wp-plugin', 'setvalue', 'video-ads-checkbox', 1);
             $('#hvp-ads-url').prop('disabled', false).focus();
         }
         else{
-            window.ga('hvp.send', 'event', 'hvp-video-ads', 'change', '', 0);
+            window.ga('hvp.send', 'event', 'wp-plugin', 'setvalue', 'video-ads-checkbox', 0);
             $('#hvp-ads-url').prop('disabled', true);
         }
     });
