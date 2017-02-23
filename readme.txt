@@ -116,6 +116,10 @@ Made Vimeo and YouTube respect all options
 Simplified backend handling of tag generation
 Removed unnecessary UI elements
 
+= 1.3.6 -
+Integrated Google Analytics
+Removed obsolete javascript
+
 == Upgrade Notice ==
 
 = 1.0 =

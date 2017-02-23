@@ -18,7 +18,7 @@ if(!defined('HVP_DIR')) {
   define('HVP_DIR', dirname(__FILE__));      // Plugin dir
 }
 if(!defined('HVP_VERSION')) {
-  define('HVP_VERSION', '1.3.5');      // Plugin Version
+  define('HVP_VERSION', '1.3.6');      // Plugin Version
 }
 if(!defined('HVP_URL')) {
   define('HVP_URL', plugin_dir_url(__FILE__));   // Plugin url
