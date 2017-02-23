@@ -30,7 +30,7 @@ wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-firstrun-popup'
             <h1>Thanks for using the Hola Free Video Player!</h1>
             <p>Click below to activate free analytics for your videos, provided 
             by HolaCDN. You will be contacted by a member of the HolaCDN team.</p> 
-            <p><a onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'analytics-link')"
+            <p><a onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'firstrun-analytics-link')"
             href="<?php echo admin_url('admin.php?page=hvp_player_setting_page'); ?>">
             <?php _e('Activate free video analytics'); ?></a></p>
         </div>

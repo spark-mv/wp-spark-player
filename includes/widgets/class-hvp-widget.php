@@ -171,7 +171,7 @@ class Hvp_Widget extends WP_Widget {
         <?php if ($cdn_customerid) { ?>
             <p>HolaCDN analytics activated for account <?php _e($cdn_customerid); ?>!</p>
         <?php } else { ?>
-            <a target="_blank" onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'analytics-link')"
+            <a target="_blank" onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'widget-analytics-link')"
               href="<?php echo admin_url('admin.php?page=hvp_player_setting_page'); ?>">
                 <?php _e('Activate free video analytics'); ?>
             </a>
