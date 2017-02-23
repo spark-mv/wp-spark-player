@@ -11,6 +11,9 @@ jQuery(document).ready(function($) {
                     image : url+'/../images/hola_player.svg',
                     onclick : function() {
                         $('.hvp-popup-overlay').fadeIn();
+                        window.ga('hvp.set', 'page', 'hvp-shortcode-popup', 'click');
+                        window.ga('hvp.send', 'pageview');
+                        window.ga('hvp.send', 'event', 'hvp-shortcode-btn', 'click');
 
                         var popupcontent = $('.hvp-popup-content');
                         popupcontent.fadeIn();
