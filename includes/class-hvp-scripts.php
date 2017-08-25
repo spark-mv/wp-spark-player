@@ -57,10 +57,7 @@ class Hvp_Scripts {
         // Simple video js
         $customer = get_option('hvp-cdn-customerid');
         if ($customer) {
-            wp_register_script('hvp_video_script', HVP_INC_URL . "/js/hola_player.js?customer=$customer", array(), HVP_VERSION);
-        }
-        else {
-            wp_register_script('hvp_video_script', HVP_INC_URL . "/js/hola_player.js", array(), HVP_VERSION);
+            wp_register_script('hvp_video_script', "//player2.h-cdn.com/hola_player.js?customer=$customer", array(), null);
         }
 
         // Youtube videojs support
@@ -71,10 +68,6 @@ class Hvp_Scripts {
 
         // IMA ADS SDK loader
         wp_register_script('hvp_ima_ads_sdk_script', '//imasdk.googleapis.com/js/sdkloader/ima3.js', array(), HVP_VERSION);
-
-        // Disable right-click
-        $no_rtclick = "jQuery(document).on('contextmenu', '.vjs-tech', function(e) { e.preventDefault(); });";
-        wp_add_inline_script('hvp_video_script', $no_rtclick);
    }
 
     /**
@@ -84,11 +77,6 @@ class Hvp_Scripts {
      * @since 1.0.0
      */
     public function hvp_public_styles() {
-        // Register front style for hola skin
-        wp_register_style('hvp_hola_style',  HVP_INC_URL . '/css/hola-skin.css',HVP_VERSION);
-
-        // Register front style for public style
-        wp_register_style('hvp_hola_public_style',  HVP_INC_URL . '/css/hvp-public-style.css',HVP_VERSION);
     }
     
     /**

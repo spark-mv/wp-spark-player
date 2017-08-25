@@ -27,7 +27,7 @@ function hvp_widget() {
 class Hvp_Widget extends WP_Widget {
     
     public $model;
-    public $template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic');
+    public $template_arr = array('vjs-default-skin'=> 'Default');
     
     public function __construct() {
         global $hvp_model;
@@ -149,23 +149,14 @@ class Hvp_Widget extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id('class'); ?>" name="<?php echo $this->get_field_name('class'); ?>" type="text" value="<?php echo esc_attr($class); ?>" />
         </p>
         
-        <!-- template : Select Box -->
-        <p>
-            <label for="<?php echo $this->get_field_id('template'); ?>"><?php _e('Template:', HVP_TEXTDOMAIN); ?></label>
-            <select id="<?php echo $this->get_field_id('template'); ?>" name="<?php echo $this->get_field_name('template'); ?>" class="widefat">
-                <?php foreach($this->template_arr as $key => $value) {?>
-                    <option <?php selected($template, $key); ?> value="<?php print $key ?>"><?php print $value ?></option>
-                <?php } ?>
-            </select>
-        </p>
-
         <div class="hvp-chk widefat">
             <input type="checkbox" <?php checked($instance['is_video_ads'], 'on');?> id="<?php echo $this->get_field_id('is_video_ads'); ?>"
                 name="<?php echo $this->get_field_name('is_video_ads'); ?>">
             <label for="<?php echo $this->get_field_id('is_video_ads'); ?>"><?php _e('Display ads in video:'); ?></label>
         </div>
         <input class="widefat" type="text" id="<?php echo $this->get_field_id('adtagurl'); ?>" name="<?php echo $this->get_field_name('adtagurl'); ?>" 
-            placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>">
+            placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>"
+            value="<?php echo esc_attr($adtagurl); ?>">
 
         <p>
         <?php if ($cdn_customerid) { ?>
@@ -173,7 +164,7 @@ class Hvp_Widget extends WP_Widget {
         <?php } else { ?>
             <a target="_blank" onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'widget-analytics-link')"
               href="<?php echo admin_url('admin.php?page=hvp_player_setting_page'); ?>">
-                <?php _e('Activate free video analytics'); ?>
+                <?php _e('HolaCDN account required. Sign up and get free video analytics.'); ?>
             </a>
         <?php } ?>
         </p>

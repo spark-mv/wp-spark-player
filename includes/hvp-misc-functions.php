@@ -88,18 +88,14 @@ function hvp_build_video_tag($attr) {
     $last_script = 'hvp_video_script';
     wp_enqueue_script($last_script);
 
-    $skin = 'default-skin';
+    $skin = 'vjs-default-skin';
     if (!empty($width) && strpos($width, '%') == false
         && strpos($width, 'px') == false) {
         $width = $width.'px';
     }
-    if ($attr['template'] != 'basic-skin') {
-        wp_enqueue_style('hvp_hola_style');
-        $skin = 'hola-skin';
-    }
 
     $opts = array();
-    $opts['player'] = "jQuery('#$res_class')[0]";
+    $opts['player'] = "document.getElementById('$res_class')";
     $opts['sources'] = "[{ type: '$mime_type', src: '$url'}]";
 
     if (!empty($muted))
@@ -150,12 +146,6 @@ function hvp_build_video_tag($attr) {
 
     ob_start();
     ?>
-    <style type="text/css">
-    .<?php echo $res_class; ?> {
-        width: 100% !important;
-        max-width: <?php echo $width; ?>;
-    }
-    </style>
     <div class="hvp-video hvp-content-video">
       <video id="<?php print $res_class?>" data-id="<?php print $res_class?>"
         class="video-js <?php print "$skin $res_class {$attr['class']}"; ?>"

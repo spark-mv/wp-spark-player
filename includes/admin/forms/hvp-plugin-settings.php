@@ -21,7 +21,7 @@ wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-plugin-settings
     echo "<h1>" . __('Hola Free Video Player', HVP_TEXTDOMAIN) . "</h1>";
   ?> 
 
-  <h2>Activate free video analytics</h2>
+  <h2>HolaCDN account required. Sign up and get free video analytics.</h2>
   <ul class="hvp-cdn-signup-steps">
     <li>
       <?php if ($cdn_customerid) { ?>

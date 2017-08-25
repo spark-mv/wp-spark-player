@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) exit;
  **/
 
 // Get all post types
-$template_arr = array('hola-skin'=> 'Hola', 'basic-skin'=> 'Basic-skin');
+$template_arr = array('vjs-default-skin'=> 'Default');
 $cdn_customerid = get_option('hvp-cdn-customerid');
 ?>
 
@@ -32,13 +32,13 @@ $cdn_customerid = get_option('hvp-cdn-customerid');
                 <div class="hvp-input-row">
                     <label for="hvp-video-url"><?php _e('Choose video', HVP_TEXTDOMAIN);?></label>
                     <input type="url" name="hvp-video-url" id="hvp-video-url" placeholder="URL">
-                    <p>or</p>
+                    &nbsp;or&nbsp;
                     <button class="hvp-video-upload button button-primary"><?php _e('Upload', HVP_TEXTDOMAIN);?></button>
                 </div>
                 <div class="hvp-input-row">
                     <label for="hvp-poster"><?php _e('Choose poster', HVP_TEXTDOMAIN);?></label>
                     <input type="url" name="hvp-poster" id="hvp-poster" placeholder="URL">
-                    <p>or</p>
+                    &nbsp;or&nbsp;
                     <button class="hvp-poster-upload button button-primary"><?php _e('Upload', HVP_TEXTDOMAIN);?></button>
                 </div>
                 <div class="hvp-input-row">
@@ -60,24 +60,6 @@ $cdn_customerid = get_option('hvp-cdn-customerid');
                         </div>
                     </label>
                     <input type="text" id="hvp-class" name="hvp-class">
-                </div>
-                <div class="hvp-input-row">
-                    <div>
-                        <label for="hvp-template">
-                            <?php _e('Template'); ?>
-                            <div class="hvp-help">
-                                <div class="hvp-help-tip">
-                                    <?php _e('Select the template for video player. ', HVP_TEXTDOMAIN);?>
-                                </div>
-                            </div>
-                        </label>
-                        <select id="hvp-template" name="hvp-template">
-                            <?php $first_opt = true; foreach($template_arr as $key => $value) { ?>
-                                <option <?php if ($first_opt) { print 'selected="selected"'; } $first_opt = false; ?> 
-                                    value="<?php print $key ?>"><?php print $value ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
                 </div>
             </div>
             <div class="hvp-popup-col">
@@ -124,7 +106,7 @@ $cdn_customerid = get_option('hvp-cdn-customerid');
                     <a target="_blank" 
                       onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'shortcode-analytics-link')"
                       href="<?php echo admin_url('admin.php?page=hvp_player_setting_page'); ?>">
-                        <?php _e('Activate free video analytics'); ?>
+                        <?php _e('Player requires a HolaCDN account. Sign up for free.'); ?>
                     </a>
                 <?php } ?>
                 </div>

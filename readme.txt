@@ -3,7 +3,7 @@ Contributors: holanetworks
 Donate link: https://github.com/hola/video.js
 Tags: video, player, video player, free, videojs
 Requires at least: 4.5
-Tested up to: 4.7.2
+Tested up to: 4.8.1
 Stable tag: 4.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -40,8 +40,8 @@ video player, which provides your users the best viewing experience.
   directory, or install the plugin through the WordPress plugins screen
   directly.
 2. Activate the plugin through the 'Plugins' screen in your dashboard.
-3. Look for the plugin icon in the post editor, or in the widget section.
-
+3. Sign up or provide a customer code on the player configuration screen.
+4. Look for the plugin icon in the post editor, or in the widget section.
 
 == Frequently Asked Questions ==
 
@@ -62,12 +62,12 @@ Yes
 = Is Hola player open source software? =
 
 Hola player is based on VideoJS, an open source HTML5 video player. Find more
-details on the Hola Player GitHub page - https://github.com/hola/video.js
+details on the Hola Player GitHub page - https://github.com/hola/hola_player
 
 = Where can I get the source for Hola Player? =
 
 Find more details on the Hola Player GitHub page -
-https://github.com/hola/video.js
+https://github.com/hola/hola_player
 
 == Screenshots ==
 
@@ -120,6 +120,12 @@ Removed unnecessary UI elements
 Integrated Google Analytics
 Removed obsolete javascript
 
+= 1.3.7 =
+Always using the latest version of Hola Player.
+Fixed width and height configuration options to work properly in a fullscreen mode.
+Fixed ad url input to correctly load saved value.
+Fixed video selection popup when adding a video to a post.
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -147,6 +153,11 @@ experience across all playback types.
 = 1.3.5 =
 Fixed some visual errors with ad integration and made a consistent user
 experience across all playback types.
+
+= 1.3.7 =
+Plugin will always use the latest version of Hola Player now.
+Free HolaCDN account is now required for the player to work.
+Fixed some errors in configuration forms.
 
 == Screenshots ==
 

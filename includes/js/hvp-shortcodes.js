@@ -68,8 +68,6 @@ jQuery(document).ready(function($) {
             hvpshortcodestr += ' poster="'+hvp_poster+'"';
         if(hvp_class != '')
             hvpshortcodestr += ' class="'+hvp_class+'"';
-        if(hvp_template != 'hola-skin' && hvp_template != '')
-            hvpshortcodestr += ' template="'+hvp_template+'"';
         hvpshortcodestr += ' controls="'+hvp_video_control+'"';
         hvpshortcodestr += ' autoplay="'+hvp_autoplay+'"';
         hvpshortcodestr += ' loop="'+hvp_loop+'"';
