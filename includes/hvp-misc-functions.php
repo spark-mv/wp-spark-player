@@ -131,7 +131,7 @@ function hvp_build_video_tag($attr) {
         unset($attr['adtagurl']);
     }
 
-    if ($attr['adtagurl']) {
+    if ($attr['is_video_ads'] && $attr['adtagurl']) {
         // IMA ADS SDK
         $last_script = 'hvp_ima_ads_sdk_script';
         wp_enqueue_script($last_script);

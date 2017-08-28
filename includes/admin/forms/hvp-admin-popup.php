@@ -93,10 +93,10 @@ $cdn_customerid = get_option('hvp-cdn-customerid');
                 </div>
                 <div class="hvp-input-row">
                     <div class="hvp-chk">
-                        <input type="checkbox" id="hvp-video-ads" name="hvp-video-ads">
+                        <input type="checkbox" id="hvp-video-ads" class="hvp-video-ads" name="hvp-video-ads">
                         <label for="hvp-video-ads"><?php _e('Display ads in video:'); ?></label>
                     </div>
-                    <input type="text" disabled id="hvp-ads-url" name="hvp-ads-url" 
+                    <input type="text" id="hvp-ads-url" class="hvp-ads-container" name="hvp-ads-url"
                         placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>">
                 </div>
                 <div class="hvp-input-row">

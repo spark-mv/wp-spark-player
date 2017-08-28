@@ -42,6 +42,7 @@ class Hvp_Widget extends WP_Widget {
         $default = array(
             'title' => '',
             'url' => '',
+            'is_video_ads' => '',
             'adtagurl' => '',
             'width' => '',
             'height' => '',
@@ -150,14 +151,16 @@ class Hvp_Widget extends WP_Widget {
         </p>
         
         <div class="hvp-chk widefat">
-            <input type="checkbox" <?php checked($instance['is_video_ads'], 'on');?> id="<?php echo $this->get_field_id('is_video_ads'); ?>"
+            <input type="checkbox" <?php checked($instance['is_video_ads'], 'on');?>
+                id="<?php echo $this->get_field_id('is_video_ads'); ?>"
+                class="hvp-video-ads"
                 name="<?php echo $this->get_field_name('is_video_ads'); ?>">
             <label for="<?php echo $this->get_field_id('is_video_ads'); ?>"><?php _e('Display ads in video:'); ?></label>
         </div>
-        <input class="widefat" type="text" id="<?php echo $this->get_field_id('adtagurl'); ?>" name="<?php echo $this->get_field_name('adtagurl'); ?>" 
+        <input class="widefat hvp-ads-container" type="text" id="<?php echo $this->get_field_id('adtagurl'); ?>" name="<?php echo $this->get_field_name('adtagurl'); ?>" 
             placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>"
-            value="<?php echo esc_attr($adtagurl); ?>">
-
+            value="<?php echo esc_attr($adtagurl); ?>"
+            style="<?php echo $instance['is_video_ads'] ? '' : 'display: none;' ?>">
         <p>
         <?php if ($cdn_customerid) { ?>
             <p>HolaCDN analytics activated for account <?php _e($cdn_customerid); ?>!</p>

@@ -3,7 +3,7 @@
 Plugin Name: Hola Free Video Player
 Plugin URI: http://holacdn.com/player
 Description: The Hola Free Video Player is VideoJS on steroids, a commercial grade, flexible video player, which provides your users the best viewing experience.
-Version: 1.3.7
+Version: 1.3.8
 Author: Hola Networks
 Author URI: http://holacdn.com/player
 */
@@ -18,7 +18,7 @@ if(!defined('HVP_DIR')) {
   define('HVP_DIR', dirname(__FILE__));      // Plugin dir
 }
 if(!defined('HVP_VERSION')) {
-  define('HVP_VERSION', '1.3.7');      // Plugin Version
+  define('HVP_VERSION', '1.3.8');      // Plugin Version
 }
 if(!defined('HVP_URL')) {
   define('HVP_URL', plugin_dir_url(__FILE__));   // Plugin url

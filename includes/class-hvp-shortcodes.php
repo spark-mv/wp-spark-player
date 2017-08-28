@@ -30,6 +30,7 @@ class Hvp_Shortcode {
     public function hvp_simple_video($atts, $content) {
         $atts = shortcode_atts(array(
             'url' => '',
+            'is_video_ads'=> '',
             'adtagurl'=> '',
             'poster' => '',
             'width' => '640',

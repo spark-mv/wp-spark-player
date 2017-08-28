@@ -116,7 +116,7 @@ Made Vimeo and YouTube respect all options
 Simplified backend handling of tag generation
 Removed unnecessary UI elements
 
-= 1.3.6 -
+= 1.3.6 =
 Integrated Google Analytics
 Removed obsolete javascript
 
@@ -125,6 +125,9 @@ Always using the latest version of Hola Player.
 Fixed width and height configuration options to work properly in a fullscreen mode.
 Fixed ad url input to correctly load saved value.
 Fixed video selection popup when adding a video to a post.
+
+= 1.3.8 =
+Make checkbox "Display ads in video" behave consistently in both widget and shortcode forms.
 
 == Upgrade Notice ==
 
@@ -158,6 +161,9 @@ experience across all playback types.
 Plugin will always use the latest version of Hola Player now.
 Free HolaCDN account is now required for the player to work.
 Fixed some errors in configuration forms.
+
+= 1.3.8 =
+Small UI improvements.
 
 == Screenshots ==
 
