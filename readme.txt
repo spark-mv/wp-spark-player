@@ -129,6 +129,10 @@ Fixed video selection popup when adding a video to a post.
 = 1.3.8 =
 Make checkbox "Display ads in video" behave consistently in both widget and shortcode forms.
 
+= 1.3.9 =
+Display ads regardless is_video_ads attribute
+Use player vesion defined in the customer config instead of the fixed 1.0.84
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -164,6 +168,10 @@ Fixed some errors in configuration forms.
 
 = 1.3.8 =
 Small UI improvements.
+
+= 1.3.9 =
+Fixed ads.
+Plugin will use the version of Hola Player defined in the HolaCDN control panel
 
 == Screenshots ==
 
