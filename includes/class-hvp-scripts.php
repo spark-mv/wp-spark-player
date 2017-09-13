@@ -57,7 +57,7 @@ class Hvp_Scripts {
         // Simple video js
         $customer = get_option('hvp-cdn-customerid');
         if ($customer) {
-            wp_register_script('hvp_video_script', "//player2.h-cdn.com/hola_player.js?customer=$customer&version=1.0.84", array(), null);
+            wp_register_script('hvp_video_script', "//player2.h-cdn.com/hola_player.js?customer=$customer", array(), null);
         }
 
         // Youtube videojs support
