@@ -1,17 +1,18 @@
-=== Hola Free Video Player ===
-Contributors: holanetworks
-Donate link: https://github.com/hola/video.js
-Tags: video, player, video player, free, videojs
-Requires at least: 4.5
-Tested up to: 4.8.1
-Stable tag: 4.3
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+# Hola Free Video Player
+
+Contributors: holanetworks\
+Donate link: https://github.com/hola/video.js\
+Tags: video, player, video player, free, videojs\
+Requires at least: 4.5\
+Tested up to: 4.8.1\
+Stable tag: 4.3\
+License: GPLv2 or later\
+License URI: https://www.gnu.org/licenses/gpl-2.0.html\
 
 The Hola video player is VideoJS on steroids - a commercial grade, flexible
 video player, which provides your users the best viewing experience.
 
-== Description ==
+## Description
 
 - Commercial grade video player based on VideoJS
   Improved support for HLS and HDS formats.
@@ -34,7 +35,7 @@ video player, which provides your users the best viewing experience.
   Easy customization with standard HTML and CSS skinning system.
 - And it's free!
 
-== Installation ==
+## Installation
 
 1. Upload the plugin files to the `/wp-content/plugins/hola-free-video-player`
   directory, or install the plugin through the WordPress plugins screen
@@ -43,137 +44,137 @@ video player, which provides your users the best viewing experience.
 3. Sign up or provide a customer code on the player configuration screen.
 4. Look for the plugin icon in the post editor, or in the widget section.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
-= What video formats the player can play? =
+### What video formats the player can play?
 
 MP4/FLV/WebM, HDS/HLS/MPEG-DASH
 
-= What ad formats does the Player support? =
+### What ad formats does the Player support?
 
 Hola Player supports VAST and Google IMA based ads, including pre-roll,
 mid-roll and post-roll video ads. Documentation and sample code are available
 in the GitHub page - https://github.com/hola/video.js
 
-= Is it completely free? =
+### Is it completely free?
 
 Yes
 
-= Is Hola player open source software? =
+### Is Hola player open source software?
 
 Hola player is based on VideoJS, an open source HTML5 video player. Find more
 details on the Hola Player GitHub page - https://github.com/hola/hola_player
 
-= Where can I get the source for Hola Player? =
+### Where can I get the source for Hola Player?
 
 Find more details on the Hola Player GitHub page -
 https://github.com/hola/hola_player
 
-== Screenshots ==
+## Screenshots
 
 1. Video player logo in post editor
 2. Video player set up console
 
-== Changelog ==
+## Changelog
 
-= 1.0 =
+### 1.0
 First version
 
-= 1.1.1 =
+### 1.1.1
 Second stable version
 
-= 1.2 =
+### 1.2
 Greatly improved UI for inserting video player code
 
-= 1.2.1 =
+### 1.2.1
 Fixed handling of shortcode options and better UX
 
-= 1.2.2 =
+### 1.2.2
 Fixed UI and handling of options for widget
 
-= 1.3 =
+### 1.3
 Integrated analytics signup into the plugin
 
-= 1.3.1 =
+### 1.3.1
 Fixed intermittent playback failures with Vimeo and YouTube. Ensured that ads
 are not used together with those sources.
 
-= 1.3.2 =
+### 1.3.2
 More thorough fix for playback failures with Vimeo and YouTube.
 Moved to current version of hola_player.js
 Better analytics integration
 
-= 1.3.3 =
+### 1.3.3
 Properly integrate ads in all video types.
 
-= 1.3.4 =
+### 1.3.4
 New version of hola_player.js
 Correct and consistent handling of all tag options
 Made widget and shortcode use same output code
 
-= 1.3.5 =
+### 1.3.5
 Made Vimeo and YouTube respect all options
 Simplified backend handling of tag generation
 Removed unnecessary UI elements
 
-= 1.3.6 =
+### 1.3.6
 Integrated Google Analytics
 Removed obsolete javascript
 
-= 1.3.7 =
+### 1.3.7
 Always using the latest version of Hola Player.
 Fixed width and height configuration options to work properly in a fullscreen mode.
 Fixed ad url input to correctly load saved value.
 Fixed video selection popup when adding a video to a post.
 
-= 1.3.8 =
+### 1.3.8
 Make checkbox "Display ads in video" behave consistently in both widget and shortcode forms.
 
-= 1.3.9 =
+### 1.3.9
 Display ads regardless is_video_ads attribute
 Use player vesion defined in the customer config instead of the fixed 1.0.84
 
-== Upgrade Notice ==
+## Upgrade Notice
 
-= 1.0 =
+### 1.0
 This is the first version
 
-= 1.1.1 =
+### 1.1.1
 Updated UI and graphics for activating the plugin
 
-= 1.2 =
+### 1.2
 Greatly improved UI for inserting video player code
 
-= 1.2.2 =
+### 1.2.2
 Updated UI for video players and widgets
 
-= 1.3 =
+### 1.3
 Improved user experience and analytics integration.
 
-= 1.3.3 =
+### 1.3.3
 Now with better integration with ads and video analytics.
 
-= 1.3.4 =
+### 1.3.4
 Fixed some visual errors with ad integration and made a consistent user
 experience across all playback types.
 
-= 1.3.5 =
+### 1.3.5
 Fixed some visual errors with ad integration and made a consistent user
 experience across all playback types.
 
-= 1.3.7 =
+### 1.3.7
 Plugin will always use the latest version of Hola Player now.
 Free HolaCDN account is now required for the player to work.
 Fixed some errors in configuration forms.
 
-= 1.3.8 =
+### 1.3.8
 Small UI improvements.
 
-= 1.3.9 =
+### 1.3.9
 Fixed ads.
 Plugin will use the version of Hola Player defined in the HolaCDN control panel
 
-== Screenshots ==
+## Screenshots
 
 1. The video player setup console.
 2. Activating your free video analytics.
