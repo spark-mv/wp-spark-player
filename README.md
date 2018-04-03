@@ -1,13 +1,13 @@
 # Hola Free Video Player
 
 Contributors: holanetworks\
-Donate link: https://github.com/hola/video.js\
+Donate link: https://github.com/hola/video.js \
 Tags: video, player, video player, free, videojs\
 Requires at least: 4.5\
 Tested up to: 4.8.1\
 Stable tag: 4.3\
 License: GPLv2 or later\
-License URI: https://www.gnu.org/licenses/gpl-2.0.html\
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 The Hola video player is VideoJS on steroids - a commercial grade, flexible
 video player, which provides your users the best viewing experience.
