@@ -63,12 +63,12 @@ Yes
 ### Is Hola player open source software?
 
 Hola player is based on VideoJS, an open source HTML5 video player. Find more
-details on the Hola Player GitHub page - https://github.com/hola/hola_player
+details on the Hola Player GitHub page - https://github.com/spark-mv/spark_player
 
 ### Where can I get the source for Hola Player?
 
 Find more details on the Hola Player GitHub page -
-https://github.com/hola/hola_player
+https://github.com/spark-mv/spark_player
 
 ## Screenshots
 
